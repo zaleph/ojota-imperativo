@@ -32,7 +32,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="atleta.h" />
+		<Unit filename="competencia.h" />
+		<Unit filename="interfaz.cpp" />
+		<Unit filename="interfaz.h" />
+		<Unit filename="jjoo.h" />
+		<Unit filename="lista.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="ojota.cpp" />
+		<Unit filename="tipos.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
