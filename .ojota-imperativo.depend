@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1338956150 source:/home/gonzalo/codeblocks/svn/trunk/interfaz.cpp
+	"interfaz.h"
+
+1338956150 /home/gonzalo/codeblocks/svn/trunk/interfaz.h
+	<iostream>
+	<fstream>
+	"tipos.h"
+	"atleta.h"
+	"competencia.h"
+	"jjoo.h"
+
+1338956150 /home/gonzalo/codeblocks/svn/trunk/tipos.h
+	<stdlib.h>
+	<string>
+	<iostream>
+
+1338956150 /home/gonzalo/codeblocks/svn/trunk/atleta.h
+	"tipos.h"
+	"lista.h"
+
+1338956150 /home/gonzalo/codeblocks/svn/trunk/lista.h
+	<list>
+	<iostream>
+
+1338956150 /home/gonzalo/codeblocks/svn/trunk/competencia.h
+	"atleta.h"
+	"lista.h"
+
+1338956150 /home/gonzalo/codeblocks/svn/trunk/jjoo.h
+	"competencia.h"
+
+1338956150 source:/home/gonzalo/codeblocks/svn/trunk/ojota.cpp
+	<iostream>
+	"interfaz.h"
+

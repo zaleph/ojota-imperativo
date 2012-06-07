@@ -32,10 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="atleta.cpp" />
 		<Unit filename="atleta.h" />
+		<Unit filename="competencia.cpp" />
 		<Unit filename="competencia.h" />
 		<Unit filename="interfaz.cpp" />
 		<Unit filename="interfaz.h" />
+		<Unit filename="jjoo.cpp" />
 		<Unit filename="jjoo.h" />
 		<Unit filename="lista.h" />
 		<Unit filename="ojota.cpp" />
