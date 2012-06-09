@@ -4,6 +4,7 @@
 #include <list>
 #include <iostream>
 
+
 template<class T> class Lista {
 public:
 	Lista(){};

@@ -38,6 +38,7 @@ class Competencia{
 
         enum {ENCABEZADO_ARCHIVO = 'C'};
 };
+
 std::ostream & operator<<(std::ostream & os,const Competencia & c);
 
 #endif // COMPETENCIA_H

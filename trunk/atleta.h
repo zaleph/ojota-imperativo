@@ -7,6 +7,7 @@
 class Atleta{
     public:
 
+
         Atleta();
         Atleta(const string nombre,const Sexo sexo, const int anio, const Pais pais, const int ciaNumber);
 
@@ -25,8 +26,6 @@ class Atleta{
         void mostrar(std::ostream& os) const;
 		void guardar(std::ostream& os) const;
 		void cargar (std::istream& is);
-
-
 
 
 

@@ -27,7 +27,9 @@ class JJOO{
         Lista<Atleta> losMasFracasados(const Pais p) const;
         void liuSong(const Atleta& a, const Pais p);
         Atleta stevenBradbury() const;
+
         bool uyOrdenadoAsiHayUnPatron() const;
+
         Lista<Pais> sequiaOlimpica() const;
         void transcurrirDia();
 
@@ -45,7 +47,7 @@ class JJOO{
 
         enum {ENCABEZADO_ARCHIVO = 'J'};
 };
+
 std::ostream & operator<<(std::ostream & os,const JJOO & j);
 
 #endif // JJOO_H
-
