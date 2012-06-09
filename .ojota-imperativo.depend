@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1338956150 source:/home/gonzalo/codeblocks/svn/trunk/interfaz.cpp
+1339276213 source:/home/gonzalo/codeblocks/svn/trunk/interfaz.cpp
 	"interfaz.h"
 
-1338956150 /home/gonzalo/codeblocks/svn/trunk/interfaz.h
+1339276213 /home/gonzalo/codeblocks/svn/trunk/interfaz.h
 	<iostream>
 	<fstream>
 	"tipos.h"
@@ -10,27 +10,30 @@
 	"competencia.h"
 	"jjoo.h"
 
-1338956150 /home/gonzalo/codeblocks/svn/trunk/tipos.h
+1339276213 /home/gonzalo/codeblocks/svn/trunk/tipos.h
 	<stdlib.h>
 	<string>
 	<iostream>
 
-1338956150 /home/gonzalo/codeblocks/svn/trunk/atleta.h
+1339276213 /home/gonzalo/codeblocks/svn/trunk/atleta.h
 	"tipos.h"
 	"lista.h"
 
-1338956150 /home/gonzalo/codeblocks/svn/trunk/lista.h
+1339276213 /home/gonzalo/codeblocks/svn/trunk/lista.h
 	<list>
 	<iostream>
 
-1338956150 /home/gonzalo/codeblocks/svn/trunk/competencia.h
+1339276213 /home/gonzalo/codeblocks/svn/trunk/competencia.h
 	"atleta.h"
 	"lista.h"
 
-1338956150 /home/gonzalo/codeblocks/svn/trunk/jjoo.h
+1339276213 /home/gonzalo/codeblocks/svn/trunk/jjoo.h
 	"competencia.h"
 
-1338956150 source:/home/gonzalo/codeblocks/svn/trunk/ojota.cpp
+1339276213 source:/home/gonzalo/codeblocks/svn/trunk/ojota.cpp
 	<iostream>
 	"interfaz.h"
+
+1339276213 source:/home/gonzalo/codeblocks/svn/trunk/jjoo.cpp
+	<iostream>
 
