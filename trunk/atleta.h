@@ -11,10 +11,6 @@ class Atleta{
         Atleta(const string nombre,const Sexo sexo, const int anio, const Pais pais, const int ciaNumber);
 
 
-
-
-
-
         string nombre() const;
         Sexo sexo() const;
         int anioNacimiento() const;
