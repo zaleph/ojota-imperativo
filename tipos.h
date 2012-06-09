@@ -9,8 +9,7 @@
 using namespace std;
 typedef string Deporte;
 typedef string Pais;
-enum Sexo{Femenino, Masculino};
+enum Sexo { Femenino , Masculino };
 typedef pair<Deporte, Sexo> Categoria;
 
 #endif /*TIPOS_H*/
-
