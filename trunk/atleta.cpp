@@ -31,6 +31,11 @@ Pais Atleta::nacionalidad() const{
 }
 
 int Atleta::ciaNumber() const{
+    //
+    //
+    // holas pianolas !!!!
+    //
+    //
     return _ciaNumber;
 }
 
