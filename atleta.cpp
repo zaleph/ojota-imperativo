@@ -51,6 +51,12 @@ int Atleta::ciaNumber() const{
 }
 
 Lista<Deporte> Atleta::deportes() const{
+
+    //
+    //
+    // holas pianolas !!!!
+    //
+    //
     return Lista<Deporte>();
 }
 
