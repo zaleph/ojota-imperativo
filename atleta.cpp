@@ -23,6 +23,11 @@ Sexo Atleta::sexo() const{
 }
 
 int Atleta::anioNacimiento() const{
+    //
+    //
+    // holas pianolas !!!!
+    //
+    //
     return _anioNacimiento;
 }
 
