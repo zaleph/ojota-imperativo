@@ -9,6 +9,8 @@ Competencia::Competencia(){
 
 Competencia::Competencia(const Deporte d, const Sexo s, const Lista<Atleta>& participantes){
     _finalizada = false;
+    _categoria = pair<Deporte, Sexo>(d,s);
+    _participantes = participantes;
 }
 
 Categoria Competencia::categoria() const{

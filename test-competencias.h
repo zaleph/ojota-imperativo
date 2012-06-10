@@ -45,3 +45,13 @@ void testCompetencia_leDioPositivo(){
 
 }
 
+
+void testCompetencia_sancionarTramposos(){
+
+    Competencia comp = mockCompetencia();
+
+    comp.finalizar(mockPosiciones() , mockControlAntidoping());
+
+
+
+}
