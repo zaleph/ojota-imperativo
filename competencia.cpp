@@ -14,11 +14,11 @@ Competencia::Competencia(const Deporte d, const Sexo s, const Lista<Atleta>& par
 }
 
 Categoria Competencia::categoria() const{
-    return pair<Deporte,Sexo>();
+    return _categoria;
 }
 
 Lista<Atleta> Competencia::participantes() const{
-    return Lista<Atleta>();
+    return _participantes;
 }
 
 bool Competencia::finalizada() const{
@@ -26,7 +26,18 @@ bool Competencia::finalizada() const{
 }
 
 Lista<Atleta> Competencia::ranking() const{
-    return Lista<Atleta>();
+
+    Lista<Atleta> rankingDeAtletas = Lista<Atleta>();
+
+    int atletaIndex = 0;
+
+    while(atletaIndex < _ranking.longitud() ){
+        rankingDeAtletas.agregar( findParticipanteByCiaNumber( _ranking.iesimo(atletaIndex) ) );
+
+        atletaIndex ++;
+    }
+
+    return rankingDeAtletas;
 }
 
 Lista<Atleta> Competencia::lesTocoControlAntidoping() const{
@@ -35,6 +46,7 @@ Lista<Atleta> Competencia::lesTocoControlAntidoping() const{
 
 bool Competencia::leDioPositivo(const Atleta& a) const{
 
+    cout << "BUSCANDO cia: " << a.ciaNumber() << endl;
     int i = 0;
     while( _controlAntidoping.iesimo(i).first != a.ciaNumber() )
         i++;
@@ -56,6 +68,17 @@ bool Competencia::gananLosMasCapaces() const{
 }
 
 void Competencia::sancionarTramposos(){
+
+    int atletaIndex = 0;
+
+    while( atletaIndex < ranking().longitud() ){
+
+        if( leDioPositivo(ranking().iesimo(atletaIndex)) ){
+            _ranking.sacar( ranking().iesimo(atletaIndex).ciaNumber() );
+        }
+
+        atletaIndex++;
+    }
 }
 
 bool Competencia::operator==(const Competencia& c) const{
@@ -86,3 +109,21 @@ std::ostream & operator<<(std::ostream & os,const Competencia & c){
     return os;
 }
 */
+
+
+Atleta Competencia::findParticipanteByCiaNumber(int ciaNumber) const {
+
+    Atleta atleta;
+    int atletaIndex = 0;
+    bool encontrado = false;
+    while(atletaIndex < participantes().longitud() && !encontrado ){
+
+        if( participantes().iesimo(atletaIndex).ciaNumber() == ciaNumber  ){
+            atleta = participantes().iesimo(atletaIndex);
+            encontrado = true;
+        }
+
+        atletaIndex++;
+    }
+    return atleta;
+}

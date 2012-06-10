@@ -25,6 +25,10 @@ Competencia mockCompetencia(){
     return Competencia("tenis", Masculino, mockAtletas());
 }
 
+
+
+
+
 void testCompetencia_finalizada_y_finalizar(){
     Competencia comp = mockCompetencia();
 
@@ -46,12 +50,31 @@ void testCompetencia_leDioPositivo(){
 }
 
 
+void testCompetencia_participantes(){
+
+    Competencia comp = mockCompetencia();
+
+    cout << "participantes: " << comp.participantes() << endl;
+}
+
 void testCompetencia_sancionarTramposos(){
 
     Competencia comp = mockCompetencia();
 
     comp.finalizar(mockPosiciones() , mockControlAntidoping());
 
+    cout << "Se finaliza la competencia y el ranking quedo: " << comp.ranking() << endl;
 
+    comp.sancionarTramposos();
 
+    cout << "pero se encontraron tramposos, asi que el ranking luego de la sancion es: " << comp.ranking() << endl;
+
+}
+
+void testCompetencia_ranking(){
+    Competencia comp = mockCompetencia();
+
+    comp.finalizar(mockPosiciones() , mockControlAntidoping());
+
+    cout << "participantes: " << comp.ranking() << endl;
 }
