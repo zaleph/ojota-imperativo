@@ -23,11 +23,6 @@ Sexo Atleta::sexo() const{
 }
 
 int Atleta::anioNacimiento() const{
-    //
-    //
-    // holas pianolas !!!!
-    //
-    //
     return _anioNacimiento;
 }
 
@@ -36,27 +31,10 @@ Pais Atleta::nacionalidad() const{
 }
 
 int Atleta::ciaNumber() const{
-    //
-    //
-    // holas pianolas !!!!
-    //
-    //
-
-    //
-    //
-    // holas tarolas !!!
-    //
-    //
     return _ciaNumber;
 }
 
 Lista<Deporte> Atleta::deportes() const{
-
-    //
-    //
-    // holas pianolas !!!!
-    //
-    //
     return Lista<Deporte>();
 }
 
