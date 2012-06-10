@@ -36,6 +36,12 @@ int Atleta::ciaNumber() const{
     // holas pianolas !!!!
     //
     //
+
+    //
+    //
+    // holas tarolas !!!
+    //
+    //
     return _ciaNumber;
 }
 
