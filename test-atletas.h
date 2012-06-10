@@ -3,17 +3,13 @@
 #ifndef TEST-ATLETAS_H_INCLUDED
 #define TEST-ATLETAS_H_INCLUDED
 
-
 #include <iostream>
 #include "atleta.h"
-
-
 
 
 Atleta newAtleta(){
     return Atleta("Fulano" , Masculino , 1980 , "Guatemala" , 1000);
 }
-
 
 void testAtleta_capacidad(){
 
