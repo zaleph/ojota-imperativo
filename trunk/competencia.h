@@ -25,8 +25,8 @@ class Competencia{
         bool operator==(const Competencia& c) const;
 
         void mostrar(std::ostream& os) const;
-	void guardar(std::ostream& os) const;
-	void cargar (std::istream& is);
+        void guardar(std::ostream& os) const;
+        void cargar (std::istream& is);
 
     private:
 

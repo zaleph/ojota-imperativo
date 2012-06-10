@@ -8,6 +8,7 @@ Competencia::Competencia(){
 }
 
 Competencia::Competencia(const Deporte d, const Sexo s, const Lista<Atleta>& participantes){
+    _finalizada = false;
 }
 
 Categoria Competencia::categoria() const{
@@ -19,7 +20,7 @@ Lista<Atleta> Competencia::participantes() const{
 }
 
 bool Competencia::finalizada() const{
-    return true;
+    return _finalizada;
 }
 
 Lista<Atleta> Competencia::ranking() const{
@@ -31,10 +32,18 @@ Lista<Atleta> Competencia::lesTocoControlAntidoping() const{
 }
 
 bool Competencia::leDioPositivo(const Atleta& a) const{
-    return true;
+
+    int i = 0;
+    while( _controlAntidoping.iesimo(i).first != a.ciaNumber() )
+        i++;
+
+    return _controlAntidoping.iesimo(i).second;
 }
 
 void Competencia::finalizar(const Lista<int>& posiciones, const Lista<pair<int, bool> >& control){
+    _ranking = posiciones;
+    _controlAntidoping = control;
+    _finalizada = true;
 }
 
 void Competencia::linfordChristie(const int ciaNum){
