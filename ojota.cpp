@@ -10,9 +10,12 @@ Atleta atletaProdigio(const JJOO & j) {
     return Atleta();
 }
 
+/*
 int main()
 {
     MenuPrincipal();
     return 0;
 }
 
+
+*/
