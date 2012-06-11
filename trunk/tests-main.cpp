@@ -11,11 +11,12 @@ int main(){
     //testCompetencia_sancionarTramposos();
     //testCompetencia_participantes();
     //testCompetencia_ranking();
-    test_Competencia_gananLosMasCapaces();
+    //testCompetencia_gananLosMasCapaces();
     //testAtleta_deportes_y_entrenarDeportes();
     //testJJOO_nuevoJJOO();
     //testJJOO_competencias();
     //testJJOO_cronogramas();
+    //testAtleta_igualdad();
 
     return EXIT_SUCCESS;
 }
