@@ -28,6 +28,8 @@ class Competencia{
         void guardar(std::ostream& os) const;
         void cargar (std::istream& is);
 
+
+
     private:
 
         Categoria _categoria;
@@ -38,8 +40,8 @@ class Competencia{
 
         enum {ENCABEZADO_ARCHIVO = 'C'};
 
-
         Atleta findParticipanteByCiaNumber(int ciaNumber) const;
+
 
 };
 

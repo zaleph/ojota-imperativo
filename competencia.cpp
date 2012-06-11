@@ -46,7 +46,6 @@ Lista<Atleta> Competencia::lesTocoControlAntidoping() const{
 
 bool Competencia::leDioPositivo(const Atleta& a) const{
 
-    cout << "BUSCANDO cia: " << a.ciaNumber() << endl;
     int i = 0;
     while( _controlAntidoping.iesimo(i).first != a.ciaNumber() )
         i++;
@@ -71,10 +70,11 @@ void Competencia::sancionarTramposos(){
 
     int atletaIndex = 0;
 
-    while( atletaIndex < ranking().longitud() ){
+    while( atletaIndex < participantes().longitud() ){
 
-        if( leDioPositivo(ranking().iesimo(atletaIndex)) ){
-            _ranking.sacar( ranking().iesimo(atletaIndex).ciaNumber() );
+        if( ranking().pertenece(participantes().iesimo(atletaIndex))
+           && leDioPositivo(participantes().iesimo(atletaIndex)) ){
+            _ranking.sacar( participantes().iesimo(atletaIndex).ciaNumber() );
         }
 
         atletaIndex++;
