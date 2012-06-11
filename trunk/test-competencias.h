@@ -3,31 +3,6 @@
 #include "test-atletas.h"
 #include "competencia.h"
 
-Lista<pair<int , bool> > mockControlAntidoping(){
-    Lista<pair<int , bool> > lista = Lista< pair<int , bool> >();
-    lista.agregar(pair<int,bool>(1,true));
-    lista.agregar(pair<int,bool>(2,false));
-    lista.agregar(pair<int,bool>(3,true));
-    lista.agregar(pair<int,bool>(4,false));
-    return lista;
-}
-
-Lista<int> mockPosiciones(){
-    Lista<int> lista = Lista<int>();
-    lista.agregar(2);
-    lista.agregar(4);
-    lista.agregar(1);
-    lista.agregar(3);
-    return lista;
-}
-
-Competencia mockCompetencia(){
-    return Competencia("tenis", Masculino, mockAtletas());
-}
-
-
-
-
 
 void testCompetencia_finalizada_y_finalizar(){
     Competencia comp = mockCompetencia();
@@ -85,3 +60,43 @@ void testCompetencia_lesTocoControlAntidoping(){
     cout <<"controles: " << comp.lesTocoControlAntidoping() <<endl;
 
  }
+
+
+
+ /*
+  * Mocks
+  */
+
+Lista<pair<int , bool> > mockControlAntidoping(){
+    Lista<pair<int , bool> > lista = Lista< pair<int , bool> >();
+    lista.agregar(pair<int,bool>(1,true));
+    lista.agregar(pair<int,bool>(2,false));
+    lista.agregar(pair<int,bool>(3,true));
+    lista.agregar(pair<int,bool>(4,false));
+    return lista;
+}
+
+Lista<int> mockPosiciones(){
+    Lista<int> lista = Lista<int>();
+    lista.agregar(2);
+    lista.agregar(4);
+    lista.agregar(1);
+    lista.agregar(3);
+    return lista;
+}
+
+Competencia mockCompetencia(){
+    return Competencia("tenis", Masculino, mockAtletas());
+}
+
+
+Lista<Competencia> mockCompetencias(){
+    Lista<Competencia> comps = Lista<Competencia> ();
+    comps.agregar(mockCompetencia());
+    comps.agregar(mockCompetencia());
+    comps.agregar(mockCompetencia());
+    comps.agregar(mockCompetencia());
+    return comps;
+}
+
+
