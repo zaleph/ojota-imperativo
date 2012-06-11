@@ -119,7 +119,9 @@ std::ostream & operator<<(std::ostream & os,const Competencia & c){
     return os;
 }
 
-
+/*
+ * Funciones Privadas
+ */
 
 Atleta Competencia::findParticipanteByCiaNumber(int ciaNumber) const {
 

@@ -30,6 +30,10 @@ Competencia mockCompetencia(){
     return Competencia("tenis", Masculino, mockAtletas());
 }
 
+Competencia mockCompetencia(Deporte d){
+    return Competencia(d, Masculino, mockAtletas());
+}
+
 
 Lista<Competencia> mockCompetencias(){
     Lista<Competencia> comps = Lista<Competencia> ();
@@ -37,6 +41,15 @@ Lista<Competencia> mockCompetencias(){
     comps.agregar(mockCompetencia());
     comps.agregar(mockCompetencia());
     comps.agregar(mockCompetencia());
+    return comps;
+}
+
+Lista<Competencia> mockCompetencias(Deporte d){
+    Lista<Competencia> comps = Lista<Competencia> ();
+    comps.agregar(mockCompetencia(d));
+    comps.agregar(mockCompetencia(d));
+    comps.agregar(mockCompetencia(d));
+    comps.agregar(mockCompetencia(d));
     return comps;
 }
 

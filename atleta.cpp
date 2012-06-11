@@ -12,6 +12,7 @@ Atleta::Atleta(const string nombre,const Sexo sexo, const int anio, const Pais p
     _anioNacimiento = anio;
     _nacionalidad = pais;
     _ciaNumber = ciaNumber;
+    _deportes = Lista<pair<Deporte , int> >();
 }
 
 string Atleta::nombre() const{
@@ -37,13 +38,11 @@ int Atleta::ciaNumber() const{
 Lista<Deporte> Atleta::deportes() const{
 
     Lista<Deporte> deportesList = Lista<Deporte>();
-
     int i = 0;
     while(i<_deportes.longitud() ){
         deportesList.agregar(_deportes.iesimo(i).first);
         i++;
     }
-
     return deportesList;
 }
 
@@ -56,8 +55,10 @@ int Atleta::capacidad(const Deporte d) const{
 }
 
 void Atleta::entrenarNuevoDeporte(const Deporte deporte, const int capacidad){
-    pair<Deporte,int> par = pair<Deporte,int>(deporte,capacidad);
-    _deportes.agregar(par);
+    if(!deportes().pertenece(deporte)){
+        pair<Deporte,int> par = pair<Deporte,int>(deporte,capacidad);
+        _deportes.agregar(par);
+    }
 }
 
 bool Atleta::operator==(const Atleta& a) const{

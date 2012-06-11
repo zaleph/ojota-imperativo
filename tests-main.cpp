@@ -11,9 +11,10 @@ int main(){
     //testCompetencia_sancionarTramposos();
     //testCompetencia_participantes();
     //testCompetencia_ranking();
-    //testAtleta_deportes_y_entrenarDeportes();
+    testAtleta_deportes_y_entrenarDeportes();
     //testJJOO_nuevoJJOO();
-    testJJOO_competencias();
+    //testJJOO_competencias();
+    //testJJOO_cronogramas();
 
-    return 0;
+    return EXIT_SUCCESS;
 }
