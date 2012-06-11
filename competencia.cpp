@@ -1,8 +1,6 @@
-
-
 #include <iostream>
-
 #include "competencia.h"
+
 
 Competencia::Competencia(){
 }
@@ -31,14 +29,7 @@ bool Competencia::finalizada() const{
 
 
 Lista<Atleta> Competencia::ranking() const{
-    Lista<Atleta> rankingDeAtletas = Lista<Atleta>();
-    int atletaIndex = 0;
-    while(atletaIndex < _ranking.longitud() ){
-        rankingDeAtletas.agregar( findParticipanteByCiaNumber( _ranking.iesimo(atletaIndex) ) );
-        atletaIndex ++;
-    }
-    rankingDeAtletas.darVuelta();
-    return rankingDeAtletas;
+    return findAtletasByCia(_ranking);
 }
 
 
@@ -47,7 +38,7 @@ Lista<Atleta> Competencia::lesTocoControlAntidoping() const{
     int i = 0;
     Lista<Atleta> atletas = Lista<Atleta> ();
     while(i<largo){
-        atletas.agregar(findParticipanteByCiaNumber(_controlAntidoping.iesimo(i).first));
+        atletas.agregar(findAtletaByCiaNumber(_controlAntidoping.iesimo(i).first));
         i++;
     }
     return atletas;
@@ -76,23 +67,22 @@ void Competencia::linfordChristie(const int ciaNum){
 
 bool Competencia::gananLosMasCapaces() const{
     Deporte d = categoria().first;
-    Lista<Atleta> ranking = atletasSegunCia(_ranking);
+    Lista<Atleta> ranking = findAtletasByCia(_ranking);
     int i = 0;
-    int largo = _ranking.longitud();
     bool res;
 
-    while (i<largo){
+    while (i<ranking.longitud()){
         if (ranking.longitud()<=1){
-        res = true;}
-
-        else {if(ranking.iesimo(i).capacidad(d) <= ranking.iesimo(i+1).capacidad(d)){
-            ranking.sacar(ranking.iesimo(i));
-            i++;}
-
-            else {res = false;}
+            res = true;
+        } else {
+            if(ranking.iesimo(i).capacidad(d) <= ranking.iesimo(i+1).capacidad(d)){
+                ranking.sacar(ranking.iesimo(i));
+                i++;
+            } else {
+                res = false;
+            }
         }
     }
-
     return res;
 }
 
@@ -144,7 +134,7 @@ std::ostream & operator<<(std::ostream & os,const Competencia & c){
  * Funciones Privadas
  */
 
-Atleta Competencia::findParticipanteByCiaNumber(int ciaNumber) const {
+Atleta Competencia::findAtletaByCiaNumber(int ciaNumber) const {
     Atleta atleta;
     int atletaIndex = 0;
     bool encontrado = false;
@@ -158,12 +148,12 @@ Atleta Competencia::findParticipanteByCiaNumber(int ciaNumber) const {
     return atleta;
 }
 
-Lista<Atleta> Competencia::atletasSegunCia(Lista<int> cias) const {
+Lista<Atleta> Competencia::findAtletasByCia(Lista<int> cias) const {
     int i = 0;
     Lista<Atleta> atletas = Lista<Atleta>();
-    while(i<cias.longitud()){
-        atletas.agregarAtras(findParticipanteByCiaNumber(cias.iesimo(i)));
+    while( i < cias.longitud()){
+        atletas.agregarAtras(findAtletaByCiaNumber(cias.iesimo(i)));
         i++;
-        }
-    return atletas;
     }
+    return atletas;
+}

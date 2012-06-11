@@ -1,7 +1,6 @@
-
 #include <iostream>
-
 #include "jjoo.h"
+
 
 JJOO::JJOO(){
 }
