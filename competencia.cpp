@@ -48,12 +48,12 @@ Lista<Atleta> Competencia::lesTocoControlAntidoping() const{
 
     while(i<largo){
 
-        atletas.agregar(findParticipanteByCiaNumber(_controlAntidoping.iesimo(i).first));
-        i++;
+    atletas.agregar(findParticipanteByCiaNumber(_controlAntidoping.iesimo(i).first));
+    i++;
 
     }
 
-        return atletas;
+    return atletas;
 }
 
 bool Competencia::leDioPositivo(const Atleta& a) const{
