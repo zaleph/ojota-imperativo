@@ -28,8 +28,6 @@ class Competencia{
         void guardar(std::ostream& os) const;
         void cargar (std::istream& is);
 
-
-
     private:
 
         Categoria _categoria;
