@@ -7,22 +7,26 @@ JJOO::JJOO(){
 }
 
 JJOO::JJOO(const int anio, const Lista<Atleta>& atletas, const Lista<Lista<Competencia> >& competenciasPorDia){
+    _anio = anio;
+    _atletas = atletas;
+    _competenciasPorDia = competenciasPorDia;
+    _jornadaActual = 1;
 }
 
 int JJOO::anio() const{
-    return 0;
+    return _anio;
 }
 
 Lista<Atleta> JJOO::atletas() const{
-    return Lista<Atleta>();
+    return _atletas;
 }
 
 int JJOO::cantDias() const{
-    return 0;
+    return _competenciasPorDia.longitud();
 }
 
 int JJOO::jornadaActual() const{
-    return 0;
+    return _jornadaActual;
 }
 
 Lista<Competencia> JJOO::cronograma(const int dia) const{
