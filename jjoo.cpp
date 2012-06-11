@@ -34,7 +34,14 @@ Lista<Competencia> JJOO::cronograma(const int dia) const{
 }
 
 Lista<Competencia> JJOO::competencias() const{
-    return Lista<Competencia>();
+    Lista<Competencia> comps = Lista<Competencia>();
+    int i = 0;
+    while( i< _competenciasPorDia.longitud() ){
+        comps.concatenar(_competenciasPorDia.iesimo(i));
+        i++;
+    }
+
+    return comps;
 }
 
 Lista<Competencia> JJOO::competenciasFinalizadasConOroEnPodio() const{

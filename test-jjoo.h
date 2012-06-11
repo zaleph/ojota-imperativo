@@ -28,11 +28,14 @@
 
 
 void testJJOO_nuevoJJOO(){
-
     JJOO jjoo = mockJJOO();
     cout << jjoo << endl;
+}
 
 
+void testJJOO_competencias(){
+    JJOO jjoo = mockJJOO();
+    cout << "Cantidad de competencias: " << jjoo.competencias().longitud() << endl;
 }
 
 
