@@ -47,10 +47,8 @@ Lista<Atleta> Competencia::lesTocoControlAntidoping() const{
     Lista<Atleta> atletas = Lista<Atleta> ();
 
     while(i<largo){
-
-    atletas.agregar(findParticipanteByCiaNumber(_controlAntidoping.iesimo(i).first));
-    i++;
-
+        atletas.agregar(findParticipanteByCiaNumber(_controlAntidoping.iesimo(i).first));
+        i++;
     }
 
     return atletas;
@@ -106,21 +104,21 @@ void Competencia::guardar(std::ostream& os) const{
 void Competencia::cargar (std::istream& is){
 }
 
-/*
+
 std::ostream & operator<<(std::ostream & os,const Competencia & c){
 
-    if(c.finalizada()){
-        os << "Categoria: " << c.categoria() << endl
+   if(c.finalizada()){
+        os << endl << "Categoria: (" << c.categoria().first << " , " << c.categoria().second << " )" << endl
         << "Participantes: " << c.participantes()
         << endl <<"Ranking: " << c.ranking() ;
     } else {
-        os << "Categoria: " << c.categoria() << endl
+        os << endl << "Categoria: (" << c.categoria().first << " , " << c.categoria().second << " )" << endl
         << "Participantes: " << c.participantes() ;
     }
 
     return os;
 }
-*/
+
 
 
 Atleta Competencia::findParticipanteByCiaNumber(int ciaNumber) const {

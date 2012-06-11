@@ -12,7 +12,8 @@ int main(){
     //testCompetencia_participantes();
     //testCompetencia_ranking();
     //testAtleta_deportes_y_entrenarDeportes();
-    testJJOO_nuevoJJOO();
+    //testJJOO_nuevoJJOO();
+    testJJOO_competencias();
 
     return 0;
 }
