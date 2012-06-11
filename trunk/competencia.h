@@ -39,7 +39,7 @@ class Competencia{
         enum {ENCABEZADO_ARCHIVO = 'C'};
 
         Atleta findParticipanteByCiaNumber(int ciaNumber) const;
-
+        Lista<Atleta> atletasSegunCia(Lista<int> cias) const;
 };
 
 std::ostream & operator<<(std::ostream & os,const Competencia & c);
