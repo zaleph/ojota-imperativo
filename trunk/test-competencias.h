@@ -77,3 +77,11 @@ void testCompetencia_ranking(){
 
     cout << "participantes: " << comp.ranking() << endl;
 }
+
+void testCompetencia_lesTocoControlAntidoping(){
+    Competencia comp = mockCompetencia();
+    comp.finalizar(mockPosiciones() , mockControlAntidoping());
+
+    cout <<"controles: " << comp.lesTocoControlAntidoping() <<endl;
+
+ }

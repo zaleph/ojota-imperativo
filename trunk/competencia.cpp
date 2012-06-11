@@ -41,7 +41,19 @@ Lista<Atleta> Competencia::ranking() const{
 }
 
 Lista<Atleta> Competencia::lesTocoControlAntidoping() const{
-    return Lista<Atleta>();
+
+    int largo = _controlAntidoping.longitud();
+    int i = 0;
+    Lista<Atleta> atletas = Lista<Atleta> ();
+
+    while(i<largo){
+
+        atletas.agregar(findParticipanteByCiaNumber(_controlAntidoping.iesimo(i).first));
+        i++;
+
+    }
+
+        return atletas;
 }
 
 bool Competencia::leDioPositivo(const Atleta& a) const{
@@ -127,3 +139,5 @@ Atleta Competencia::findParticipanteByCiaNumber(int ciaNumber) const {
     }
     return atleta;
 }
+
+
