@@ -4,7 +4,7 @@
 
 int main(){
 
-    testCompetencia_lesTocoControlAntidoping();
+    //testCompetencia_lesTocoControlAntidoping();
     //testAtleta_capacidad();
     //testCompetencia_finalizada();
     //testCompetencia_leDioPositivo();
@@ -12,7 +12,7 @@ int main(){
     //testCompetencia_participantes();
     //testCompetencia_ranking();
     //testAtleta_deportes_y_entrenarDeportes();
-
+    testJJOO_nuevoJJOO();
 
     return 0;
 }

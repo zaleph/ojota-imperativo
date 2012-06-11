@@ -26,11 +26,12 @@
  * Tests
  */
 
-void testJJOO_matiSeLaLastra(){
-
-}
 
 void testJJOO_nuevoJJOO(){
+
+    JJOO jjoo = mockJJOO();
+    cout << jjoo << endl;
+
 
 }
 
