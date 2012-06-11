@@ -42,7 +42,6 @@ class Competencia{
 
         Atleta findParticipanteByCiaNumber(int ciaNumber) const;
 
-
 };
 
 std::ostream & operator<<(std::ostream & os,const Competencia & c);
