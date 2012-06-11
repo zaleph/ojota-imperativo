@@ -37,3 +37,15 @@ void testAtleta_capacidad(){
     cout << atleta1.capacidad("tenis") ;
 
 }
+
+
+void testAtleta_deportes_y_entrenarDeportes(){
+    Atleta a = newAtleta();
+
+    a.entrenarNuevoDeporte("futbol" , 5);
+    a.entrenarNuevoDeporte("tenis" , 3);
+    a.entrenarNuevoDeporte("jockey" , 8);
+
+    cout << a.deportes() << endl;
+}
+
