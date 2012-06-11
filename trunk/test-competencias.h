@@ -60,7 +60,6 @@ void testCompetencia_participantes(){
 void testCompetencia_sancionarTramposos(){
 
     Competencia comp = mockCompetencia();
-
     comp.finalizar(mockPosiciones() , mockControlAntidoping());
 
     cout << "Se finaliza la competencia y el ranking quedo: " << comp.ranking() << endl;
