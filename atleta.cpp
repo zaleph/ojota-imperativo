@@ -35,7 +35,16 @@ int Atleta::ciaNumber() const{
 }
 
 Lista<Deporte> Atleta::deportes() const{
-    return Lista<Deporte>();
+
+    Lista<Deporte> deportesList = Lista<Deporte>();
+
+    int i = 0;
+    while(i<_deportes.longitud() ){
+        deportesList.agregar(_deportes.iesimo(i).first);
+        i++;
+    }
+
+    return deportesList;
 }
 
 int Atleta::capacidad(const Deporte d) const{
