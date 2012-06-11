@@ -45,6 +45,8 @@ void testAtleta_deportes_y_entrenarDeportes(){
     a.entrenarNuevoDeporte("futbol" , 5);
     a.entrenarNuevoDeporte("tenis" , 3);
     a.entrenarNuevoDeporte("jockey" , 8);
+    a.entrenarNuevoDeporte("jockey" , 8);
+    a.entrenarNuevoDeporte("jockey" , 8);
 
     cout << a.deportes() << endl;
 }
