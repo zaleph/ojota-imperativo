@@ -40,7 +40,8 @@ void testJJOO_competencias(){
     cout << "Cantidad de competencias: " << jjoo.competencias().longitud() << endl;
 }
 
+
 void testJJOO_cronogramas(){
     JJOO jjoo = mockJJOO();
-    cout << "Competencias del dia 1: " << jjoo.cronograma(2) << endl;
+    cout << "Competencias del dia 1: " << jjoo.cronograma(4) << endl;
 }
