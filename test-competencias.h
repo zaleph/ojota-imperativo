@@ -19,10 +19,10 @@ Lista<pair<int , bool> > mockControlAntidoping(){
 
 Lista<int> mockPosiciones(){
     Lista<int> lista = Lista<int>();
-    lista.agregar(2);
-    lista.agregar(4);
-    lista.agregar(1);
-    lista.agregar(3);
+    lista.agregar(2); //cuarto
+    lista.agregar(4); //tercero
+    lista.agregar(1); //segundo
+    lista.agregar(3); //primero
     return lista;
 }
 
@@ -98,7 +98,8 @@ void testCompetencia_sancionarTramposos(){
 void testCompetencia_ranking(){
     Competencia comp = mockCompetencia();
     comp.finalizar(mockPosiciones() , mockControlAntidoping());
-    cout << "participantes: " << comp.ranking() << endl;
+    cout << "ranking posta: " << endl;
+    cout << "ranking de participantes: " << comp.ranking() << endl;
 }
 
 void testCompetencia_lesTocoControlAntidoping(){
