@@ -11,6 +11,7 @@ int main(){
     //testCompetencia_sancionarTramposos();
     //testCompetencia_participantes();
     //testCompetencia_ranking();
+    test_Competencia_gananLosMasCapaces();
     //testAtleta_deportes_y_entrenarDeportes();
     //testJJOO_nuevoJJOO();
     //testJJOO_competencias();

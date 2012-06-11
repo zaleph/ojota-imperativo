@@ -75,7 +75,25 @@ void Competencia::linfordChristie(const int ciaNum){
 
 
 bool Competencia::gananLosMasCapaces() const{
-    return true;
+    Deporte d = categoria().first;
+    Lista<Atleta> ranking = atletasSegunCia(_ranking);
+    int i = 0;
+    int largo = _ranking.longitud();
+    bool res;
+
+    while (i<largo){
+        if (ranking.longitud()<=1){
+        res = true;}
+
+        else {if(ranking.iesimo(i).capacidad(d) <= ranking.iesimo(i+1).capacidad(d)){
+            ranking.sacar(ranking.iesimo(i));
+            i++;}
+
+            else {res = false;}
+        }
+    }
+
+    return res;
 }
 
 
@@ -140,4 +158,12 @@ Atleta Competencia::findParticipanteByCiaNumber(int ciaNumber) const {
     return atleta;
 }
 
-
+Lista<Atleta> Competencia::atletasSegunCia(Lista<int> cias) const {
+    int i = 0;
+    Lista<Atleta> atletas = Lista<Atleta>();
+    while(i<cias.longitud()){
+        atletas.agregarAtras(findParticipanteByCiaNumber(cias.iesimo(i)));
+        i++;
+        }
+    return atletas;
+    }
