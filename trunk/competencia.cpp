@@ -71,7 +71,7 @@ bool Competencia::gananLosMasCapaces() const{
     int i = 0;
     bool res;
 
-    while (i<ranking.longitud()){
+    while (i<_ranking.longitud()){
         if (ranking.longitud()<=1){
             res = true;
         } else {
@@ -80,6 +80,7 @@ bool Competencia::gananLosMasCapaces() const{
                 i++;
             } else {
                 res = false;
+                i = _ranking.longitud();
             }
         }
     }

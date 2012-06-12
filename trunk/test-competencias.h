@@ -111,5 +111,5 @@ void testCompetencia_lesTocoControlAntidoping(){
 void testCompetencia_gananLosMasCapaces(){
     Competencia comp = mockCompetencia();
     comp.finalizar(mockPosiciones() , mockControlAntidoping());
-    cout << "ganan los mas capaces: " << endl;
+    cout << "ganan los mas capaces: " << comp.gananLosMasCapaces() << endl;
 }
