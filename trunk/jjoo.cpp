@@ -102,7 +102,19 @@ void JJOO::transcurrirDia(){
 
 
 bool JJOO::operator==(const JJOO& j) const{
-    return false;
+
+    bool result = j.anio() == anio() && j.cantDias() == cantDias() && j.jornadaActual() == jornadaActual()
+        && mismasAtletas(j.atletas() , atletas()) ;
+
+    if(result){
+        int i=1;
+        while( i <= cantDias() && result ){
+            result = result & mismasCompetencias(j.cronograma(i) , cronograma(i));
+            i++;
+        }
+    }
+
+    return result;
 }
 
 
