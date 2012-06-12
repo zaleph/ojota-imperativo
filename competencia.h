@@ -40,6 +40,19 @@ class Competencia{
 
         Atleta findAtletaByCiaNumber(int ciaNumber) const;
         Lista<Atleta> findAtletasByCia(Lista<int> cias) const;
+
+
+        template<class T>
+        bool mismos(const Lista<T> & l1, const Lista<T> & l2) {
+            Lista<T> b(l2);
+            for(Lista<T> a(l1); a.longitud(); a.cola()) {
+                if (!b.pertenece(a.cabeza())) return false;
+                b.sacar(a.cabeza());
+            }
+            return b.longitud() == 0;
+        }
+
+
 };
 
 std::ostream & operator<<(std::ostream & os,const Competencia & c);

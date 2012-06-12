@@ -18,5 +18,7 @@ int main(){
     //testJJOO_cronogramas();
     //testAtleta_igualdad();
 
+    testJJOO_operadorIgual();
+
     return EXIT_SUCCESS;
 }
