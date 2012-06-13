@@ -13,6 +13,8 @@ Atleta::Atleta(const string nombre,const Sexo sexo, const int anio, const Pais p
     _nacionalidad = pais;
     _ciaNumber = ciaNumber;
     _deportes = Lista<pair<Deporte , int> >();
+
+
 }
 
 
