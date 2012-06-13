@@ -41,17 +41,16 @@ class Competencia{
         Atleta findAtletaByCiaNumber(int ciaNumber) const;
         Lista<Atleta> findAtletasByCia(Lista<int> cias) const;
 
-
-        template<class T>
-        bool mismos(const Lista<T> & l1, const Lista<T> & l2) {
-            Lista<T> b(l2);
-            for(Lista<T> a(l1); a.longitud(); a.cola()) {
-                if (!b.pertenece(a.cabeza())) return false;
-                b.sacar(a.cabeza());
+        bool mismasAtletas(Lista<Atleta> l1, Lista<Atleta> l2) const {
+            bool iguales = (l1.longitud() == l2.longitud()) ;
+            int i=0;
+            while(i < l1.longitud() && iguales ){
+                if( !l2.pertenece( l1.iesimo(i) ) || !l1.pertenece( l2.iesimo(i) ) )
+                    iguales = false;
+                i++;
             }
-            return b.longitud() == 0;
+            return iguales;
         }
-
 
 };
 

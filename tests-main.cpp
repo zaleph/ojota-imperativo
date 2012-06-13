@@ -17,8 +17,9 @@ int main(){
     //testJJOO_competencias();
     //testJJOO_cronogramas();
     //testAtleta_igualdad();
+    //testJJOO_operadorIgual();
 
-    testJJOO_operadorIgual();
+    testCompetencia_operadorIgual();
 
     return EXIT_SUCCESS;
 }
