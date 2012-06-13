@@ -82,9 +82,25 @@ void JJOO::liuSong(const Atleta& a, const Pais p){
 
 
 Atleta JJOO::stevenBradbury() const{
-    return Atleta();
+/*    Lista<Competencia> comps = competencias();
+    Lista<Atleta> atletas = comps.ganadoresDeCompetencias();
+    int i = 0;
+    Deporte d = comps.iesimo(i).categoria().first;
+    while (i<comps.longitud()-1){
+        if (atletas.longitud()<=1){
+            i = comps.longitud();
+        } else{
+            if (atletas.iesimo(i).capacidad(d)<=atletas.iesimo(i+1).capacidad(d)){
+        atletas.sacar(atletas.iesimo(i+1));
+        i++;
+        }  else {
+            atletas.sacar(atletas.iesimo(i));
+            i++;
+            }
+        }
+    }
+    return atletas.iesimo(0); */
 }
-
 
 bool JJOO::uyOrdenadoAsiHayUnPatron() const{
     return false;
@@ -140,4 +156,5 @@ std::ostream & operator<<(std::ostream & os,const JJOO & j){
     << "Jornada actual: " << j.jornadaActual();
     return os;
 }
+
 

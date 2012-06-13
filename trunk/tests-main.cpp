@@ -19,7 +19,7 @@ int main(){
     //testAtleta_igualdad();
     //testJJOO_operadorIgual();
 
-    testCompetencia_operadorIgual();
+    //testCompetencia_operadorIgual();
 
     return EXIT_SUCCESS;
 }
