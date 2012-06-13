@@ -53,7 +53,62 @@ Lista<Competencia> mockCompetencias(Deporte d){
     return comps;
 }
 
+Competencia mockCompetenciaTenisMasc(){
+    return Competencia("Tenis",Masculino,mockAtletasTenisMasc());
+}
 
+Competencia mockCompetenciaFutbolMasc(){
+    return Competencia("Futbol",Masculino,mockAtletasFutbolMasc());
+}
+
+Lista<int> mockRankingTenisMasc(){
+    Lista<int> lista = Lista<int>();
+    lista.agregar(2000); //cuarto
+    lista.agregar(4000); //tercero
+    lista.agregar(1000); //segundo
+    lista.agregar(3000); //primero
+    return lista;
+}
+
+Lista<int> mockRankingFutbolMasc(){
+    Lista<int> lista = Lista<int>();
+    lista.agregar(2000); //cuarto
+    lista.agregar(4000); //tercero
+    lista.agregar(1000); //segundo
+    lista.agregar(5000); //primero
+    return lista;
+}
+
+Lista<pair<int , bool> > mockControlAntidopingTenisMasc(){
+    Lista<pair<int , bool> > lista = Lista< pair<int , bool> >();
+    lista.agregar(pair<int,bool>(1000,true));
+    lista.agregar(pair<int,bool>(2000,false));
+    lista.agregar(pair<int,bool>(3000,true));
+    lista.agregar(pair<int,bool>(4000,false));
+    return lista;
+}
+
+Lista<pair<int , bool> > mockControlAntidopingFutbolMasc(){
+    Lista<pair<int , bool> > lista = Lista< pair<int , bool> >();
+    lista.agregar(pair<int,bool>(1000,true));
+    lista.agregar(pair<int,bool>(2000,false));
+    lista.agregar(pair<int,bool>(5000,true));
+    lista.agregar(pair<int,bool>(4000,false));
+    return lista;
+}
+
+
+Competencia mockCompetenciaTenisMascFinalizada(){
+    Competencia comp = mockCompetenciaTenisMasc();
+    comp.finalizar(mockRankingTenisMasc(),mockControlAntidopingTenisMasc());
+    return comp;
+}
+
+Competencia mockCompetenciaFutbolMascFinalizada(){
+    Competencia comp = mockCompetenciaFutbolMasc();
+    comp.finalizar(mockRankingFutbolMasc(),mockControlAntidopingFutbolMasc());
+    return comp;
+}
 
 
 /*
@@ -112,4 +167,18 @@ void testCompetencia_gananLosMasCapaces(){
     Competencia comp = mockCompetencia();
     comp.finalizar(mockPosiciones() , mockControlAntidoping());
     cout << "ganan los mas capaces: " << comp.gananLosMasCapaces() << endl;
+}
+
+void testCompetencia_operadorIgual(){
+    Competencia comp1 = mockCompetenciaFutbolMascFinalizada();
+    Competencia comp2 = mockCompetenciaTenisMascFinalizada();
+    Competencia comp3 = mockCompetenciaFutbolMasc();
+    Competencia comp4 = mockCompetenciaTenisMascFinalizada();
+
+    cout << "Son iguales? " << ( comp1 == comp1) << endl;
+    cout << "Son iguales? " << ( comp1 == comp2) << endl;
+    cout << "Son iguales? " << ( comp3 == comp3) << endl;
+    cout << "Son iguales? " << ( comp3 == comp4) << endl;
+    cout << "Son iguales? " << ( comp1 == comp3) << endl;
+    //resultado esperado = 1 0 1 0 0
 }
