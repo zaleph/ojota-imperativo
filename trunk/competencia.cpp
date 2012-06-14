@@ -67,17 +67,17 @@ void Competencia::linfordChristie(const int ciaNum){
 
 bool Competencia::gananLosMasCapaces() const{
     Deporte d = categoria().first;
-    Lista<Atleta> ranking = findAtletasByCia(_ranking);
+    Lista<Atleta> rank = ranking();
     int i = 0;
     bool res;
 
     while (i<_ranking.longitud()){
-        if (ranking.longitud()<=1){
+        if (rank.longitud()<=1){
             res = true;
             i = _ranking.longitud();
         } else {
-            if(ranking.iesimo(i).capacidad(d) >= ranking.iesimo(i+1).capacidad(d)){
-                ranking.sacar(ranking.iesimo(i));
+            if(rank.iesimo(i).capacidad(d) >= rank.iesimo(i+1).capacidad(d)){
+                rank.sacar(rank.iesimo(i));
 
             } else {
                 res = false;

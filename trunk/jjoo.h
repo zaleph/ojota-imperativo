@@ -70,16 +70,7 @@ class JJOO{
             return iguales;
         }
 
-        Lista<Atleta> ganadoresDeCompetencias(Lista<Competencia> comps){
-            Lista<Atleta> atletas = Lista<Atleta>();
-            int i = 0;
-            while(i<comps.longitud()){
-                atletas.agregarAtras((comps.iesimo(i)).ranking().iesimo(0));
-                i++;
-                }
-            return atletas;
-
-            }
+        Lista<Atleta> ganadoresDeCompetencias(Lista<Competencia> comps);
 
 };
 
