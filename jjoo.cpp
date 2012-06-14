@@ -82,8 +82,8 @@ void JJOO::liuSong(const Atleta& a, const Pais p){
 
 
 Atleta JJOO::stevenBradbury() const{
-/*    Lista<Competencia> comps = competencias();
-    Lista<Atleta> atletas = comps.ganadoresDeCompetencias();
+ /*   Lista<Competencia> comps = competencias();
+    Lista<Atleta> atletas = ganadoresDeCompetencias(comps);
     int i = 0;
     Deporte d = comps.iesimo(i).categoria().first;
     while (i<comps.longitud()-1){
@@ -99,7 +99,7 @@ Atleta JJOO::stevenBradbury() const{
             }
         }
     }
-    return atletas.iesimo(0); */
+    return atletas.iesimo(0);*/
 }
 
 bool JJOO::uyOrdenadoAsiHayUnPatron() const{
@@ -159,3 +159,13 @@ std::ostream & operator<<(std::ostream & os,const JJOO & j){
 }
 
 
+Lista<Atleta> JJOO::ganadoresDeCompetencias(Lista<Competencia> comps){
+            Lista<Atleta> atletas = Lista<Atleta>();
+            int i = 0;
+            while(i<comps.longitud()){
+                atletas.agregarAtras((comps.iesimo(i)).ranking().iesimo(0));
+                i++;
+                }
+            return atletas;
+
+            }
