@@ -13,8 +13,6 @@ Atleta::Atleta(const string nombre,const Sexo sexo, const int anio, const Pais p
     _nacionalidad = pais;
     _ciaNumber = ciaNumber;
     _deportes = Lista<pair<Deporte , int> >();
-
-
 }
 
 
@@ -45,9 +43,10 @@ int Atleta::ciaNumber() const{
 
 Lista<Deporte> Atleta::deportes() const{
     Lista<Deporte> deportesList = Lista<Deporte>();
+    //Lista<Deporte> deportesList;
     int i = 0;
     while(i<_deportes.longitud() ){
-        deportesList.agregar(_deportes.iesimo(i).first);
+        deportesList.agregarAtras(_deportes.iesimo(i).first);
         i++;
     }
     return deportesList;
@@ -64,9 +63,37 @@ int Atleta::capacidad(const Deporte d) const{
 
 
 void Atleta::entrenarNuevoDeporte(const Deporte deporte, const int capacidad){
-    if(!deportes().pertenece(deporte)){
-        pair<Deporte,int> par = pair<Deporte,int>(deporte,capacidad);
+
+    pair<Deporte,int> par = pair<Deporte,int>(deporte,capacidad);
+    Lista<pair<Deporte, int> > nuevaLista = Lista<pair<Deporte , int > > ();
+
+    if(_deportes.longitud()==0){
         _deportes.agregar(par);
+    } else{
+        if(!deportes().pertenece(deporte)){
+            //string d1 = _deportes.cabeza().first;
+            //string d2 = deporte;
+            //while (_deportes.longitud() != 0 && d1<d2){
+            while (_deportes.longitud() != 0 && _deportes.cabeza().first<deporte){
+                nuevaLista.agregarAtras(_deportes.cabeza());
+                _deportes.eliminarPosicion(0);
+               // if (_deportes.longitud() != 0){
+               //     d1 = _deportes.cabeza().first;
+               // }
+            }
+            nuevaLista.agregarAtras(par);
+            nuevaLista.concatenar(_deportes);
+            _deportes = nuevaLista;
+        } else {
+            while (_deportes.longitud()!= 0 && _deportes.cabeza().first!=deporte){
+                nuevaLista.agregarAtras(_deportes.cabeza());
+                _deportes.eliminarPosicion(0);
+            }
+            _deportes.eliminarPosicion(0);
+            nuevaLista.agregarAtras(par);
+            nuevaLista.concatenar(_deportes);
+            _deportes = nuevaLista;
+        }
     }
 }
 

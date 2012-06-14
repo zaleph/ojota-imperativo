@@ -11,6 +11,16 @@ Atleta newAtleta(){
     return Atleta("Fulano" , Masculino , 1980 , "Guatemala" , 1000);
 }
 
+Atleta mockLazyAtleta(){
+    Atleta atleta1 = Atleta("atleta1" , Masculino , 1980 , "Guatemala" , 1000);
+    return atleta1;
+}
+
+void testLazyAtleta(){
+    Atleta a = mockLazyAtleta();
+    cout << a.deportes() << endl;
+}
+
 
 Lista<Atleta> mockAtletas(){
     Lista<Atleta> lista = Lista<Atleta>();
@@ -88,6 +98,7 @@ Lista<Atleta> mockAtletasFutbolMasc(){
     atleta5.entrenarNuevoDeporte("Hockey",40);
     atleta5.entrenarNuevoDeporte("Natacion",10);
 
+
     Lista<Atleta> lista = Lista<Atleta>();
     lista.agregar(atleta1);
     lista.agregar(atleta2);
@@ -99,14 +110,6 @@ Lista<Atleta> mockAtletasFutbolMasc(){
 }
 
 
-
-
-
-
-
-
-
-
 void testAtleta_capacidad(){
     Atleta atleta1 = newAtleta();
     atleta1.entrenarNuevoDeporte("tenis" , 64);
@@ -116,12 +119,17 @@ void testAtleta_capacidad(){
 
 void testAtleta_deportes_y_entrenarDeportes(){
     Atleta a = newAtleta();
-    a.entrenarNuevoDeporte("futbol" , 5);
-    a.entrenarNuevoDeporte("tenis" , 3);
-    a.entrenarNuevoDeporte("jockey" , 8);
-    a.entrenarNuevoDeporte("jockey" , 8);
-    a.entrenarNuevoDeporte("jockey" , 8);
+    a.entrenarNuevoDeporte("Futbol" , 5);
+    a.entrenarNuevoDeporte("Tenis" , 3);
+    a.entrenarNuevoDeporte("Voley" , 80);
+    a.entrenarNuevoDeporte("Jockey" , 8);
+    a.entrenarNuevoDeporte("Jockey" , 10);
+    a.entrenarNuevoDeporte("Jockey" , 20);
+    a.entrenarNuevoDeporte("Futbol" , 50);
+
     cout << a.deportes() << endl;
+    cout << a.capacidad("Jockey") << endl;
+    cout << a.capacidad("Futbol") << endl;
 }
 
 
@@ -132,4 +140,5 @@ void testAtleta_igualdad(){
     cout << "son iguales ? : " << ((a1 == a2) ? "si" : "no") << endl;
     cout << "son iguales ? : " << ((a1 == a3) ? "si" : "no") << endl;
 }
+
 

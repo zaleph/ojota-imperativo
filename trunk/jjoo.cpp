@@ -108,6 +108,7 @@ bool JJOO::uyOrdenadoAsiHayUnPatron() const{
 
 
 Lista<Pais> JJOO::sequiaOlimpica() const{
+
     return Lista<Pais>();
 }
 
