@@ -86,16 +86,14 @@ Atleta JJOO::stevenBradbury() const{
     Lista<Atleta> atletas = ganadoresDeCompetencias(comps);
     int i = 0;
     Deporte d = comps.iesimo(i).categoria().first;
-    while (i<comps.longitud()-1){
+    while (i<_competenciasPorDia.longitud()){
         if (atletas.longitud()<=1){
             i = comps.longitud();
         } else{
             if (atletas.iesimo(i).capacidad(d)<=atletas.iesimo(i+1).capacidad(d)){
         atletas.sacar(atletas.iesimo(i+1));
-        i++;
-        }  else {
+         }  else {
             atletas.sacar(atletas.iesimo(i));
-            i++;
             }
         }
     }
