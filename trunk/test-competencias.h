@@ -64,9 +64,9 @@ Competencia mockCompetenciaFutbolMasc(){
 Lista<int> mockRankingTenisMasc(){
     Lista<int> lista = Lista<int>();
     //lista.agregar(2000); //cuarto
-    //lista.agregar(4000); //tercero
-    lista.agregar(3000); //segundo
-    lista.agregar(1000); //primero
+    lista.agregar(4000); //tercero
+    lista.agregar(2000); //segundo
+    lista.agregar(3000); //primero
     return lista;
 }
 
