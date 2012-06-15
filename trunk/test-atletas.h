@@ -255,3 +255,12 @@ void testAtleta_guardar(){
 
     salida.close();
 }
+
+
+void testAtleta_cargar(){
+    ifstream archivo ("/home/gonzalo/salida.txt");
+    Atleta a = Atleta();
+    a.cargar(archivo);
+    archivo.close();
+    cout << a << endl;
+}
