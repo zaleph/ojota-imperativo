@@ -61,23 +61,52 @@ Competencia mockCompetenciaFutbolMasc(){
     return Competencia("Futbol",Masculino,mockAtletasFutbolMasc());
 }
 
+Competencia mockCompetenciaHockeyMasc(){
+    return Competencia("Hockey",Masculino,mockAtletasHockeyMasc());
+}
+
+Competencia mockCompetenciaNatacionMasc(){
+    return Competencia("Natacion",Masculino,mockAtletasNatacionMasc());
+}
+
+Competencia mockCompetenciaPoloFem(){
+    return Competencia("Polo",Femenino,mockAtletasPoloFem());
+}
+
+
 Lista<int> mockRankingTenisMasc(){
     Lista<int> lista = Lista<int>();
-    //lista.agregar(2000); //cuarto
-    lista.agregar(4000); //tercero
-    lista.agregar(2000); //segundo
-    lista.agregar(3000); //primero
+    lista.agregarAtras(4000); //primero
+    lista.agregarAtras(2000); //segundo
+    lista.agregarAtras(3000); //tercero
     return lista;
 }
 
 Lista<int> mockRankingFutbolMasc(){
     Lista<int> lista = Lista<int>();
-    lista.agregar(2000); //cuarto
-    lista.agregar(4000); //tercero
-    lista.agregar(1000); //segundo
-    lista.agregar(5000); //primero
+    lista.agregarAtras(5000); //primero
+    lista.agregarAtras(1000); //segundo
+    lista.agregarAtras(4000); //tercero
+    lista.agregarAtras(2000); //cuarto
     return lista;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Lista<pair<int , bool> > mockControlAntidopingTenisMasc(){
     Lista<pair<int , bool> > lista = Lista< pair<int , bool> >();

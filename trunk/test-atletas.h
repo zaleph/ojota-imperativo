@@ -2,7 +2,6 @@
 #include <iostream>
 #include "atleta.h"
 
-
 Atleta newAtleta(int cia){
     return Atleta("Fulano" , Masculino , 1980 , "Guatemala" , cia);
 }
@@ -16,12 +15,6 @@ Atleta mockLazyAtleta(){
     return atleta1;
 }
 
-void testLazyAtleta(){
-    Atleta a = mockLazyAtleta();
-    cout << a.deportes() << endl;
-}
-
-
 Lista<Atleta> mockAtletas(){
     Lista<Atleta> lista = Lista<Atleta>();
     lista.agregar(newAtleta(1));
@@ -31,36 +24,102 @@ Lista<Atleta> mockAtletas(){
     return lista;
 }
 
-
-Lista<Atleta> mockAtletasTenisMasc(){
+Atleta mockAtleta1(){
     Atleta atleta1 = Atleta("atleta1" , Masculino , 1980 , "Guatemala" , 1000);
-    Atleta atleta2 = Atleta("atleta2" , Masculino , 1985 , "Brazil" , 2000);
-    Atleta atleta3 = Atleta("atleta3" , Masculino , 1977 , "Argentina" , 3000);
-    Atleta atleta4 = Atleta("atleta4" , Masculino , 1968 , "Bolivia" , 4000);
-    Atleta atleta5 = Atleta("atleta5" , Masculino , 1983 , "Chile" , 5000);
-
     atleta1.entrenarNuevoDeporte("Tenis",5);
     atleta1.entrenarNuevoDeporte("Futbol",50);
     atleta1.entrenarNuevoDeporte("Hockey",10);
     atleta1.entrenarNuevoDeporte("Natacion",20);
+    return atleta1;
+}
 
+Atleta mockAtleta2(){
+    Atleta atleta2 = Atleta("atleta2" , Masculino , 1985 , "Brazil" , 2000);
     atleta2.entrenarNuevoDeporte("Tenis",50);
     atleta2.entrenarNuevoDeporte("Futbol",10);
     atleta2.entrenarNuevoDeporte("Natacion",30);
+    return atleta2;
+}
 
+Atleta mockAtleta3(){
+    Atleta atleta3 = Atleta("atleta3" , Masculino , 1977 , "Argentina" , 3000);
     atleta3.entrenarNuevoDeporte("Tenis",80);
     atleta3.entrenarNuevoDeporte("Hockey",2);
     atleta3.entrenarNuevoDeporte("Natacion",25);
+    return atleta3;
+}
 
+Atleta mockAtleta4(){
+    Atleta atleta4 = Atleta("atleta4" , Masculino , 1968 , "Bolivia" , 4000);
     atleta4.entrenarNuevoDeporte("Tenis",10);
     atleta4.entrenarNuevoDeporte("Futbol",40);
     atleta4.entrenarNuevoDeporte("Hockey",20);
     atleta4.entrenarNuevoDeporte("Natacion",40);
+    return atleta4;
+}
 
+Atleta mockAtleta5(){
+    Atleta atleta5 = Atleta("atleta5" , Masculino , 1983 , "Chile" , 5000);
     atleta5.entrenarNuevoDeporte("Tenis",20);
     atleta5.entrenarNuevoDeporte("Futbol",30);
     atleta5.entrenarNuevoDeporte("Hockey",40);
     atleta5.entrenarNuevoDeporte("Natacion",10);
+    return atleta5;
+}
+Atleta mockAtleta6(){
+    Atleta atleta6 = Atleta("atleta6" , Femenino , 1983 , "Italia" , 6000);
+    atleta6.entrenarNuevoDeporte("Tenis",20);
+    atleta6.entrenarNuevoDeporte("Futbol",30);
+    atleta6.entrenarNuevoDeporte("Hockey",40);
+    atleta6.entrenarNuevoDeporte("Polo",10);
+    return atleta6;
+}
+
+Atleta mockAtleta7(){
+    Atleta atleta7 = Atleta("atleta7" , Femenino , 1983 , "Francia" , 7000);
+    atleta7.entrenarNuevoDeporte("Tenis",60);
+    atleta7.entrenarNuevoDeporte("Futbol",80);
+    atleta7.entrenarNuevoDeporte("Hockey",90);
+    atleta7.entrenarNuevoDeporte("Polo",100);
+    return atleta7;
+}
+Atleta mockAtleta8(){
+    Atleta atleta8 = Atleta("atleta8" , Femenino , 1983 , "Uruguay" , 8000);
+    atleta8.entrenarNuevoDeporte("Tenis",60);
+    atleta8.entrenarNuevoDeporte("Futbol",80);
+    atleta8.entrenarNuevoDeporte("Hockey",90);
+    atleta8.entrenarNuevoDeporte("Polo",100);
+    return atleta8;
+}
+Atleta mockAtleta9(){
+    Atleta atleta9 = Atleta("atleta9" , Femenino , 1983 , "Islandia" , 9000);
+    atleta9.entrenarNuevoDeporte("Tenis",60);
+    atleta9.entrenarNuevoDeporte("Futbol",80);
+    atleta9.entrenarNuevoDeporte("Hockey",90);
+    atleta9.entrenarNuevoDeporte("Polo",100);
+    return atleta9;
+}
+
+Atleta mockAtleta10(){
+    Atleta atleta10 = Atleta("atleta9" , Femenino , 1983 , "Inglaterra" , 10000);
+    atleta10.entrenarNuevoDeporte("Tenis",60);
+    atleta10.entrenarNuevoDeporte("Futbol",80);
+    atleta10.entrenarNuevoDeporte("Hockey",90);
+    atleta10.entrenarNuevoDeporte("Polo",100);
+    return atleta10;
+}
+
+/*
+LISTAS DE ATLETAS POR CATEGORIA
+*/
+
+
+Lista<Atleta> mockAtletasTenisMasc(){
+    Atleta atleta1 = mockAtleta1();
+    Atleta atleta2 = mockAtleta2();
+    Atleta atleta3 = mockAtleta3();
+    Atleta atleta4 = mockAtleta4();
+    Atleta atleta5 = mockAtleta5();
 
     Lista<Atleta> lista = Lista<Atleta>();
     lista.agregar(atleta1);
@@ -70,34 +129,14 @@ Lista<Atleta> mockAtletasTenisMasc(){
     lista.agregar(atleta5);
 
     return lista;
-
 }
 
 Lista<Atleta> mockAtletasFutbolMasc(){
-    Atleta atleta1 = Atleta("atleta1" , Masculino , 1980 , "Guatemala" , 1000);
-    Atleta atleta2 = Atleta("atleta2" , Masculino , 1985 , "Brazil" , 2000);
-    Atleta atleta4 = Atleta("atleta4" , Masculino , 1968 , "Bolivia" , 4000);
-    Atleta atleta5 = Atleta("atleta5" , Masculino , 1983 , "Chile" , 5000);
 
-    atleta1.entrenarNuevoDeporte("Tenis",5);
-    atleta1.entrenarNuevoDeporte("Futbol",50);
-    atleta1.entrenarNuevoDeporte("Hockey",10);
-    atleta1.entrenarNuevoDeporte("Natacion",20);
-
-    atleta2.entrenarNuevoDeporte("Tenis",50);
-    atleta2.entrenarNuevoDeporte("Futbol",10);
-    atleta2.entrenarNuevoDeporte("Natacion",30);
-
-    atleta4.entrenarNuevoDeporte("Tenis",10);
-    atleta4.entrenarNuevoDeporte("Futbol",40);
-    atleta4.entrenarNuevoDeporte("Hockey",20);
-    atleta4.entrenarNuevoDeporte("Natacion",40);
-
-    atleta5.entrenarNuevoDeporte("Tenis",20);
-    atleta5.entrenarNuevoDeporte("Futbol",30);
-    atleta5.entrenarNuevoDeporte("Hockey",40);
-    atleta5.entrenarNuevoDeporte("Natacion",10);
-
+    Atleta atleta1 = mockAtleta1();
+    Atleta atleta2 = mockAtleta2();
+    Atleta atleta4 = mockAtleta4();
+    Atleta atleta5 = mockAtleta5();
 
     Lista<Atleta> lista = Lista<Atleta>();
     lista.agregar(atleta1);
@@ -106,8 +145,64 @@ Lista<Atleta> mockAtletasFutbolMasc(){
     lista.agregar(atleta5);
 
     return lista;
-
 }
+
+Lista<Atleta> mockAtletasHockeyMasc(){
+
+    Atleta atleta1 = mockAtleta1();
+    Atleta atleta3 = mockAtleta3();
+    Atleta atleta4 = mockAtleta4();
+    Atleta atleta5 = mockAtleta5();
+
+    Lista<Atleta> lista = Lista<Atleta>();
+    lista.agregar(atleta1);
+    lista.agregar(atleta3);
+    lista.agregar(atleta4);
+    lista.agregar(atleta5);
+
+    return lista;
+}
+
+
+Lista<Atleta> mockAtletasNatacionMasc(){
+
+    Atleta atleta1 = mockAtleta1();
+    Atleta atleta3 = mockAtleta3();
+    Atleta atleta4 = mockAtleta4();
+    Atleta atleta5 = mockAtleta5();
+
+    Lista<Atleta> lista = Lista<Atleta>();
+    lista.agregar(atleta1);
+    lista.agregar(atleta3);
+    lista.agregar(atleta4);
+    lista.agregar(atleta5);
+
+    return lista;
+}
+
+
+Lista<Atleta> mockAtletasPoloFem(){
+
+    Atleta atleta6 = mockAtleta6();
+    Atleta atleta7 = mockAtleta7();
+    Atleta atleta8 = mockAtleta8();
+    Atleta atleta9 = mockAtleta9();
+    Atleta atleta10 = mockAtleta10();
+
+    Lista<Atleta> lista = Lista<Atleta>();
+    lista.agregar(atleta6);
+    lista.agregar(atleta7);
+    lista.agregar(atleta8);
+    lista.agregar(atleta9);
+    lista.agregar(atleta10);
+    return lista;
+}
+
+
+/*
+TESTS
+*/
+
 
 
 void testAtleta_capacidad(){
@@ -141,6 +236,10 @@ void testAtleta_igualdad(){
     cout << "son iguales ? : " << ((a1 == a3) ? "si" : "no") << endl;
 }
 
+void testLazyAtleta(){
+    Atleta a = mockLazyAtleta();
+    cout << a.deportes() << endl;
+}
 
 void testAtleta_guardar(){
     ofstream salida ("/home/gonzalo/salida.txt");
