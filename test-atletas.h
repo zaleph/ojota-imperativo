@@ -277,4 +277,5 @@ void testAtleta_cargar(){
     a.cargar(archivo);
     archivo.close();
     cout << a << endl;
+    //a.mostrar(cout);
 }
