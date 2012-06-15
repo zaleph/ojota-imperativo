@@ -208,5 +208,8 @@ void testJJOO_operadorIgual(){
     cout << "Son iguales? " << ( jjoo1 == jjoo2) << endl;
 }
 
-
+void testJJOO_stevenBradbury(){
+    JJOO jjoo = mockJJOODia1();
+    cout<< "steven: " << jjoo.stevenBradbury() << endl;
+}
 
