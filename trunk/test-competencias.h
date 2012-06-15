@@ -182,3 +182,24 @@ void testCompetencia_operadorIgual(){
     cout << "Son iguales? " << ( comp1 == comp3) << endl;
     //resultado esperado = 1 0 1 0 0
 }
+
+
+
+void testCompetencia_linfordChristi(){
+
+    Competencia comp1 = mockCompetencia();
+    comp1.linfordChristie(1);
+    cout << comp1.participantes() << endl;
+
+    Competencia comp2 = mockCompetencia();
+    comp2.linfordChristie(4);
+    cout << comp2.participantes() << endl;
+
+    Competencia comp3 = mockCompetencia();
+    comp3.linfordChristie(3);
+    cout << comp3.participantes() << endl;
+
+    Competencia comp4 = mockCompetencia();
+    comp4.linfordChristie(2);
+    cout << comp4.participantes() << endl;
+}

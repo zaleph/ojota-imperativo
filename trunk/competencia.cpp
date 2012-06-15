@@ -62,6 +62,8 @@ void Competencia::finalizar(const Lista<int>& posiciones, const Lista<pair<int, 
 
 
 void Competencia::linfordChristie(const int ciaNum){
+    Atleta linford = findAtletaByCiaNumber(ciaNum);
+    _participantes.sacar(linford);
 }
 
 
