@@ -79,13 +79,11 @@ Lista<int> mockRankingTenisMasc(){
     lista.agregarAtras(3000); //primero
     lista.agregarAtras(7000); //segundo
     lista.agregarAtras(8000); //tercero
-    lista.agregarAtras(9000);
     lista.agregarAtras(10000);
-    lista.agregarAtras(2000);
+    lista.agregarAtras(1000);
     lista.agregarAtras(5000);
     lista.agregarAtras(6000);
     lista.agregarAtras(4000);
-    lista.agregarAtras(1000);
     return lista;
 }
 

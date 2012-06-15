@@ -47,7 +47,7 @@ int main(){
     //testCompetencia_sancionarTramposos();
     //testCompetencia_participantes();
     //testCompetencia_ranking();
-    testCompetencia_gananLosMasCapaces();
+    //testCompetencia_gananLosMasCapaces();
     //testAtleta_deportes_y_entrenarDeportes();
     //testLazyAtleta();
     //testJJOO_nuevoJJOO();
