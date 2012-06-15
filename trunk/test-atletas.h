@@ -101,12 +101,27 @@ Atleta mockAtleta9(){
 }
 
 Atleta mockAtleta10(){
-    Atleta atleta10 = Atleta("atleta9" , Femenino , 1983 , "Inglaterra" , 10000);
+    Atleta atleta10 = Atleta("atleta10" , Femenino , 1983 , "Guatemala" , 10000);
     atleta10.entrenarNuevoDeporte("Tenis",60);
     atleta10.entrenarNuevoDeporte("Futbol",80);
     atleta10.entrenarNuevoDeporte("Hockey",90);
     atleta10.entrenarNuevoDeporte("Polo",100);
     return atleta10;
+}
+
+Lista<Atleta> mockAtletasFull(){
+    Lista<Atleta> lista = Lista<Atleta>();
+    lista.agregarAtras(mockAtleta1());
+    lista.agregarAtras(mockAtleta2());
+    lista.agregarAtras(mockAtleta3());
+    lista.agregarAtras(mockAtleta4());
+    lista.agregarAtras(mockAtleta5());
+    lista.agregarAtras(mockAtleta6());
+    lista.agregarAtras(mockAtleta7());
+    lista.agregarAtras(mockAtleta8());
+    lista.agregarAtras(mockAtleta9());
+    lista.agregarAtras(mockAtleta10());
+    return lista;
 }
 
 /*
@@ -122,11 +137,11 @@ Lista<Atleta> mockAtletasTenisMasc(){
     Atleta atleta5 = mockAtleta5();
 
     Lista<Atleta> lista = Lista<Atleta>();
-    lista.agregar(atleta1);
-    lista.agregar(atleta2);
-    lista.agregar(atleta3);
-    lista.agregar(atleta4);
-    lista.agregar(atleta5);
+    lista.agregarAtras(atleta1);
+    lista.agregarAtras(atleta2);
+    lista.agregarAtras(atleta3);
+    lista.agregarAtras(atleta4);
+    lista.agregarAtras(atleta5);
 
     return lista;
 }
@@ -139,10 +154,10 @@ Lista<Atleta> mockAtletasFutbolMasc(){
     Atleta atleta5 = mockAtleta5();
 
     Lista<Atleta> lista = Lista<Atleta>();
-    lista.agregar(atleta1);
-    lista.agregar(atleta2);
-    lista.agregar(atleta4);
-    lista.agregar(atleta5);
+    lista.agregarAtras(atleta1);
+    lista.agregarAtras(atleta2);
+    lista.agregarAtras(atleta4);
+    lista.agregarAtras(atleta5);
 
     return lista;
 }
@@ -155,10 +170,10 @@ Lista<Atleta> mockAtletasHockeyMasc(){
     Atleta atleta5 = mockAtleta5();
 
     Lista<Atleta> lista = Lista<Atleta>();
-    lista.agregar(atleta1);
-    lista.agregar(atleta3);
-    lista.agregar(atleta4);
-    lista.agregar(atleta5);
+    lista.agregarAtras(atleta1);
+    lista.agregarAtras(atleta3);
+    lista.agregarAtras(atleta4);
+    lista.agregarAtras(atleta5);
 
     return lista;
 }
@@ -172,10 +187,10 @@ Lista<Atleta> mockAtletasNatacionMasc(){
     Atleta atleta5 = mockAtleta5();
 
     Lista<Atleta> lista = Lista<Atleta>();
-    lista.agregar(atleta1);
-    lista.agregar(atleta3);
-    lista.agregar(atleta4);
-    lista.agregar(atleta5);
+    lista.agregarAtras(atleta1);
+    lista.agregarAtras(atleta3);
+    lista.agregarAtras(atleta4);
+    lista.agregarAtras(atleta5);
 
     return lista;
 }
@@ -190,11 +205,11 @@ Lista<Atleta> mockAtletasPoloFem(){
     Atleta atleta10 = mockAtleta10();
 
     Lista<Atleta> lista = Lista<Atleta>();
-    lista.agregar(atleta6);
-    lista.agregar(atleta7);
-    lista.agregar(atleta8);
-    lista.agregar(atleta9);
-    lista.agregar(atleta10);
+    lista.agregarAtras(atleta6);
+    lista.agregarAtras(atleta7);
+    lista.agregarAtras(atleta8);
+    lista.agregarAtras(atleta9);
+    lista.agregarAtras(atleta10);
     return lista;
 }
 

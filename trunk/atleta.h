@@ -27,8 +27,6 @@ class Atleta{
 		void guardar(std::ostream& os) const;
 		void cargar (std::istream& is);
 
-
-
     private:
         string _nombre;
         Sexo _sexo;

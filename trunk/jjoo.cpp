@@ -108,6 +108,7 @@ bool JJOO::uyOrdenadoAsiHayUnPatron() const{
 
 Lista<Pais> JJOO::sequiaOlimpica() const{
 
+
     return Lista<Pais>();
 }
 
@@ -156,4 +157,6 @@ std::ostream & operator<<(std::ostream & os,const JJOO & j){
     << "Jornada actual: " << j.jornadaActual();
     return os;
 }
+
+
 
