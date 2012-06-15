@@ -71,16 +71,22 @@ class JJOO{
         }
 
 
-        Lista<Atleta> ganadoresDeCompetencias(Lista<Competencia> comps){
+        Lista<Atleta> ganadoresDeCompetencias(Lista<Competencia> comps , int posicion){
             Lista<Atleta> atletas = Lista<Atleta>();
             int i = 0;
             while(i<comps.longitud()){
-                atletas.agregarAtras((comps.iesimo(i)).ranking().iesimo(0));
-                i++;
+                Competencia compIesima = comps.iesimo(i);
+                if ( compIesima.finalizada()){
+                    if ( (compIesima.ranking().longitud() >= 1 && posicion<1) || (compIesima.ranking().longitud() >= 2 && posicion<2) || (compIesima.ranking().longitud() >= 3 && posicion<3) ){
+                        atletas.agregarAtras((comps.iesimo(i)).ranking().iesimo(posicion));
+                    }
+                    i++;
+                } else {
+                    i++;
+                }
             }
             return atletas;
         }
-
 };
 
 std::ostream & operator<<(std::ostream & os,const JJOO & j);
