@@ -6,37 +6,6 @@ using namespace std;
 
 
 
-Atleta cargar(){
-    Atleta a = Atleta();
-
-    string nombre;
-    int anioNac;
-    int ciaNumber;
-    string sexo;
-    Pais pais;
-    string basura;
-
-    ifstream archivo ("/home/gonzalo/salida.txt");
-
-    archivo >> basura;
-    archivo >> nombre;
-    archivo >> sexo;
-    archivo >> anioNac;
-    archivo >> pais;
-    archivo >> ciaNumber;
-
-    archivo.close();
-
-
-    nombre = nombre.substr(1 , nombre.length() - 2 );
-
-
-
-    cout << nombre << " " << sexo << " "  << anioNac << " "  << pais << " "  << ciaNumber << endl;
-
-    return a;
-
-}
 
 int main(){
 
@@ -63,10 +32,10 @@ int main(){
     //testJJOO_stevenBradbury();
     //testCompetencia_linfordChristi();
 
-    //testAtleta_guardar();
-    //testAtleta_cargar();
+    testAtleta_guardar();
+    testAtleta_cargar();
     //testSequiaOlimpica();
-    testCompetenciasFinalizadasConOroEnPodio();
+    //testCompetenciasFinalizadasConOroEnPodio();
 
     return EXIT_SUCCESS;
 }
