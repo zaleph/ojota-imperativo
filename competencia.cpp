@@ -79,7 +79,7 @@ bool Competencia::gananLosMasCapaces() const{
             i = _ranking.longitud();
         } else {
             if(rank.iesimo(0).capacidad(d) >= rank.iesimo(1).capacidad(d)){
-                rank.sacar(rank.iesimo(1));
+                rank.sacar(rank.iesimo(0));
 
             } else {
                 res = false;
