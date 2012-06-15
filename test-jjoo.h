@@ -252,3 +252,23 @@ void testSequiaOlimpica(){
     cout << jjooERRONEO.sequiaOlimpica() <<endl;
 }
 
+void testCompetenciasFinalizadasConOroEnPodio(){
+    JJOO jjoo0 = mockJJOODia0();
+    JJOO jjoo3 = mockJJOODia3();
+    JJOO jjoo5 = mockJJOODia5();
+    JJOO jjooERRONEO = mockJJOODiaERRONEODIA2();
+
+    cout<< endl;
+    cout<< "COMPETENCIAS CON OROS DIA 0" << endl;
+    cout<< jjoo0.competenciasFinalizadasConOroEnPodio()<<endl;
+    cout<< endl;
+    cout<< "COMPETENCIAS CON OROS DIA 3" << endl;
+    cout<< jjoo3.competenciasFinalizadasConOroEnPodio()<<endl;
+    cout<< endl;
+    cout<< "COMPETENCIAS CON OROS DIA 5" << endl;
+    cout<< jjoo5.competenciasFinalizadasConOroEnPodio()<<endl;
+    cout<< endl;
+    cout<< "COMPETENCIAS CON OROS DIA ERRONEO" << endl;
+    cout<< jjooERRONEO.competenciasFinalizadasConOroEnPodio()<<endl;
+}
+
