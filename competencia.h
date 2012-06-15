@@ -38,8 +38,9 @@ class Competencia{
 
         enum {ENCABEZADO_ARCHIVO = 'C'};
 
-        Atleta findAtletaByCiaNumber(int ciaNumber) const;
-        Lista<Atleta> findAtletasByCia(Lista<int> cias) const;
+        /*
+         * Funciones Privadas
+         */
 
         bool mismasAtletas(Lista<Atleta> l1, Lista<Atleta> l2) const {
             bool iguales = (l1.longitud() == l2.longitud()) ;
@@ -51,6 +52,34 @@ class Competencia{
             }
             return iguales;
         }
+
+
+
+        Atleta findAtletaByCiaNumber(int ciaNumber) const {
+            Atleta atleta;
+            int atletaIndex = 0;
+            bool encontrado = false;
+            while(atletaIndex < participantes().longitud() && !encontrado ){
+                if( participantes().iesimo(atletaIndex).ciaNumber() == ciaNumber  ){
+                    atleta = participantes().iesimo(atletaIndex);
+                    encontrado = true;
+                }
+                atletaIndex++;
+            }
+            return atleta;
+        }
+
+        Lista<Atleta> findAtletasByCia(Lista<int> cias) const {
+            int i = 0;
+            Lista<Atleta> atletas = Lista<Atleta>();
+            while( i < cias.longitud()){
+                atletas.agregarAtras(findAtletaByCiaNumber(cias.iesimo(i)));
+                i++;
+            }
+            return atletas;
+        }
+
+
 
 };
 
