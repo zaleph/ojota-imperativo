@@ -52,7 +52,24 @@ Lista<Competencia> JJOO::competencias() const{
 
 
 Lista<Competencia> JJOO::competenciasFinalizadasConOroEnPodio() const{
-    return Lista<Competencia>();
+    Lista<Competencia> comps = Lista<Competencia>();
+    Lista<Competencia> compsConOro = Lista<Competencia>();
+
+    comps = competencias();
+
+    int i=0;
+    while (i<comps.longitud()){
+        Competencia comp = comps.iesimo(i);
+        if(!comp.finalizada()){
+            i++;
+        }else if(comp.ranking().longitud()>0){
+            compsConOro.agregarAtras(comp);
+            i++;
+        }else{
+            i++;
+        }
+    }
+    return compsConOro;
 }
 
 

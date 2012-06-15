@@ -135,11 +135,6 @@ Lista<Atleta> mockAtletasTenisMasc(){
     Atleta atleta3 = mockAtleta3();
     Atleta atleta4 = mockAtleta4();
     Atleta atleta5 = mockAtleta5();
-    Atleta atleta6 = mockAtleta6();
-    Atleta atleta7 = mockAtleta7();
-    Atleta atleta8 = mockAtleta8();
-    Atleta atleta9 = mockAtleta9();
-    Atleta atleta10 = mockAtleta10();
 
     Lista<Atleta> lista = Lista<Atleta>();
     lista.agregarAtras(atleta1);
@@ -147,12 +142,6 @@ Lista<Atleta> mockAtletasTenisMasc(){
     lista.agregarAtras(atleta3);
     lista.agregarAtras(atleta4);
     lista.agregarAtras(atleta5);
-    lista.agregarAtras(atleta6);
-    lista.agregarAtras(atleta7);
-    lista.agregarAtras(atleta8);
-    lista.agregarAtras(atleta9);
-    lista.agregarAtras(atleta10);
-
     return lista;
 }
 

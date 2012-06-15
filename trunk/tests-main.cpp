@@ -66,5 +66,7 @@ int main(){
     //testAtleta_guardar();
     //testAtleta_cargar();
     //testSequiaOlimpica();
+    testCompetenciasFinalizadasConOroEnPodio();
+
     return EXIT_SUCCESS;
 }
