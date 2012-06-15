@@ -142,3 +142,17 @@ void testAtleta_igualdad(){
 }
 
 
+void testAtleta_guardar(){
+    ofstream salida ("/home/gonzalo/salida.txt");
+
+    Atleta a = newAtleta();
+    a.entrenarNuevoDeporte("tenis" , 1);
+    a.entrenarNuevoDeporte("futbol" , 2);
+    a.entrenarNuevoDeporte("jockey" , 3);
+    a.entrenarNuevoDeporte("rugby" , 4);
+    a.entrenarNuevoDeporte("jockey" , 5);
+
+    a.guardar(salida);
+
+    salida.close();
+}
