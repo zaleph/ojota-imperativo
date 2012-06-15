@@ -1,6 +1,8 @@
-
+#include <fstream>
+#include <iostream>
 #include "test-jjoo.h"
 
+using namespace std;
 
 int main(){
 
@@ -20,9 +22,10 @@ int main(){
     //testAtleta_igualdad();
     //testJJOO_operadorIgual();
     //testCompetencia_operadorIgual();
+    //testCompetencia_linfordChristi();
+    //testAtleta_guardar();
 
     //testCompetencia_linfordChristi();
-
 
     return EXIT_SUCCESS;
 }
