@@ -130,18 +130,65 @@ void Atleta::guardar(std::ostream& o) const{
 
 void Atleta::cargar (std::istream& is){
 
+    char dummy;
     string temp;
-    is >> temp;
 
-    is >> temp;
-    _nombre = temp.substr(1 , temp.length() - 2 );
+    //descarto hasta el primer "|"
+    getline(is , temp , '|');
 
-    is >> temp;
-    _sexo = temp.compare("|Masculino|") ? Masculino : Femenino ;
+    //leo el nombre hasta el ultimo "|" descartandolo
+    getline(is , _nombre , '|');
 
+    //leo hata el primer "|" que rodea el sexo descartando
+    getline(is , temp , '|');
+
+    //leo el sexo hasta el ultimo "|"
+    getline(is , temp , '|');
+    _sexo = temp.compare("Masculino") ? Masculino : Femenino ;
+
+    //leo el año de nacimiento
     is >> _anioNacimiento;
-    is >> _nacionalidad;
+
+    //leo y descarto hasta el primer "|" de la nacionalidad
+    getline(is , temp , '|');
+
+    //leo la nacionalidad hasta el ultimo "|" que la rodea
+    getline(is , _nacionalidad , '|');
+
+    // leo el cia number
     is >> _ciaNumber;
+
+    //leo el "[" que indica el comienzo de la lista
+    getline(is , temp , '[');
+
+    Deporte deporte;
+    int capacidad;
+
+    while( dummy != ']'){
+
+        // leo hasta el "(" descarandolo
+        getline(is , temp , '(');
+
+        //descarto el "|"
+        is >> dummy;
+
+        // leo el deporte
+        getline(is , deporte , '|');
+
+        // descarto la ","
+        is >> dummy;
+
+        //leo la capacidad
+        is >> capacidad;
+
+        //descarto el ultimo ")"
+        is >> dummy;
+
+        //leo el siguiente token "," o "]"
+        is >> dummy;
+
+        entrenarNuevoDeporte(deporte, capacidad);
+    }
 
 }
 
@@ -150,6 +197,7 @@ std::ostream & operator<<(std::ostream & os,const Atleta & a){
     os << "Nombre: " << a.nombre() << endl
     << "Sexo: " << a.sexo() << endl
     << "CiaNumber: " << a.ciaNumber() << endl
+    << "Nacionalidad: " << a.nacionalidad() << endl
     << "Año Nacimiento: " << a.anioNacimiento() << endl
     << "Deportes: " << a.deportes();
     return os;
