@@ -16,12 +16,12 @@ int main(){
     //testLazyAtleta();
     //testJJOO_nuevoJJOO();
     //testJJOO_competencias();
-    //testJJOO_cronogramas();
+    testJJOO_cronogramas();
     //testAtleta_igualdad();
     //testJJOO_operadorIgual();
     //testCompetencia_operadorIgual();
 
-    testCompetencia_linfordChristi();
+    //testCompetencia_linfordChristi();
 
 
     return EXIT_SUCCESS;
