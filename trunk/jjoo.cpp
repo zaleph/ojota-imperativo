@@ -96,8 +96,8 @@ Atleta JJOO::stevenBradbury() const{
             atletas.sacar(atletas.iesimo(0));
             }
         }
-    }
-    return atletas.iesimo(0);*/
+    }*/
+    return Atleta();
 
 }
 
@@ -107,9 +107,26 @@ bool JJOO::uyOrdenadoAsiHayUnPatron() const{
 
 
 Lista<Pais> JJOO::sequiaOlimpica() const{
+    Lista<Pais> secosOlimpicos = Lista<Pais>();
+    Lista<Pais> paisesDelJuego = paisesUnicosDeAtletas(atletas());
 
+    int maxSequiaJuegos = maxDiasSinMedalla();
 
-    return Lista<Pais>();
+    int i = 0;
+
+    while (i<paisesDelJuego.longitud()){
+        Pais p = paisesDelJuego.iesimo(i);
+        Lista<int> diasBuenos = diasConMedalla(p , _competenciasPorDia , jornadaActual());
+        int maxSequiaDelPais = maximoEnteros(diferenciaEntreConsecutivos(diasBuenos));
+
+        if(maxSequiaDelPais == maxSequiaJuegos){
+            secosOlimpicos.agregarAtras(p);
+            i++;
+        } else {
+            i++;
+        }
+    }
+    return secosOlimpicos;
 }
 
 
