@@ -131,36 +131,50 @@ Lista<Lista<Competencia> > mockCronograDiaERRONEODIA2(){
 
 //JUEGO CON NIGUNA COMPETENCIA FINALIZADA
 JJOO mockJJOODia0(){
-    return JJOO(2012 , mockAtletasFull() , mockCronograDia0() );
+    JJOO jjoo =JJOO(2012 , mockAtletasFull() , mockCronograDia0() );
+    //jjoo._jornadaActual = 1;
+    return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 1 FINALIZADAS
 JJOO mockJJOODia1(){
-    return JJOO(2012 , mockAtletasFull() , mockCronograDia1() );
+    JJOO jjoo =JJOO(2012 , mockAtletasFull() , mockCronograDia1() );
+    //jjoo._jornadaActual = 2;
+    return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 2 FINALIZADAS
 JJOO mockJJOODia2(){
-    return JJOO(2012 , mockAtletasFull() , mockCronograDia2() );
+    JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia2() );
+    //jjoo._jornadaActual = 3;
+    return jjoo;
 }
 //JUEGO CON LAS COMPETENCIAS DEL DIA 3 FINALIZADAS
 JJOO mockJJOODia3(){
-    return JJOO(2012 , mockAtletasFull() , mockCronograDia3() );
+    JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia3() );
+    //jjoo._jornadaActual = 4;
+    return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 4 que en realidad esta vacio
 JJOO mockJJOODia4(){
-    return JJOO(2012 , mockAtletasFull() , mockCronograDia3() );
+    JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia3() );
+    //jjoo._jornadaActual = 5;
+    return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 5 FINALIZADAS
 JJOO mockJJOODia5(){
-    return JJOO(2012 , mockAtletasFull() , mockCronograDia5() );
+    JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia5() );
+    //jjoo._jornadaActual = 6;
+    return jjoo;
 }
 
 //JUEGO ERRONEO CON COMPETENCIAS SIN FINALIZAR EN EL DIA 2
 JJOO mockJJOODiaERRONEODIA2(){
-    return JJOO(2012 , mockAtletasFull() , mockCronograDiaERRONEODIA2() );
+    JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDiaERRONEODIA2() );
+    //jjoo._jornadaActual = 7;
+    return jjoo;
 }
 
 
@@ -211,5 +225,30 @@ void testJJOO_operadorIgual(){
 void testJJOO_stevenBradbury(){
     JJOO jjoo = mockJJOODia1();
     cout<< "steven: " << jjoo.stevenBradbury() << endl;
+}
+
+void testSequiaOlimpica(){
+    JJOO jjoo0 = mockJJOODia0();
+    JJOO jjoo1 = mockJJOODia1();
+    JJOO jjoo2 = mockJJOODia2();
+    JJOO jjoo3 = mockJJOODia3();
+    JJOO jjoo4 = mockJJOODia4();
+    JJOO jjoo5 = mockJJOODia5();
+    JJOO jjooERRONEO = mockJJOODiaERRONEODIA2();
+
+    cout << "SEQUIA OLIMPICA AL DIA 0" << endl;
+    cout << jjoo0.sequiaOlimpica() <<endl;
+    cout << "SEQUIA OLIMPICA AL DIA 1" << endl;
+    cout << jjoo1.sequiaOlimpica() <<endl;
+    cout << "SEQUIA OLIMPICA AL DIA 2" << endl;
+    cout << jjoo2.sequiaOlimpica() <<endl;
+    cout << "SEQUIA OLIMPICA AL DIA 3" << endl;
+    cout << jjoo3.sequiaOlimpica() <<endl;
+    cout << "SEQUIA OLIMPICA AL DIA 4" << endl;
+    cout << jjoo4.sequiaOlimpica() <<endl;
+    cout << "SEQUIA OLIMPICA AL DIA 5" << endl;
+    cout << jjoo5.sequiaOlimpica() <<endl;
+    cout << "SEQUIA OLIMPICA AL DIA 6" << endl;
+    cout << jjooERRONEO.sequiaOlimpica() <<endl;
 }
 

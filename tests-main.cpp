@@ -65,6 +65,6 @@ int main(){
 
     //testAtleta_guardar();
     //testAtleta_cargar();
-
+    //testSequiaOlimpica();
     return EXIT_SUCCESS;
 }

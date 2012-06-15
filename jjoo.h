@@ -9,9 +9,10 @@ class JJOO{
     public:
 
         JJOO();
-        // |cronograma|==cantDias. Si un día no hay competencias,q esté la lista vacía.
+        // |cronograma|==cantDias. Si un dÃ­a no hay competencias,q estÃ© la lista vacÃ­a.
         JJOO(const int anio, const Lista<Atleta>& atletas, const Lista<Lista<Competencia> >& competenciasPorDia);
 
+        //int _jornadaActual;
         int anio() const;
         Lista<Atleta> atletas() const;
         int cantDias() const;
@@ -42,11 +43,9 @@ class JJOO{
     private:
         int _anio;
         Lista<Atleta> _atletas;
+        Lista<Lista<Competencia> > _competenciasPorDia;         // En la i-Ã©sima posiciÃ³n de la lista, las competencias del dÃ­a i+1.
         int _jornadaActual;
-        Lista<Lista<Competencia> > _competenciasPorDia;         // En la i-ésima posición de la lista, las competencias del día i+1.
-
         enum {ENCABEZADO_ARCHIVO = 'J'};
-
 
         bool mismasCompetencias(Lista<Competencia> l1, Lista<Competencia> l2) const {
             bool iguales = (l1.longitud() == l2.longitud()) ;
@@ -88,7 +87,7 @@ class JJOO{
             return atletas;
         }
 
-        Lista<Pais> paises(Lista<Atleta> atletas) const{
+        Lista<Pais> paisesUnicosDeAtletas(Lista<Atleta> atletas) const{
             Lista<Pais> nacionalidades = Lista<Pais>();
             int i = 0;
             while (i<atletas.longitud()){
@@ -101,6 +100,70 @@ class JJOO{
                 }
             }
             return nacionalidades;
+        }
+
+        Lista<int> diasConMedalla(Pais p , Lista<Lista<Competencia> > cron, int hoy) const{
+            Lista<int> diasQueGanoMedalla = Lista<int>();
+            diasQueGanoMedalla.agregarAtras(0);
+            int dia = 0;
+            while (dia+1<hoy){
+                Lista<Competencia> comps = cron.iesimo(dia);
+                Lista<Atleta> ganadoresDelDia = ganadoresDeCompetencias(comps,0);
+                ganadoresDelDia.concatenar(ganadoresDeCompetencias(comps,1));
+                ganadoresDelDia.concatenar(ganadoresDeCompetencias(comps,2));
+
+                if(paisesUnicosDeAtletas(ganadoresDelDia).pertenece(p)){
+                    diasQueGanoMedalla.agregarAtras(dia+1);
+                    dia++;
+                } else {
+                    dia++;
+                }
+            }
+            diasQueGanoMedalla.agregarAtras(hoy);
+            return diasQueGanoMedalla;
+        }
+
+        Lista<int> diferenciaEntreConsecutivos(Lista<int> enteros) const{
+            Lista<int> diffs = Lista<int>();
+            int i = enteros.longitud();
+            while (i>0){
+                int valor1 = enteros.iesimo(i);
+                int valor2 = enteros.iesimo(i-1);
+                int valor3 = valor1-valor2;
+                diffs.agregarAtras(valor3);
+                i--;
+            }
+            return diffs;
+        }
+
+        int maximoEnteros(Lista<int> enteros) const {
+            int max = 0;
+            int i=0;
+            while (i<enteros.longitud()){
+                if (enteros.iesimo(i)>max){
+                    max = enteros.iesimo(i);
+                    i++;
+                } else {
+                    i++;
+                }
+            }
+            return max;
+        }
+
+        int maxDiasSinMedalla() const{
+            Lista<int> maxSequiaPorPais = Lista<int>();
+            Lista<Pais> paises = paisesUnicosDeAtletas(atletas());
+            int max = 0;
+            int i=0;
+            while(i<paises.longitud()){
+                Pais p = paises.iesimo(i);
+                Lista<int> diasBuenos = diasConMedalla(p , _competenciasPorDia , jornadaActual());
+                int maxSequiaDelPais = maximoEnteros(diferenciaEntreConsecutivos(diasBuenos));
+                maxSequiaPorPais.agregarAtras(maxSequiaDelPais);
+                i++;
+            }
+            max = maximoEnteros(maxSequiaPorPais);
+            return max;
         }
 
 };
