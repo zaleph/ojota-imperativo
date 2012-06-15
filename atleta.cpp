@@ -154,3 +154,4 @@ std::ostream & operator<<(std::ostream & os,const Atleta & a){
     << "Deportes: " << a.deportes();
     return os;
 }
+

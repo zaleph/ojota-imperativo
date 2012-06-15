@@ -91,22 +91,30 @@ Lista<int> mockRankingFutbolMasc(){
     return lista;
 }
 
+Lista<int> mockRankingHockeyMasc(){
+    Lista<int> lista = Lista<int>();
+    lista.agregarAtras(5000); //primero
+    lista.agregarAtras(1000); //segundo
+    lista.agregarAtras(4000); //tercero
+    lista.agregarAtras(3000); //cuarto
+    return lista;
+}
 
+Lista<int> mockRankingNatacionMasc(){
+    Lista<int> lista = Lista<int>();
+    lista.agregarAtras(5000); //primero
+    return lista;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Lista<int> mockRankingPoloFem(){
+    Lista<int> lista = Lista<int>();
+    lista.agregarAtras(6000); //primero
+    lista.agregarAtras(7000); //segundo
+    lista.agregarAtras(8000); //tercero
+    lista.agregarAtras(10000); //cuarto
+    lista.agregarAtras(9000); //quinto
+    return lista;
+}
 
 Lista<pair<int , bool> > mockControlAntidopingTenisMasc(){
     Lista<pair<int , bool> > lista = Lista< pair<int , bool> >();
@@ -126,6 +134,26 @@ Lista<pair<int , bool> > mockControlAntidopingFutbolMasc(){
     return lista;
 }
 
+Lista<pair<int , bool> > mockControlAntidopingHockeyMasc(){
+    Lista<pair<int , bool> > lista = Lista< pair<int , bool> >();
+    lista.agregar(pair<int,bool>(1000,true));
+    lista.agregar(pair<int,bool>(5000,true));
+    lista.agregar(pair<int,bool>(4000,false));
+    return lista;
+}
+
+Lista<pair<int , bool> > mockControlAntidopingNatacionMasc(){
+    Lista<pair<int , bool> > lista = Lista< pair<int , bool> >();
+    lista.agregar(pair<int,bool>(1000,true));
+    lista.agregar(pair<int,bool>(4000,false));
+    return lista;
+}
+
+Lista<pair<int , bool> > mockControlAntidopingPoloFem(){
+    Lista<pair<int , bool> > lista = Lista< pair<int , bool> >();
+    lista.agregar(pair<int,bool>(6000,true));
+    return lista;
+}
 
 Competencia mockCompetenciaTenisMascFinalizada(){
     Competencia comp = mockCompetenciaTenisMasc();
@@ -137,6 +165,84 @@ Competencia mockCompetenciaFutbolMascFinalizada(){
     Competencia comp = mockCompetenciaFutbolMasc();
     comp.finalizar(mockRankingFutbolMasc(),mockControlAntidopingFutbolMasc());
     return comp;
+}
+
+Competencia mockCompetenciaHockeyMascFinalizada(){
+    Competencia comp = mockCompetenciaHockeyMasc();
+    comp.finalizar(mockRankingHockeyMasc(),mockControlAntidopingHockeyMasc());
+    return comp;
+}
+
+Competencia mockCompetenciaNatacionMascFinalizada(){
+    Competencia comp = mockCompetenciaNatacionMasc();
+    comp.finalizar(mockRankingNatacionMasc(),mockControlAntidopingNatacionMasc());
+    return comp;
+}
+
+Competencia mockCompetenciaPoloFemFinalizada(){
+    Competencia comp = mockCompetenciaPoloFem();
+    comp.finalizar(mockRankingPoloFem(),mockControlAntidopingPoloFem());
+    return comp;
+}
+
+Lista<Competencia> mockCompetenciasDia1NoFinal(){
+    Lista<Competencia> comps = Lista<Competencia> ();
+    comps.agregarAtras(mockCompetenciaTenisMasc());
+    comps.agregarAtras(mockCompetenciaFutbolMasc());
+    return comps;
+}
+
+Lista<Competencia> mockCompetenciasDia1Final(){
+    Lista<Competencia> comps = Lista<Competencia> ();
+    comps.agregarAtras(mockCompetenciaTenisMascFinalizada());
+    comps.agregarAtras(mockCompetenciaFutbolMascFinalizada());
+    return comps;
+}
+
+Lista<Competencia> mockCompetenciasDia2NoFinal(){
+    Lista<Competencia> comps = Lista<Competencia> ();
+    comps.agregarAtras(mockCompetenciaHockeyMasc());
+    return comps;
+}
+
+Lista<Competencia> mockCompetenciasDia2Final(){
+    Lista<Competencia> comps = Lista<Competencia> ();
+    comps.agregarAtras(mockCompetenciaHockeyMascFinalizada());
+    return comps;
+}
+
+Lista<Competencia> mockCompetenciasDia3NoFinal(){
+    Lista<Competencia> comps = Lista<Competencia> ();
+    comps.agregarAtras(mockCompetenciaPoloFem());
+    return comps;
+}
+
+Lista<Competencia> mockCompetenciasDia3Final(){
+    Lista<Competencia> comps = Lista<Competencia> ();
+    comps.agregarAtras(mockCompetenciaPoloFemFinalizada());
+    return comps;
+}
+
+Lista<Competencia> mockCompetenciasDia4Vacio(){
+    Lista<Competencia> comps = Lista<Competencia> ();
+    return comps;
+}
+
+Lista<Competencia> mockCompetenciasDia5NoFinal(){
+    Lista<Competencia> comps = Lista<Competencia> ();
+    comps.agregarAtras(mockCompetenciaNatacionMasc());
+    return comps;
+}
+
+Lista<Competencia> mockCompetenciasDia5Final(){
+    Lista<Competencia> comps = Lista<Competencia> ();
+    comps.agregarAtras(mockCompetenciaNatacionMascFinalizada());
+    return comps;
+}
+
+Lista<Competencia> mockCompetenciasDia6Vacio(){
+    Lista<Competencia> comps = Lista<Competencia> ();
+    return comps;
 }
 
 

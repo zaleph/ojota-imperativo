@@ -51,8 +51,10 @@ int main(){
     //testAtleta_deportes_y_entrenarDeportes();
     //testLazyAtleta();
     //testJJOO_nuevoJJOO();
+    //testJJOO_JJOO();
     //testJJOO_competencias();
     //testJJOO_cronogramas();
+    //testJJOO_cronogramaAll();
     //testAtleta_igualdad();
     //testJJOO_operadorIgual();
     //testCompetencia_operadorIgual();
@@ -62,7 +64,7 @@ int main(){
     //testCompetencia_linfordChristi();
 
     //testAtleta_guardar();
-    testAtleta_cargar();
+    //testAtleta_cargar();
 
     return EXIT_SUCCESS;
 }

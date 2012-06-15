@@ -59,7 +59,7 @@ class JJOO{
             return iguales;
         }
 
-         bool mismasAtletas(Lista<Atleta> l1, Lista<Atleta> l2) const {
+        bool mismasAtletas(Lista<Atleta> l1, Lista<Atleta> l2) const {
             bool iguales = (l1.longitud() == l2.longitud()) ;
             int i=0;
             while(i < l1.longitud() && iguales ){
@@ -71,7 +71,7 @@ class JJOO{
         }
 
 
-        Lista<Atleta> ganadoresDeCompetencias(Lista<Competencia> comps , int posicion){
+        Lista<Atleta> ganadoresDeCompetencias(Lista<Competencia> comps , int posicion) const{
             Lista<Atleta> atletas = Lista<Atleta>();
             int i = 0;
             while(i<comps.longitud()){
@@ -87,6 +87,22 @@ class JJOO{
             }
             return atletas;
         }
+
+        Lista<Pais> paises(Lista<Atleta> atletas) const{
+            Lista<Pais> nacionalidades = Lista<Pais>();
+            int i = 0;
+            while (i<atletas.longitud()){
+                Atleta a1 = atletas.iesimo(i);
+                if (!nacionalidades.pertenece( a1.nacionalidad() ) ){
+                    nacionalidades.agregarAtras(a1.nacionalidad());
+                    i++;
+                } else {
+                    i++;
+                }
+            }
+            return nacionalidades;
+        }
+
 };
 
 std::ostream & operator<<(std::ostream & os,const JJOO & j);
