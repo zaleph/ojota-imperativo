@@ -35,7 +35,7 @@ int JJOO::jornadaActual() const{
 
 
 Lista<Competencia> JJOO::cronograma(const int dia) const{
-    int indexDia = _competenciasPorDia.longitud() - dia;
+    int indexDia = dia-1;
     return _competenciasPorDia.iesimo(indexDia);
 }
 

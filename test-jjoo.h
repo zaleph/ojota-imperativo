@@ -31,12 +31,17 @@
 
     Lista<Lista<Competencia> > mockCronogramas23(){
         Lista<Lista<Competencia> > crons =  Lista<Lista<Competencia> > ();
+        //dia 5
         crons.agregar(mockCompetencias("tenis"));
+        //dia 4
         crons.agregar(mockCompetencias("jockey"));
+        //dia 3
         crons.agregar(mockCompetencias("basquet"));
+        //dia2
         crons.agregar(mockCompetencias("futbol"));
 
         Lista<Competencia> comps = Lista<Competencia> ();
+        //dia 1
         comps.agregar(mockCompetencia("rugby"));
         comps.agregar(mockCompetencia("rugby"));
         comps.agregar(mockCompetencia("rugby"));
@@ -79,7 +84,7 @@ void testJJOO_competencias(){
 
 void testJJOO_cronogramas(){
     JJOO jjoo = mockJJOO();
-    cout << "Competencias del dia 1: " << jjoo.cronograma(4) << endl;
+    cout << "Competencias del dia 1: " << jjoo.cronograma(1) << endl;
 }
 
 void testJJOO_operadorIgual(){
