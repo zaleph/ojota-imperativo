@@ -105,6 +105,12 @@ bool Atleta::operator==(const Atleta& a) const{
 
 
 void Atleta::mostrar(std::ostream& os) const{
+    os << "Nombre: " << nombre() << endl
+    << "Sexo: " << sexo() << endl
+    << "CiaNumber: " << ciaNumber() << endl
+    << "Nacionalidad: " << nacionalidad() << endl
+    << "Año Nacimiento: " << anioNacimiento() << endl
+    << "Deportes: " << deportes();
 }
 
 
@@ -194,12 +200,7 @@ void Atleta::cargar (std::istream& is){
 
 
 std::ostream & operator<<(std::ostream & os,const Atleta & a){
-    os << "Nombre: " << a.nombre() << endl
-    << "Sexo: " << a.sexo() << endl
-    << "CiaNumber: " << a.ciaNumber() << endl
-    << "Nacionalidad: " << a.nacionalidad() << endl
-    << "Año Nacimiento: " << a.anioNacimiento() << endl
-    << "Deportes: " << a.deportes();
+    a.mostrar(os);
     return os;
 }
 
