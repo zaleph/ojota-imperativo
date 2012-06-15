@@ -98,6 +98,7 @@ Atleta JJOO::stevenBradbury() const{
         }
     }
     return atletas.iesimo(0);*/
+    return Atleta();
 }
 
 bool JJOO::uyOrdenadoAsiHayUnPatron() const{

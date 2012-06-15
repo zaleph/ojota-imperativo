@@ -22,5 +22,16 @@ int main(){
 
     //testCompetencia_operadorIgual();
 
+    string word1 = "tenis";
+    string word2 = "futbol";
+    string word3 = "rugby";
+    string word4 = "jockey";
+
+    cout << (word1 < word2) << endl;
+    cout << (word2 < word3) << endl;
+    cout << (word3 < word4) << endl;
+    cout << (word4 < word1) << endl;
+
+
     return EXIT_SUCCESS;
 }
