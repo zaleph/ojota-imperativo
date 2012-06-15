@@ -145,30 +145,3 @@ std::ostream & operator<<(std::ostream & os,const Competencia & c){
     return os;
 }
 
-/*
- * Funciones Privadas
- */
-
-Atleta Competencia::findAtletaByCiaNumber(int ciaNumber) const {
-    Atleta atleta;
-    int atletaIndex = 0;
-    bool encontrado = false;
-    while(atletaIndex < participantes().longitud() && !encontrado ){
-        if( participantes().iesimo(atletaIndex).ciaNumber() == ciaNumber  ){
-            atleta = participantes().iesimo(atletaIndex);
-            encontrado = true;
-        }
-        atletaIndex++;
-    }
-    return atleta;
-}
-
-Lista<Atleta> Competencia::findAtletasByCia(Lista<int> cias) const {
-    int i = 0;
-    Lista<Atleta> atletas = Lista<Atleta>();
-    while( i < cias.longitud()){
-        atletas.agregarAtras(findAtletaByCiaNumber(cias.iesimo(i)));
-        i++;
-    }
-    return atletas;
-}
