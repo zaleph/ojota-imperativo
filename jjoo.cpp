@@ -82,23 +82,23 @@ void JJOO::liuSong(const Atleta& a, const Pais p){
 
 
 Atleta JJOO::stevenBradbury() const{
- /*   Lista<Competencia> comps = competencias();
-    Lista<Atleta> atletas = ganadoresDeCompetencias(comps);
+/*    Lista<Competencia> comps = competencias();
+    Lista<Atleta> atletas = ganadoresDeCompetencias(comps, 0);
     int i = 0;
     Deporte d = comps.iesimo(i).categoria().first;
     while (i<_competenciasPorDia.longitud()){
         if (atletas.longitud()<=1){
             i = comps.longitud();
         } else{
-            if (atletas.iesimo(i).capacidad(d)<=atletas.iesimo(i+1).capacidad(d)){
-        atletas.sacar(atletas.iesimo(i+1));
+            if (atletas.iesimo(0).capacidad(d)<=atletas.iesimo(1).capacidad(d)){
+        atletas.sacar(atletas.iesimo(1));
          }  else {
-            atletas.sacar(atletas.iesimo(i));
+            atletas.sacar(atletas.iesimo(0));
             }
         }
     }
     return atletas.iesimo(0);*/
-    return Atleta();
+
 }
 
 bool JJOO::uyOrdenadoAsiHayUnPatron() const{
