@@ -130,7 +130,8 @@ void JJOO::liuSong(const Atleta& a, const Pais p){
 
 
 Atleta JJOO::stevenBradbury() const{
- /*   Lista<Competencia> comps = finalizadasYConRanking(competencias());
+   /* Lista<Competencia> compets = competencias();
+    Lista<Competencia> comps = finalizadasYConRanking(compets);
     Lista<Atleta> atletas = ganadoresDeCompetencias(comps, 0);
     int i = 0;
     Deporte d1 = comps.iesimo(0).categoria().first;
