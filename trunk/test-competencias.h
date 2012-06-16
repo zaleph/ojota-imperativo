@@ -358,3 +358,9 @@ void testCompetencia_cargar(){
     comp.cargar(archivo);
     comp.mostrar(cout);
 }
+
+
+void testCompetenciaJuly(){
+    Lista<Competencia> comps = mockCompetenciasDia3Final();
+    cout << comps << endl;
+}

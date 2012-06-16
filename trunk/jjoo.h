@@ -222,6 +222,29 @@ class JJOO{
             return listadoOrdenado;
         }
 
+        Lista<int> capacidades (Lista<Atleta> atlets , Deporte sport) const{
+            Lista<int> cap = Lista<int>();
+            int i = 0;
+            while (i<atlets.longitud()){
+                Atleta a = atlets.iesimo(i);
+                cap.agregarAtras(a.capacidad(sport));
+                i++;
+            }
+            return cap;
+        }
+
+        bool ordenado (Lista<int> lista1 ) const{
+            int i = 0;
+            bool eval = true;
+            while(i<lista1.longitud()-1 && eval){
+                eval = lista1.iesimo(i) <= lista1.iesimo(i+1);
+                i++;
+            }
+            return eval;
+        }
+
+
+
 };
 
 std::ostream & operator<<(std::ostream & os,const JJOO & j);

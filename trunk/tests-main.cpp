@@ -34,9 +34,14 @@ int main(){
 
     //testAtleta_guardar();
     //testAtleta_cargar();
-    testSequiaOlimpica();
+    //testSequiaOlimpica();
     //testCompetenciasFinalizadasConOroEnPodio();
     //testMedallero();
+
+    //testCompetenciaJuly();
+
+
+    testTranscurrirDia();
 
     //testCompetencia_mostrar();
     //testCompetencia_guardar();
