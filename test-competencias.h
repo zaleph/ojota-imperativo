@@ -343,3 +343,10 @@ void testCompetencia_linfordChristi(){
     comp4.linfordChristie(2);
     cout << comp4.participantes() << endl;
 }
+
+
+void testCompetencia_mostrar(){
+    Competencia c = mockCompetencia();
+    c.mostrar(cout);
+}
+
