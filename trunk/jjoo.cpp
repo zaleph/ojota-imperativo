@@ -99,7 +99,7 @@ void JJOO::liuSong(const Atleta& a, const Pais p){
 
 
 Atleta JJOO::stevenBradbury() const{
-  /*  Lista<Competencia> comps = competencias();
+ /*   Lista<Competencia> comps = finalizadasYConRanking(competencias());
     Lista<Atleta> atletas = ganadoresDeCompetencias(comps, 0);
     int i = 0;
     Deporte d1 = comps.iesimo(0).categoria().first;
@@ -117,8 +117,8 @@ Atleta JJOO::stevenBradbury() const{
             }
         }
     }
-    return atletas.iesimo(0);
-    }*/
+    return atletas.iesimo(0);*/
+
     return Atleta();
 }
 
