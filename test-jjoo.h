@@ -132,48 +132,48 @@ Lista<Lista<Competencia> > mockCronograDiaERRONEODIA2(){
 //JUEGO CON NIGUNA COMPETENCIA FINALIZADA
 JJOO mockJJOODia0(){
     JJOO jjoo =JJOO(2012 , mockAtletasFull() , mockCronograDia0() );
-    //jjoo._jornadaActual = 1;
+    jjoo._jornadaActual = 1;
     return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 1 FINALIZADAS
 JJOO mockJJOODia1(){
     JJOO jjoo =JJOO(2012 , mockAtletasFull() , mockCronograDia1() );
-    //jjoo._jornadaActual = 2;
+    jjoo._jornadaActual = 2;
     return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 2 FINALIZADAS
 JJOO mockJJOODia2(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia2() );
-    //jjoo._jornadaActual = 3;
+    jjoo._jornadaActual = 3;
     return jjoo;
 }
 //JUEGO CON LAS COMPETENCIAS DEL DIA 3 FINALIZADAS
 JJOO mockJJOODia3(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia3() );
-    //jjoo._jornadaActual = 4;
+    jjoo._jornadaActual = 4;
     return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 4 que en realidad esta vacio
 JJOO mockJJOODia4(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia3() );
-    //jjoo._jornadaActual = 5;
+    jjoo._jornadaActual = 5;
     return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 5 FINALIZADAS
 JJOO mockJJOODia5(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia5() );
-    //jjoo._jornadaActual = 6;
+    jjoo._jornadaActual = 6;
     return jjoo;
 }
 
 //JUEGO ERRONEO CON COMPETENCIAS SIN FINALIZAR EN EL DIA 2
 JJOO mockJJOODiaERRONEODIA2(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDiaERRONEODIA2() );
-    //jjoo._jornadaActual = 7;
+    jjoo._jornadaActual = 6;
     return jjoo;
 }
 
@@ -270,5 +270,42 @@ void testCompetenciasFinalizadasConOroEnPodio(){
     cout<< endl;
     cout<< "COMPETENCIAS CON OROS DIA ERRONEO" << endl;
     cout<< jjooERRONEO.competenciasFinalizadasConOroEnPodio()<<endl;
+}
+
+//NO BORRAR PORQUE QUIZAS HAY QUE INCLUIRLA OJO
+void mostrarMedallero(Lista<pair<Pais,Lista<int> > > ls){
+    int i = 0;
+    while (i<ls.longitud()){
+        pair<Pais,Lista<int> > par = ls.iesimo(i);
+        string ps = par.first;
+        Lista<int> medals = par.second;
+        cout << "Pais: " << ps << " Medallero: " << medals << endl;
+        i++;
+    }
+}
+
+void testMedallero(){
+    JJOO jjoo0 = mockJJOODia0();
+    JJOO jjoo1 = mockJJOODia1();
+    JJOO jjoo2 = mockJJOODia2();
+    JJOO jjoo3 = mockJJOODia3();
+    JJOO jjoo4 = mockJJOODia4();
+    JJOO jjoo5 = mockJJOODia5();
+    JJOO jjooERRONEO = mockJJOODiaERRONEODIA2();
+
+    cout << "MEDALLERO AL DIA 0" << endl;
+    mostrarMedallero(jjoo0.medallero());
+    cout << "MEDALLERO AL DIA 1" << endl;
+    mostrarMedallero(jjoo1.medallero());
+    cout << "MEDALLERO AL DIA 2" << endl;
+    mostrarMedallero(jjoo2.medallero());
+    cout << "MEDALLERO AL DIA 3" << endl;
+    mostrarMedallero(jjoo3.medallero());
+    cout << "MEDALLERO AL DIA 4" << endl;
+    mostrarMedallero(jjoo4.medallero());
+    cout << "MEDALLERO AL DIA 5" << endl;
+    mostrarMedallero(jjoo5.medallero());
+    cout << "MEDALLERO AL DIA ERRONEO" << endl;
+    mostrarMedallero(jjooERRONEO.medallero());
 }
 

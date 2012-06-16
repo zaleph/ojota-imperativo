@@ -3,7 +3,7 @@
 
 
 JJOO::JJOO(){
-}
+};
 
 
 JJOO::JJOO(const int anio, const Lista<Atleta>& atletas, const Lista<Lista<Competencia> >& competenciasPorDia){
@@ -11,33 +11,33 @@ JJOO::JJOO(const int anio, const Lista<Atleta>& atletas, const Lista<Lista<Compe
     _atletas = atletas;
     _competenciasPorDia = competenciasPorDia;
     _jornadaActual = 1;
-}
+};
 
 
 int JJOO::anio() const{
     return _anio;
-}
+};
 
 
 Lista<Atleta> JJOO::atletas() const{
     return _atletas;
-}
+};
 
 
 int JJOO::cantDias() const{
     return _competenciasPorDia.longitud();
-}
+};
 
 
 int JJOO::jornadaActual() const{
     return _jornadaActual;
-}
+};
 
 
 Lista<Competencia> JJOO::cronograma(const int dia) const{
     int indexDia = dia-1;
     return _competenciasPorDia.iesimo(indexDia);
-}
+};
 
 
 Lista<Competencia> JJOO::competencias() const{
@@ -48,7 +48,7 @@ Lista<Competencia> JJOO::competencias() const{
         i++;
     }
     return comps;
-}
+};
 
 
 Lista<Competencia> JJOO::competenciasFinalizadasConOroEnPodio() const{
@@ -70,32 +70,63 @@ Lista<Competencia> JJOO::competenciasFinalizadasConOroEnPodio() const{
         }
     }
     return compsConOro;
-}
+};
 
 
 Lista<Atleta> JJOO::dePaseo() const{
     return Lista<Atleta>();
-}
+};
 
 
 Lista<pair<Pais,Lista<int> > > JJOO::medallero() const{
-    return Lista<pair<Pais,Lista<int> > >();
-}
+    Lista<pair<Pais,Lista<int> > > medallasDePaises = Lista<pair<Pais,Lista<int> > >();
+    Lista<Pais> paisesGanadores = Lista<Pais>();
+
+    Lista<Atleta> orosDelJuego = medallistas(0);
+    Lista<Atleta> platasDelJuego = medallistas(1);
+    Lista<Atleta> broncesDelJuego = medallistas(2);
+
+    Lista<Atleta> atletasGanadores = orosDelJuego;
+    atletasGanadores.concatenar(platasDelJuego);
+    atletasGanadores.concatenar(broncesDelJuego);
+
+    paisesGanadores = paisesUnicosDeAtletas(atletasGanadores);
+
+    int i=0;
+
+    while (i<paisesGanadores.longitud()){
+        Pais p = paisesGanadores.iesimo(i);
+        int oros = filtrarAtletasPorPais(orosDelJuego,p).longitud();
+        int platas = filtrarAtletasPorPais(platasDelJuego,p).longitud();
+        int bronces = filtrarAtletasPorPais(broncesDelJuego,p).longitud();
+
+        Lista<int> medalleroDelPais = Lista<int>();
+        medalleroDelPais.agregarAtras(oros);
+        medalleroDelPais.agregarAtras(platas);
+        medalleroDelPais.agregarAtras(bronces);
+
+        pair<Pais,Lista<int> > medallasDelPais = pair<Pais,Lista<int> >(p,medalleroDelPais);
+
+        medallasDePaises = agregarOrdenado(medallasDePaises,medallasDelPais);
+        i++;
+    }
+    return medallasDePaises;
+};
 
 
 int JJOO::boicotPorDisciplina(const Categoria cat, const Pais p){
     return 0;
-}
+};
 
 
 Lista<Atleta> JJOO::losMasFracasados(const Pais p) const{
     return Lista<Atleta>();
-}
+};
 
 
 void JJOO::liuSong(const Atleta& a, const Pais p){
 
-}
+};
 
 
 Atleta JJOO::stevenBradbury() const{
@@ -120,11 +151,11 @@ Atleta JJOO::stevenBradbury() const{
     return atletas.iesimo(0);*/
 
     return Atleta();
-}
+};
 
 bool JJOO::uyOrdenadoAsiHayUnPatron() const{
     return false;
-}
+};
 
 
 Lista<Pais> JJOO::sequiaOlimpica() const{
@@ -137,7 +168,7 @@ Lista<Pais> JJOO::sequiaOlimpica() const{
 
     while (i<paisesDelJuego.longitud()){
         Pais p = paisesDelJuego.iesimo(i);
-        Lista<int> diasBuenos = diasConMedalla(p , _competenciasPorDia , jornadaActual());
+        Lista<int> diasBuenos = diasConMedalla(p);
         int maxSequiaDelPais = maximoEnteros(diferenciaEntreConsecutivos(diasBuenos));
 
         if(maxSequiaDelPais == maxSequiaJuegos){
@@ -148,12 +179,12 @@ Lista<Pais> JJOO::sequiaOlimpica() const{
         }
     }
     return secosOlimpicos;
-}
+};
 
 
 void JJOO::transcurrirDia(){
 
-}
+};
 
 
 bool JJOO::operator==(const JJOO& j) const{
@@ -170,22 +201,22 @@ bool JJOO::operator==(const JJOO& j) const{
     }
 
     return result;
-}
+};
 
 
 void JJOO::mostrar(std::ostream& os) const {
 
-}
+};
 
 
 void JJOO::guardar(std::ostream& os) const {
 
-}
+};
 
 
 void JJOO::cargar (std::istream& is) {
 
-}
+};
 
 
 std::ostream & operator<<(std::ostream & os,const JJOO & j){
@@ -194,7 +225,7 @@ std::ostream & operator<<(std::ostream & os,const JJOO & j){
     << "Cantidad de días: " << j.cantDias() << endl
     << "Jornada actual: " << j.jornadaActual();
     return os;
-}
+};
 
 
 

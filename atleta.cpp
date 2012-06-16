@@ -3,7 +3,7 @@
 
 
 Atleta::Atleta(){
-}
+};
 
 
 Atleta::Atleta(const string nombre,const Sexo sexo, const int anio, const Pais pais, const int ciaNumber){
@@ -13,32 +13,32 @@ Atleta::Atleta(const string nombre,const Sexo sexo, const int anio, const Pais p
     _nacionalidad = pais;
     _ciaNumber = ciaNumber;
     _deportes = Lista<pair<Deporte , int> >();
-}
+};
 
 
 string Atleta::nombre() const{
     return _nombre;
-}
+};
 
 
 Sexo Atleta::sexo() const{
     return _sexo;
-}
+};
 
 
 int Atleta::anioNacimiento() const{
     return _anioNacimiento;
-}
+};
 
 
 Pais Atleta::nacionalidad() const{
     return _nacionalidad;
-}
+};
 
 
 int Atleta::ciaNumber() const{
     return _ciaNumber;
-}
+};
 
 
 Lista<Deporte> Atleta::deportes() const{
@@ -50,7 +50,7 @@ Lista<Deporte> Atleta::deportes() const{
         i++;
     }
     return deportesList;
-}
+};
 
 
 int Atleta::capacidad(const Deporte d) const{
@@ -59,7 +59,7 @@ int Atleta::capacidad(const Deporte d) const{
         i++;
     }
     return _deportes.iesimo(i).second;
-}
+};
 
 
 void Atleta::entrenarNuevoDeporte(const Deporte deporte, const int capacidad){
@@ -95,7 +95,7 @@ void Atleta::entrenarNuevoDeporte(const Deporte deporte, const int capacidad){
             _deportes = nuevaLista;
         }
     }
-}
+};
 
 
 bool Atleta::operator==(const Atleta& a) const{
@@ -111,7 +111,7 @@ void Atleta::mostrar(std::ostream& os) const{
     << "Nacionalidad: " << nacionalidad() << endl
     << "Año Nacimiento: " << anioNacimiento() << endl
     << "Deportes: " << deportes();
-}
+};
 
 
 void Atleta::guardar(std::ostream& o) const{
@@ -131,7 +131,7 @@ void Atleta::guardar(std::ostream& o) const{
         }
     }
     o << "]";
-}
+};
 
 
 void Atleta::cargar (std::istream& is){
@@ -196,11 +196,11 @@ void Atleta::cargar (std::istream& is){
         entrenarNuevoDeporte(deporte, capacidad);
     }
 
-}
+};
 
 
 std::ostream & operator<<(std::ostream & os,const Atleta & a){
     a.mostrar(os);
     return os;
-}
+};
 
