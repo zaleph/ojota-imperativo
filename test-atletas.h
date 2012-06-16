@@ -71,7 +71,7 @@ Atleta mockAtleta6(){
     atleta6.entrenarNuevoDeporte("Tenis",20);
     atleta6.entrenarNuevoDeporte("Futbol",30);
     atleta6.entrenarNuevoDeporte("Hockey",40);
-    atleta6.entrenarNuevoDeporte("Polo",10);
+    atleta6.entrenarNuevoDeporte("Polo",100);
     return atleta6;
 }
 
@@ -80,7 +80,7 @@ Atleta mockAtleta7(){
     atleta7.entrenarNuevoDeporte("Tenis",60);
     atleta7.entrenarNuevoDeporte("Futbol",80);
     atleta7.entrenarNuevoDeporte("Hockey",90);
-    atleta7.entrenarNuevoDeporte("Polo",100);
+    atleta7.entrenarNuevoDeporte("Polo",90);
     return atleta7;
 }
 Atleta mockAtleta8(){
@@ -88,7 +88,7 @@ Atleta mockAtleta8(){
     atleta8.entrenarNuevoDeporte("Tenis",60);
     atleta8.entrenarNuevoDeporte("Futbol",80);
     atleta8.entrenarNuevoDeporte("Hockey",90);
-    atleta8.entrenarNuevoDeporte("Polo",100);
+    atleta8.entrenarNuevoDeporte("Polo",80);
     return atleta8;
 }
 Atleta mockAtleta9(){
@@ -96,7 +96,7 @@ Atleta mockAtleta9(){
     atleta9.entrenarNuevoDeporte("Tenis",60);
     atleta9.entrenarNuevoDeporte("Futbol",80);
     atleta9.entrenarNuevoDeporte("Hockey",90);
-    atleta9.entrenarNuevoDeporte("Polo",100);
+    atleta9.entrenarNuevoDeporte("Polo",60);
     return atleta9;
 }
 
@@ -105,7 +105,7 @@ Atleta mockAtleta10(){
     atleta10.entrenarNuevoDeporte("Tenis",60);
     atleta10.entrenarNuevoDeporte("Futbol",80);
     atleta10.entrenarNuevoDeporte("Hockey",90);
-    atleta10.entrenarNuevoDeporte("Polo",100);
+    atleta10.entrenarNuevoDeporte("Polo",70);
     return atleta10;
 }
 

@@ -139,41 +139,41 @@ JJOO mockJJOODia0(){
 //JUEGO CON LAS COMPETENCIAS DEL DIA 1 FINALIZADAS
 JJOO mockJJOODia1(){
     JJOO jjoo =JJOO(2012 , mockAtletasFull() , mockCronograDia1() );
-    jjoo._jornadaActual = 2;
+    jjoo._jornadaActual = 1;
     return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 2 FINALIZADAS
 JJOO mockJJOODia2(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia2() );
-    jjoo._jornadaActual = 3;
+    jjoo._jornadaActual = 2;
     return jjoo;
 }
 //JUEGO CON LAS COMPETENCIAS DEL DIA 3 FINALIZADAS
 JJOO mockJJOODia3(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia3() );
-    jjoo._jornadaActual = 4;
+    jjoo._jornadaActual = 3;
     return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 4 que en realidad esta vacio
 JJOO mockJJOODia4(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia3() );
-    jjoo._jornadaActual = 5;
+    jjoo._jornadaActual = 4;
     return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 5 FINALIZADAS
 JJOO mockJJOODia5(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia5() );
-    jjoo._jornadaActual = 6;
+    jjoo._jornadaActual = 5;
     return jjoo;
 }
 
 //JUEGO ERRONEO CON COMPETENCIAS SIN FINALIZAR EN EL DIA 2
 JJOO mockJJOODiaERRONEODIA2(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDiaERRONEODIA2() );
-    jjoo._jornadaActual = 6;
+    jjoo._jornadaActual = 2;
     return jjoo;
 }
 
@@ -309,3 +309,36 @@ void testMedallero(){
     mostrarMedallero(jjooERRONEO.medallero());
 }
 
+void testTranscurrirDia(){
+
+    JJOO jjoo0 = mockJJOODia0();
+    JJOO jjoo1 = mockJJOODia1();
+    JJOO jjoo2 = mockJJOODia2();
+    JJOO jjoo3 = mockJJOODia3();
+    JJOO jjoo4 = mockJJOODia4();
+    JJOO jjoo5 = mockJJOODia5();
+    JJOO jjooERRONEO = mockJJOODiaERRONEODIA2();
+
+    cout << "JORNADA ACTUAL DIA 0" << endl;
+    jjoo0.transcurrirDia();
+    cout << jjoo0.jornadaActual() << endl;
+    cout << "JORNADA ACTUAL DIA 1" << endl;
+    jjoo1.transcurrirDia();
+    cout << jjoo1.jornadaActual() << endl;
+    cout << "JORNADA ACTUAL DIA 2" << endl;
+    jjoo2.transcurrirDia();
+    cout << jjoo2.jornadaActual() << endl;
+    cout << "JORNADA ACTUAL DIA 3" << endl;
+    jjoo3.transcurrirDia();
+    cout << jjoo3.jornadaActual() << endl;
+    cout << "JORNADA ACTUAL DIA 4" << endl;
+    jjoo4.transcurrirDia();
+    cout << jjoo4.jornadaActual() << endl;
+    cout << "JORNADA ACTUAL DIA 5" << endl;
+    jjoo5.transcurrirDia();
+    cout << jjoo5.jornadaActual() << endl;
+    cout << "JORNADA ACTUAL DIA ERRONEO" << endl;
+    jjooERRONEO.transcurrirDia();
+    cout << jjooERRONEO.jornadaActual() << endl;
+
+}

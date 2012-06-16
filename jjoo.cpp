@@ -184,8 +184,35 @@ Lista<Pais> JJOO::sequiaOlimpica() const{
 
 
 void JJOO::transcurrirDia(){
+    Lista<Competencia> comps = cronograma(jornadaActual());
+    bool eval = true;
+    int i = 0;
+    while (i<comps.longitud() && eval){
+        Competencia comp = comps.iesimo(i);
+        Categoria cat =comp.categoria();
+        Deporte d = cat.first;
+        if (comp.finalizada() && mismasAtletas(comp.ranking(),comp.participantes())){
+            Lista <Atleta> posiciones = comp.ranking();
+            posiciones.darVuelta();
+            if (ordenado(capacidades(posiciones,d))){
+                if (comp.ranking().longitud()>=1){
+                    eval = comp.lesTocoControlAntidoping().longitud()==1;
+                } else {
+                    eval = true;
+                }
+            } else {
+                eval = false;
+            }
+        } else {
+            eval = false;
+        }
+        i++;
+    }
 
-};
+    if (eval) {
+        _jornadaActual = _jornadaActual+1;
+    }
+}
 
 
 bool JJOO::operator==(const JJOO& j) const{
