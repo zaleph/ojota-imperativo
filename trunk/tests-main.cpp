@@ -34,12 +34,13 @@ int main(){
 
     //testAtleta_guardar();
     //testAtleta_cargar();
-    //testSequiaOlimpica();
+    testSequiaOlimpica();
     //testCompetenciasFinalizadasConOroEnPodio();
+    //testMedallero();
 
     //testCompetencia_mostrar();
-    testCompetencia_guardar();
-    testCompetencia_cargar();
+    //testCompetencia_guardar();
+    //testCompetencia_cargar();
 
     return EXIT_SUCCESS;
 }
