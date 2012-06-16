@@ -342,3 +342,9 @@ void testTranscurrirDia(){
     cout << jjooERRONEO.jornadaActual() << endl;
 
 }
+
+void testDePaseo(){
+    JJOO jjoo0 = mockJJOODia0();
+    cout << "ATLETAS QUE PASEAN" << endl;
+    cout << jjoo0.dePaseo() << endl;
+}

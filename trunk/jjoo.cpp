@@ -74,7 +74,16 @@ Lista<Competencia> JJOO::competenciasFinalizadasConOroEnPodio() const{
 
 
 Lista<Atleta> JJOO::dePaseo() const{
-    return Lista<Atleta>();
+    Lista<Atleta> paseadores = Lista<Atleta>();
+    int i = 0;
+    while (i<atletas().longitud()){
+        Atleta at = atletas().iesimo(i);
+        if (!atletasParticipantes().pertenece(at)){
+            paseadores.agregarAtras(at);
+        }
+        i++;
+    }
+    return paseadores;
 };
 
 

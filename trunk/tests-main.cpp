@@ -41,8 +41,8 @@ int main(){
     //testCompetenciaJuly();
 
 
-    testTranscurrirDia();
-
+    //testTranscurrirDia();
+    testDePaseo();
     //testCompetencia_mostrar();
     //testCompetencia_guardar();
     //testCompetencia_cargar();

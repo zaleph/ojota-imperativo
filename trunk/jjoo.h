@@ -243,6 +243,18 @@ class JJOO{
             return eval;
         }
 
+        Lista<Atleta> atletasParticipantes () const{
+            Lista<Atleta> ats = Lista<Atleta>();
+            Lista<Competencia> comps = competencias();
+            int i=0;
+            while (i<comps.longitud()){
+                Competencia comp = comps.iesimo(i);
+                ats.concatenar(comp.participantes());
+                i++;
+            }
+            return ats;
+        }
+
 
 
 };

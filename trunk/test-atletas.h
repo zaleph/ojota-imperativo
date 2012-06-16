@@ -109,6 +109,15 @@ Atleta mockAtleta10(){
     return atleta10;
 }
 
+Atleta mockAtleta11(){
+    Atleta atleta11 = Atleta("atleta11" , Femenino , 1983 , "Inglaterra" , 11000);
+    atleta11.entrenarNuevoDeporte("Tenis",60);
+    atleta11.entrenarNuevoDeporte("Futbol",80);
+    atleta11.entrenarNuevoDeporte("Hockey",90);
+    atleta11.entrenarNuevoDeporte("Polo",70);
+    return atleta11;
+}
+
 Lista<Atleta> mockAtletasFull(){
     Lista<Atleta> lista = Lista<Atleta>();
     lista.agregarAtras(mockAtleta1());
@@ -121,6 +130,7 @@ Lista<Atleta> mockAtletasFull(){
     lista.agregarAtras(mockAtleta8());
     lista.agregarAtras(mockAtleta9());
     lista.agregarAtras(mockAtleta10());
+    lista.agregarAtras(mockAtleta11());
     return lista;
 }
 
