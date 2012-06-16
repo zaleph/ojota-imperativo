@@ -122,6 +122,14 @@ bool Competencia::operator==(const Competencia& c) const{
 
 
 void Competencia::mostrar(std::ostream& os) const{
+    if(finalizada()){
+        os << endl << "Categoria: (" << categoria().first << " , " << categoria().second << " )" << endl
+        << "Participantes: " << participantes()
+        << endl <<"Ranking: " << ranking() ;
+    } else {
+        os << endl << "Categoria: (" << categoria().first << " , " << categoria().second << " )" << endl
+        << "Participantes: " << participantes() ;
+    }
 }
 
 
@@ -134,16 +142,7 @@ void Competencia::cargar (std::istream& is){
 
 
 std::ostream & operator<<(std::ostream & os,const Competencia & c){
-
-   if(c.finalizada()){
-        os << endl << "Categoria: (" << c.categoria().first << " , " << c.categoria().second << " )" << endl
-        << "Participantes: " << c.participantes()
-        << endl <<"Ranking: " << c.ranking() ;
-    } else {
-        os << endl << "Categoria: (" << c.categoria().first << " , " << c.categoria().second << " )" << endl
-        << "Participantes: " << c.participantes() ;
-    }
-
+    c.mostrar(os);
     return os;
 }
 

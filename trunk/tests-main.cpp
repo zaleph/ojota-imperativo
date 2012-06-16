@@ -32,10 +32,14 @@ int main(){
     testJJOO_stevenBradbury();
     //testCompetencia_linfordChristi();
 
-    testAtleta_guardar();
-    testAtleta_cargar();
+    //testAtleta_guardar();
+    //testAtleta_cargar();
     //testSequiaOlimpica();
     //testCompetenciasFinalizadasConOroEnPodio();
+
+    testCompetencia_mostrar();
+
+
 
     return EXIT_SUCCESS;
 }
