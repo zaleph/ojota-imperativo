@@ -350,3 +350,16 @@ void testCompetencia_mostrar(){
     c.mostrar(cout);
 }
 
+void testCompetencia_guardar(){
+    ofstream salida ("/home/gonzalo/salida.txt");
+    Competencia comp2 = mockCompetenciaTenisMascFinalizada();
+    comp2.guardar(salida);
+    salida.close();
+}
+
+void testCompetencia_cargar(){
+    ifstream archivo ("/home/gonzalo/salida.txt");
+    Competencia comp = Competencia();
+    comp.cargar(archivo);
+    comp.mostrar(cout);
+}

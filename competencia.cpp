@@ -3,6 +3,9 @@
 
 
 Competencia::Competencia(){
+    _finalizada = false;
+    _categoria = pair<Deporte, Sexo>();
+    _participantes = Lista<Atleta>();
 }
 
 
@@ -123,21 +126,82 @@ bool Competencia::operator==(const Competencia& c) const{
 
 void Competencia::mostrar(std::ostream& os) const{
     if(finalizada()){
-        os << endl << "Categoria: (" << categoria().first << " , " << categoria().second << " )" << endl
-        << "Participantes: " << participantes()
+        os << endl << "Categoria: (" << categoria().first << " , "
+        << (categoria().second == Masculino? "Masculino":"Femenino" ) << " )" << endl
+        << "Finalizada: True" << endl << "Participantes: " << participantes()
         << endl <<"Ranking: " << ranking() ;
     } else {
-        os << endl << "Categoria: (" << categoria().first << " , " << categoria().second << " )" << endl
-        << "Participantes: " << participantes() ;
+        os << endl << "Categoria: (" << categoria().first << " , "
+         << (categoria().second == Masculino? "Masculino":"Femenino") << " )" << endl
+        << "Finalizada: True" << endl << "Participantes: " << participantes() ;
     }
 }
 
 
 void Competencia::guardar(std::ostream& os) const{
+    os << "C (|" << categoria().first << "|, |" << ((categoria().second == Masculino)? "Masculino" : "Femenino") << "|) |"
+    << ( finalizada()? "True" : "False") << "| "<< endl;
+    os << "[" ;
+
+    int i=0;
+    while(i<participantes().longitud()){
+        os << "(";
+        participantes().iesimo(i).guardar(os);
+        i++;
+
+        if(i == participantes().longitud()){
+            os << ")]";
+        }else{
+            os << "), " << endl;
+        }
+    }
 }
 
 
 void Competencia::cargar (std::istream& is){
+
+    char dummy;
+    string temp;
+
+    //descarto hasta el primer "|"
+    getline(is , temp , '|');
+
+    //leo el nombre hasta el ultimo "|" descartandolo
+    getline(is , _categoria.first , '|');
+
+    //leo hata el primer "|" que rodea el sexo descartando
+    getline(is , temp , '|');
+
+    //leo el sexo hasta el ultimo "|"
+    getline(is , temp , '|');
+    _categoria.second = (temp == "Masculino"? Masculino : Femenino);
+
+    //descarto hasta el primer "|" del estado
+    getline(is , temp , '|');
+
+    //descarto hasta el primer "|" del estado
+    getline(is , temp , '|');
+    _finalizada = (temp == "True"? true : false);
+
+    //leo el "[" que indica el comienzo de la lista
+    getline(is , temp , '[');
+
+    Atleta atleta;
+
+    while( dummy != ']'){
+
+        //busco el "("
+        is >> dummy;
+
+        atleta = Atleta();
+        atleta.cargar(is);
+        _participantes.agregarAtras(atleta);
+
+        //busco el ")"
+        is >> dummy;
+        //busco el "," o el "]"
+        is >> dummy;
+    }
 }
 
 

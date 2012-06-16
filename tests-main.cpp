@@ -29,7 +29,7 @@ int main(){
     //testCompetencia_operadorIgual();
     //testCompetencia_linfordChristi();
     //testAtleta_guardar();
-    testJJOO_stevenBradbury();
+    //testJJOO_stevenBradbury();
     //testCompetencia_linfordChristi();
 
     //testAtleta_guardar();
@@ -37,9 +37,9 @@ int main(){
     //testSequiaOlimpica();
     //testCompetenciasFinalizadasConOroEnPodio();
 
-    testCompetencia_mostrar();
-
-
+    //testCompetencia_mostrar();
+    testCompetencia_guardar();
+    testCompetencia_cargar();
 
     return EXIT_SUCCESS;
 }
