@@ -115,8 +115,8 @@ void Atleta::mostrar(std::ostream& os) const{
 
 
 void Atleta::guardar(std::ostream& o) const{
-    o << "A |" << nombre() << "| |" << ( sexo() ? "Masculino" : "Femenino")  << "| "
-    << anioNacimiento() << " |" << nacionalidad() << "| " << ciaNumber() <<  " " << "[ ";
+    o << "A |" << nombre() << "| |" << ( sexo() == Masculino ? "Masculino" : "Femenino")  << "| "
+    << anioNacimiento() << " |" << nacionalidad() << "| " << ciaNumber() <<  " " << "[";
 
     /*
      * Se imprimen los deportes de los atletas
@@ -124,13 +124,13 @@ void Atleta::guardar(std::ostream& o) const{
      int i=0; while(i<deportes().longitud() ){
         Deporte d = deportes().iesimo(i);
         int c = capacidad(d);
-        o << "( |" <<  d << "| , " << c << ")" ;
+        o << "(|" <<  d << "|, " << c << ")" ;
         i++;
         if(i != deportes().longitud()){
-            o << " , ";
+            o << ", ";
         }
     }
-    o << " ]" << endl;
+    o << "]";
 }
 
 
