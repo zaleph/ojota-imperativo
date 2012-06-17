@@ -57,6 +57,13 @@ Competencia mockCompetenciaTenisMasc(){
     return Competencia("Tenis",Masculino,mockAtletasTenisMasc());
 }
 
+
+Competencia mockCompetenciaTenisMascYUnAtletaSinDeportes(){
+    Lista<Atleta> atletas = mockAtletasTenisMasc();
+    atletas.agregarAtras(newAtleta(123));
+    return Competencia("Tenis",Masculino,atletas);
+}
+
 Competencia mockCompetenciaFutbolMasc(){
     return Competencia("Futbol",Masculino,mockAtletasFutbolMasc());
 }
@@ -156,6 +163,12 @@ Lista<pair<int , bool> > mockControlAntidopingPoloFem(){
 }
 
 Competencia mockCompetenciaTenisMascFinalizada(){
+    Competencia comp = mockCompetenciaTenisMasc();
+    comp.finalizar(mockRankingTenisMasc(),mockControlAntidopingTenisMasc());
+    return comp;
+}
+
+Competencia mockCompetenciaTenisMascFinalizada_noFinalizaronTodos(){
     Competencia comp = mockCompetenciaTenisMasc();
     comp.finalizar(mockRankingTenisMasc(),mockControlAntidopingTenisMasc());
     return comp;
@@ -345,12 +358,6 @@ void testCompetencia_mostrar(){
     c.mostrar(cout);
 }
 
-void testCompetencia_guardar(){
-    ofstream salida ("/home/gonzalo/salida.txt");
-    Competencia comp2 = mockCompetenciaTenisMascFinalizada();
-    comp2.guardar(salida);
-    salida.close();
-}
 
 void testCompetencia_cargar(){
     ifstream archivo ("/home/gonzalo/salida.txt");
@@ -363,4 +370,32 @@ void testCompetencia_cargar(){
 void testCompetenciaJuly(){
     Lista<Competencia> comps = mockCompetenciasDia3Final();
     cout << comps << endl;
+}
+
+
+void testCompetencia_guardar_noFinalizada(){
+    ofstream archivo ("/home/gonzalo/salida.txt");
+    Competencia comp = mockCompetenciaTenisMascYUnAtletaSinDeportes();
+    comp.guardar(archivo );
+    archivo.close();
+}
+void testCompetencia_guardarFinalizada(){
+    ofstream salida ("/home/gonzalo/salida.txt");
+    Competencia comp2 = mockCompetenciaTenisMascFinalizada();
+    comp2.guardar(salida);
+    salida.close();
+}
+
+void testCompetencia_guardarYCargar(){
+
+    cout << "Competencia no finalizada: " << endl;
+    testCompetencia_guardar_noFinalizada();
+    cout << "cargando" << endl;
+    testCompetencia_cargar();
+
+    cout << endl<< endl;
+    cout << "Competencia finalizada: " << endl;
+    testCompetencia_guardarFinalizada();
+    testCompetencia_cargar();
+    cout << endl<< endl;
 }

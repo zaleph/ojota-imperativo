@@ -42,10 +42,12 @@ int main(){
 
 
     //testTranscurrirDia();
-    testDePaseo();
+    //testDePaseo();
     //testCompetencia_mostrar();
-    //testCompetencia_guardar();
-    //testCompetencia_cargar();
+
+
+    testCompetencia_guardarYCargar();
+    //testAtleta_guardaryCargar();
 
     return EXIT_SUCCESS;
 }

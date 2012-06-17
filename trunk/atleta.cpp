@@ -121,7 +121,8 @@ void Atleta::guardar(std::ostream& o) const{
     /*
      * Se imprimen los deportes de los atletas
      */
-     int i=0; while(i<deportes().longitud() ){
+    int i=0;
+    while(i<deportes().longitud() ){
         Deporte d = deportes().iesimo(i);
         int c = capacidad(d);
         o << "(|" <<  d << "|, " << c << ")" ;
@@ -136,7 +137,6 @@ void Atleta::guardar(std::ostream& o) const{
 
 void Atleta::cargar (std::istream& is){
 
-    char dummy;
     string temp;
 
     //descarto hasta el primer "|"
@@ -167,33 +167,40 @@ void Atleta::cargar (std::istream& is){
     //leo el "[" que indica el comienzo de la lista
     getline(is , temp , '[');
 
-    Deporte deporte;
-    int capacidad;
+    //si la lista no esta vacia
+    if(is.peek() != ']'){
 
-    while( dummy != ']'){
+        char dummy;
+        Deporte deporte;
+        int capacidad;
 
-        // leo hasta el "(" descarandolo
-        getline(is , temp , '(');
+        while( dummy != ']'){
 
-        //descarto el "|"
-        is >> dummy;
+            // leo hasta el "(" descarandolo
+            getline(is , temp , '(');
 
-        // leo el deporte
-        getline(is , deporte , '|');
+            //descarto el "|"
+            is >> dummy;
 
-        // descarto la ","
-        is >> dummy;
+            // leo el deporte
+            getline(is , deporte , '|');
 
-        //leo la capacidad
-        is >> capacidad;
+            // descarto la ","
+            is >> dummy;
 
-        //descarto el ultimo ")"
-        is >> dummy;
+            //leo la capacidad
+            is >> capacidad;
 
-        //leo el siguiente token "," o "]"
-        is >> dummy;
+            //descarto el ultimo ")"
+            is >> dummy;
 
-        entrenarNuevoDeporte(deporte, capacidad);
+            //leo el siguiente token "," o "]"
+            is >> dummy;
+
+            entrenarNuevoDeporte(deporte, capacidad);
+        }
+    }else{
+        getline(is , temp , ']');
     }
 
 };
