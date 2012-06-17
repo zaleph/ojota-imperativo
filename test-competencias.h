@@ -238,6 +238,7 @@ Lista<Competencia> mockCompetenciasDia3Final(){
 
 Lista<Competencia> mockCompetenciasDia4Vacio(){
     Lista<Competencia> comps = Lista<Competencia> ();
+
     return comps;
 }
 
@@ -255,6 +256,7 @@ Lista<Competencia> mockCompetenciasDia5Final(){
 
 Lista<Competencia> mockCompetenciasDia6Vacio(){
     Lista<Competencia> comps = Lista<Competencia> ();
+    comps.agregarAtras(mockCompetenciaPoloFemFinalizada());
     return comps;
 }
 

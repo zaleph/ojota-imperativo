@@ -166,7 +166,7 @@ JJOO mockJJOODia4(){
 //JUEGO CON LAS COMPETENCIAS DEL DIA 5 FINALIZADAS
 JJOO mockJJOODia5(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia5() );
-   // jjoo._jornadaActual = 5;
+    jjoo._jornadaActual = 5;
     return jjoo;
 }
 
@@ -387,6 +387,14 @@ void testJJOO_stevenBradbury(){
     JJOO jjoo = mockJJOODia5();
 
     cout<< "steven: " << jjoo.stevenBradbury() << endl;
+}
+
+
+
+void testJJOO_uyOrdenadoSiHayPatron(){
+    JJOO jjoo = mockJJOODia5();
+
+    cout<< "cumple patron: " << (jjoo.uyOrdenadoAsiHayUnPatron() ? "true" : "false" )<< endl;
 }
 
 
