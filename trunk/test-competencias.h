@@ -388,14 +388,33 @@ void testCompetencia_guardarFinalizada(){
 
 void testCompetencia_guardarYCargar(){
 
-    cout << "Competencia no finalizada: " << endl;
-    testCompetencia_guardar_noFinalizada();
-    cout << "cargando" << endl;
-    testCompetencia_cargar();
+    cout << "guardando Competencia no finalizada: " << endl;
 
+    ofstream archivo ("/home/gonzalo/salida.txt");
+    Competencia comp = mockCompetenciaTenisMascYUnAtletaSinDeportes();
+    comp.guardar(archivo );
+    archivo.close();
+
+    cout << endl << endl;
+
+    cout << "cargando" << endl;
+
+    ifstream archivo2 ("/home/gonzalo/salida.txt");
+    Competencia comp2 = Competencia();
+    comp2.cargar(archivo2);
+    comp2.mostrar(cout);
+    archivo2.close();
+
+    cout << endl << endl;
+
+    cout << "son iguales? " << ((comp2 == comp) ? "True" : "False") << endl;
+
+/*
     cout << endl<< endl;
     cout << "Competencia finalizada: " << endl;
     testCompetencia_guardarFinalizada();
     testCompetencia_cargar();
     cout << endl<< endl;
+
+    */
 }

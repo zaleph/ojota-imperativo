@@ -3,6 +3,8 @@
 
 
 JJOO::JJOO(){
+    _atletas = Lista<Atleta>();
+    _competenciasPorDia = Lista<Lista<Competencia> >();
 };
 
 
@@ -266,8 +268,6 @@ void JJOO::guardar(std::ostream& os) const {
     }
     os << "] ";
 
-    os <<endl;
-
     os << "[";
     i=1;
     while(i <= cantDias()){
@@ -294,38 +294,90 @@ void JJOO::guardar(std::ostream& os) const {
 
 
 void JJOO::cargar (std::istream& is) {
-/*    char dummy;
+    char dummy;
+    string temp;
     //buscamos el J
     is >> dummy;
 
     is >> _anio;
     is >> _jornadaActual;
 
+    //buscamos los atletas...
     //buscamos el "["
     is >> dummy;
 
     if(is.peek() != ']'){
         //inicializamos con basura
         dummy = is.peek();
-        Competencia comp;
+        Atleta a;
         while( dummy != ']'){
 
             //buscamos el "("
             is >> dummy;
-            comp = Competencia();
-            comp.cargar(is);
+            a = Atleta();
+            a.cargar(is);
+
             //buscamos el ")"
             is >> dummy;
-            _
+            _atletas.agregarAtras(a);
 
+            //buscamos el "," o "]"
+            is >> dummy;
+        }
+    }else{
+        getline(is , temp, ']' );
+    }
+
+    //buscamos el cronograma ...
+    //buscamos el "["
+    is >> dummy;
+
+    while(dummy != ']'){
+
+        Lista<Competencia> comps = Lista<Competencia>();
+
+        //buscamos el "["
+        is >> dummy;
+
+        cout << "leyendo lista de competencias" << endl;
+
+        //si la lista de competencias no esta vacia
+        if(is.peek() != ']'){
+
+            while( dummy != ']'){
+
+                //buscamos el "("
+                is >> dummy;
+
+                Competencia comp = Competencia();
+                comp.cargar(is);
+                comps.agregarAtras(comp);
+
+                cout << "agregando competencia" << endl;
+
+                //buscamos el ")"
+                is >> dummy;
+
+                //buscamos el "," o "]"
+                is >> dummy;
+            }
+        }else{
+            //si la lista de competencias esta vacia leemos el corchete del buffer
+            getline(is , temp, ']' );
         }
 
+        _competenciasPorDia.agregarAtras(comps);
 
+        cout << "agregando lista de competencias " << endl;
 
+        //buscamos el "]"
+        is >> dummy;
 
-
+        //buscamos el "]" o ","
+        is >> dummy;
     }
-    */
+
+
 };
 
 

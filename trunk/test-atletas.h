@@ -301,11 +301,29 @@ void testAtleta_cargar(){
 
 void testAtleta_guardaryCargar(){
 
-    cout << "Atleta sin deportes" << endl;
-    testAtleta_guardar_sinDeportes();
-    testAtleta_cargar();
+
+    ofstream salida1 ("/home/gonzalo/salida.txt");
+    Atleta a1 = newAtleta();
+    a1.guardar(salida1);
+    salida1.close();
+
+    cout << "mostramos el atelta 1" << endl;
+    a1.mostrar(cout);
+
+    ifstream archivo ("/home/gonzalo/salida.txt");
+    Atleta a2 = Atleta();
+    a2.cargar(archivo);
+    archivo.close();
+
     cout << endl << endl;
-    cout << "Atleta con deportes" << endl;
-    testAtleta_guardar_conDeportes();
-    testAtleta_cargar();
+    cout << "mostramos el atelta 2" << endl;
+    a2.mostrar(cout);
+
+    cout << "son iguales? " << ((a1 == a2) ? "True" : "False") << endl;
+    cout << endl << endl;
+
+    //a.mostrar(cout);    cout << endl << endl;
+    //cout << "Atleta con deportes" << endl;
+    //testAtleta_guardar_conDeportes();
+    //testAtleta_cargar();
 }
