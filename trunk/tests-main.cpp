@@ -7,7 +7,7 @@ using namespace std;
 
 
 
-int main(){
+int main2(){
 
     //testCompetencia_lesTocoControlAntidoping();
     //testAtleta_capacidad();
@@ -44,10 +44,10 @@ int main(){
     //testTranscurrirDia();
     //testDePaseo();
     //testLiuSong();
-    testLosMasFracasados();
-    testBoicot();
+    //testLosMasFracasados();
+    //testBoicot();
     //testCompetencia_mostrar();
-    testAtletaProdigio();
+    //testAtletaProdigio();
 
 
     //testCompetencia_guardarYCargar();

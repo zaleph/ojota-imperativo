@@ -139,7 +139,7 @@ JJOO mockJJOODia0(){
 //JUEGO CON LAS COMPETENCIAS DEL DIA 1 FINALIZADAS
 JJOO mockJJOODia1(){
     JJOO jjoo =JJOO(2012 , mockAtletasFull() , mockCronograDia1() );
-    jjoo._jornadaActual = 1;
+    //jjoo._jornadaActual = 1;
     return jjoo;
 }
 
@@ -159,14 +159,14 @@ JJOO mockJJOODia3(){
 //JUEGO CON LAS COMPETENCIAS DEL DIA 4 que en realidad esta vacio
 JJOO mockJJOODia4(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia3() );
-    jjoo._jornadaActual = 4;
+    //jjoo._jornadaActual = 4;
     return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 5 FINALIZADAS
 JJOO mockJJOODia5(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia5() );
-    jjoo._jornadaActual = 6;
+    //jjoo._jornadaActual = 6;
     return jjoo;
 }
 
@@ -440,36 +440,6 @@ void testBoicot(){
         dia1++;
     }
 }
-
-Atleta atletaProdigio(const JJOO & j) {
-
-    Atleta a;
-
-    int i= j.competenciasFinalizadasConOroEnPodio().longitud()-1;
-
-    while (i>=0){
-        Competencia comp = j.competenciasFinalizadasConOroEnPodio().iesimo(i);
-        Atleta campeon = comp.ranking().iesimo(0);
-
-        if (i==j.competenciasFinalizadasConOroEnPodio().longitud()-1){
-            a = campeon;
-        } else {
-            if (a.anioNacimiento() <= campeon.anioNacimiento() ){
-                a = campeon;
-            }
-        }
-        i--;
-    }
-
-    return a;
-}
-
-void testAtletaProdigio(){
-    JJOO jjoo0 = mockJJOODia5();
-    cout << "ATLETA PRODIGIO: " << atletaProdigio(jjoo0) << endl;
-}
-
-
 
 void testJJOO_cargar(){
     ifstream salida ("/home/gonzalo/salida.txt");
