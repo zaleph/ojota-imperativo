@@ -43,7 +43,11 @@ int main(){
 
     //testTranscurrirDia();
     //testDePaseo();
+    //testLiuSong();
+    testLosMasFracasados();
+    testBoicot();
     //testCompetencia_mostrar();
+    testAtletaProdigio();
 
 
     //testCompetencia_guardarYCargar();
@@ -51,7 +55,7 @@ int main(){
     //testCompetencia_guardarYCargar();
     //testJJOO_guardarYCargar();
     //testJJOO_stevenBradbury();
-    testJJOO_uyOrdenadoSiHayPatron();
+    //testJJOO_uyOrdenadoSiHayPatron();
 
 
     return EXIT_SUCCESS;

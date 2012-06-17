@@ -166,7 +166,7 @@ JJOO mockJJOODia4(){
 //JUEGO CON LAS COMPETENCIAS DEL DIA 5 FINALIZADAS
 JJOO mockJJOODia5(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia5() );
-    jjoo._jornadaActual = 5;
+    jjoo._jornadaActual = 6;
     return jjoo;
 }
 
@@ -344,6 +344,131 @@ void testDePaseo(){
     jjoo0.mostrar(cout);
 }
 
+void testLiuSong(){
+    JJOO jjoo1 = mockJJOODia1();
+
+    cout << "LIU SONG EN EL DIA 1" << endl;
+    jjoo1.liuSong(mockAtleta1() , "PANAMA");
+    cout << jjoo1.atletas() << endl;
+
+    cout << "COMPETENCIAS CON LIU SONG" << endl;
+
+    int dia = 1;
+    while (dia<jjoo1.cantDias()){
+        Lista<Competencia> comps = jjoo1.cronograma(dia);
+        int i = 0;
+        while (i<comps.longitud()){
+            Competencia comp = comps.iesimo(i);
+            Deporte d = comps.iesimo(i).categoria().first;
+            Sexo s = comps.iesimo(i).categoria().second;
+            cout << "CATEGORIA: " << d << " "<< s << endl;
+            cout << comp.participantes() << endl;
+            i++;
+        }
+        dia++;
+    }
+
+    cout << "COMPETENCIAS" << endl;
+    cout << endl;
+
+    int dia1 = 1;
+    while (dia1<jjoo1.cantDias()){
+        Lista<Competencia> comps = jjoo1.cronograma(dia1);
+        int i = 0;
+        while (i<comps.longitud()){
+            if (comps.iesimo(i).finalizada()){
+                Deporte d = comps.iesimo(i).categoria().first;
+                Sexo s = comps.iesimo(i).categoria().second;
+                cout << "CATEGORIA: " << d << " "<< s << endl;
+                cout << comps.iesimo(i).ranking() << endl;
+                cout << comps.iesimo(i).lesTocoControlAntidoping()<<endl;
+            }
+            i++;
+        }
+        dia1++;
+    }
+}
+
+void testLosMasFracasados(){
+    JJOO jjoo5 = mockJJOODiaERRONEODIA2();
+    cout<<jjoo5.losMasFracasados("Islandia")<<endl;
+}
+
+void testBoicot(){
+    JJOO jjoo5 = mockJJOODia5();
+    Categoria cat = Categoria("Futbol",Masculino);
+    cout<<jjoo5.boicotPorDisciplina(cat,"Bolivia")<<endl;
+
+    int dia = 1;
+    while (dia<jjoo5.cantDias()){
+        Lista<Competencia> comps = jjoo5.cronograma(dia);
+        int i = 0;
+        while (i<comps.longitud()){
+            Competencia comp = comps.iesimo(i);
+            Deporte d = comps.iesimo(i).categoria().first;
+            Sexo s = comps.iesimo(i).categoria().second;
+            cout << "CATEGORIA: " << d << " "<< s << endl;
+            cout << comp.participantes() << endl;
+            i++;
+        }
+        dia++;
+    }
+
+    cout << "COMPETENCIAS FINALIZADAS" << endl;
+    cout << endl;
+
+    int dia1 = 1;
+    while (dia1<jjoo5.cantDias()){
+        Lista<Competencia> comps = jjoo5.cronograma(dia1);
+        int i = 0;
+        while (i<comps.longitud()){
+            if (comps.iesimo(i).finalizada()){
+                Deporte d = comps.iesimo(i).categoria().first;
+                Sexo s = comps.iesimo(i).categoria().second;
+                cout << "CATEGORIA: " << d << " "<< s << endl;
+
+                cout << "RANKING" << endl;
+                cout << endl;
+                cout << comps.iesimo(i).ranking() << endl;
+                cout << "CONTROL" << endl;
+                cout << endl;
+                cout << comps.iesimo(i).lesTocoControlAntidoping()<<endl;
+            }
+            i++;
+        }
+        cout << endl;
+        dia1++;
+    }
+}
+
+Atleta atletaProdigio(const JJOO & j) {
+
+    Atleta a;
+
+    int i= j.competenciasFinalizadasConOroEnPodio().longitud()-1;
+
+    while (i>=0){
+        Competencia comp = j.competenciasFinalizadasConOroEnPodio().iesimo(i);
+        Atleta campeon = comp.ranking().iesimo(0);
+
+        if (i==j.competenciasFinalizadasConOroEnPodio().longitud()-1){
+            a = campeon;
+        } else {
+            if (a.anioNacimiento() <= campeon.anioNacimiento() ){
+                a = campeon;
+            }
+        }
+        i--;
+    }
+
+    return a;
+}
+
+void testAtletaProdigio(){
+    JJOO jjoo0 = mockJJOODia5();
+    cout << "ATLETA PRODIGIO: " << atletaProdigio(jjoo0) << endl;
+}
+
 
 
 void testJJOO_cargar(){
@@ -396,5 +521,3 @@ void testJJOO_uyOrdenadoSiHayPatron(){
 
     cout<< "cumple patron: " << (jjoo.uyOrdenadoAsiHayUnPatron() ? "true" : "false" )<< endl;
 }
-
-
