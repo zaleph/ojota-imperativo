@@ -650,3 +650,305 @@ std::ostream & operator<<(std::ostream & os,const JJOO & j){
     j.mostrar(os);
     return os;
 };
+
+
+
+
+bool JJOO::mismasCompetencias(Lista<Competencia> l1, Lista<Competencia> l2) const {
+    bool iguales = (l1.longitud() == l2.longitud()) ;
+    int i=0;
+    while(i < l1.longitud() && iguales ){
+        if( !l2.pertenece( l1.iesimo(i) ) || !l1.pertenece( l2.iesimo(i) ) )
+            iguales = false;
+        i++;
+    }
+    return iguales;
+}
+
+bool JJOO::mismasAtletas(Lista<Atleta> l1, Lista<Atleta> l2) const {
+    bool iguales = (l1.longitud() == l2.longitud()) ;
+    int i=0;
+    while(i < l1.longitud() && iguales ){
+        if( !l2.pertenece( l1.iesimo(i) ) || !l1.pertenece( l2.iesimo(i) ) )
+            iguales = false;
+        i++;
+    }
+    return iguales;
+}
+
+
+Lista<Atleta> JJOO::ganadoresDeCompetencias(Lista<Competencia> comps , int posicion) const{
+    Lista<Atleta> atletas = Lista<Atleta>();
+    int i = 0;
+    while(i<comps.longitud()){
+        Competencia compIesima = comps.iesimo(i);
+        if ( compIesima.finalizada()){
+            if ( (compIesima.ranking().longitud() >= 1 && posicion<1) || (compIesima.ranking().longitud() >= 2 && posicion<2) || (compIesima.ranking().longitud() >= 3 && posicion<3) ){
+                atletas.agregarAtras((comps.iesimo(i)).ranking().iesimo(posicion));
+            }
+            i++;
+        } else {
+            i++;
+        }
+    }
+    return atletas;
+}
+
+Lista<Pais> JJOO::paisesUnicosDeAtletas(Lista<Atleta> atletas) const{
+    Lista<Pais> nacionalidades = Lista<Pais>();
+    int i = 0;
+    while (i<atletas.longitud()){
+        Atleta a1 = atletas.iesimo(i);
+        if (!nacionalidades.pertenece( a1.nacionalidad() ) ){
+            nacionalidades.agregarAtras(a1.nacionalidad());
+            i++;
+        } else {
+            i++;
+        }
+    }
+    return nacionalidades;
+}
+
+
+
+Lista<int> JJOO::diasConMedalla(Pais p) const{
+    Lista<int> diasQueGanoMedalla = Lista<int>();
+    diasQueGanoMedalla.agregarAtras(0);
+    int dia = 1;
+    while (dia<jornadaActual()){
+        Lista<Competencia> comps = cronograma(dia);
+        Lista<Atleta> ganadoresDelDia = ganadoresDeCompetencias(comps,0);
+        ganadoresDelDia.concatenar(ganadoresDeCompetencias(comps,1));
+        ganadoresDelDia.concatenar(ganadoresDeCompetencias(comps,2));
+
+        if(paisesUnicosDeAtletas(ganadoresDelDia).pertenece(p)){
+            diasQueGanoMedalla.agregarAtras(dia);
+            dia++;
+        } else {
+            dia++;
+        }
+    }
+    diasQueGanoMedalla.agregarAtras(jornadaActual());
+    return diasQueGanoMedalla;
+}
+
+
+
+Lista<int> JJOO::diferenciaEntreConsecutivos(Lista<int> enteros) const{
+    Lista<int> diffs = Lista<int>();
+    int i = enteros.longitud();
+    while (i>0){
+        int valor1 = enteros.iesimo(i);
+        int valor2 = enteros.iesimo(i-1);
+        int valor3 = valor1-valor2;
+        diffs.agregarAtras(valor3);
+        i--;
+    }
+    return diffs;
+}
+
+
+int JJOO::maximoEnteros(Lista<int> enteros) const {
+    int max = 0;
+    int i=0;
+    while (i<enteros.longitud()){
+        if (enteros.iesimo(i)>=max){
+            max = enteros.iesimo(i);
+            i++;
+        } else {
+            i++;
+        }
+    }
+    return max;
+}
+
+
+
+int JJOO::maxDiasSinMedalla() const{
+    Lista<int> maxSequiaPorPais = Lista<int>();
+    Lista<Pais> paises = paisesUnicosDeAtletas(atletas());
+    int max = 0;
+    int i=0;
+    while(i<paises.longitud()){
+        Pais p = paises.iesimo(i);
+        Lista<int> diasBuenos = diasConMedalla(p);
+        int maxSequiaDelPais = maximoEnteros(diferenciaEntreConsecutivos(diasBuenos));
+        maxSequiaPorPais.agregarAtras(maxSequiaDelPais);
+        i++;
+    }
+    max = maximoEnteros(maxSequiaPorPais);
+    return max;
+}
+
+
+
+
+Lista<Atleta> JJOO::medallistas(int posicion) const{
+    Lista<Atleta> capos = Lista<Atleta>();
+    int dia=1;
+    while (dia<=jornadaActual()){
+        Lista<Competencia> comps = Lista<Competencia>();
+        comps = cronograma(dia);
+        Lista<Atleta> ganadoresDelDia = ganadoresDeCompetencias(comps,posicion);
+        capos.concatenar(ganadoresDelDia);
+        dia++;
+    }
+    return capos;
+}
+
+
+Lista<Atleta> JJOO::filtrarAtletasPorPais(Lista<Atleta> atls, Pais p) const{
+    Lista<Atleta> atletaFiltrada = Lista<Atleta>();
+    int i = 0;
+    while (i<atls.longitud()){
+        Atleta a = atls.iesimo(i);
+        if(a.nacionalidad()==p){
+            atletaFiltrada.agregarAtras(a);
+            i++;
+        } else {
+            i++;
+        }
+    }
+    return atletaFiltrada;
+}
+
+
+
+Lista<pair<Pais,Lista<int> > > JJOO::agregarOrdenado(Lista<pair<Pais,Lista<int> > > l , pair<Pais,Lista<int> > par) const{
+    Lista<pair<Pais,Lista<int> > > listadoOrdenado = Lista<pair<Pais,Lista<int> > >();
+
+    if (l.longitud()==0){
+        listadoOrdenado.agregarAtras(par);
+    } else {
+        while( (l.longitud()!=0) && ( (l.cabeza().second.iesimo(0)>par.second.iesimo(0) ) || (l.cabeza().second.iesimo(0)==par.second.iesimo(0) && l.cabeza().second.iesimo(1)>par.second.iesimo(1) ) || (l.cabeza().second.iesimo(0)==par.second.iesimo(0) && l.cabeza().second.iesimo(1)==par.second.iesimo(1) && l.cabeza().second.iesimo(2)>=par.second.iesimo(2) ))){
+            listadoOrdenado.agregarAtras(l.cabeza());
+            l.eliminarPosicion(0);
+        }
+        listadoOrdenado.agregarAtras(par);
+        listadoOrdenado.concatenar(l);
+    }
+    return listadoOrdenado;
+}
+
+
+
+Lista<int> JJOO::capacidades (Lista<Atleta> atlets , Deporte sport) const{
+    Lista<int> cap = Lista<int>();
+    int i = 0;
+    while (i<atlets.longitud()){
+        Atleta a = atlets.iesimo(i);
+        cap.agregarAtras(a.capacidad(sport));
+        i++;
+    }
+    return cap;
+}
+
+
+ bool JJOO::ordenado (Lista<int> lista1 ) const{
+    int i = 0;
+    bool eval = true;
+    while(i<lista1.longitud()-1 && eval){
+        eval = lista1.iesimo(i) <= lista1.iesimo(i+1);
+        i++;
+    }
+    return eval;
+}
+
+
+Lista<Atleta> JJOO::atletasParticipantesUnicos () const{
+    Lista<Atleta> ats = Lista<Atleta>();
+    Lista<Competencia> comps = competencias();
+    int i=0;
+    while (i<comps.longitud()){
+        Competencia comp = comps.iesimo(i);
+
+        int j=0;
+        while (j<comp.participantes().longitud()){
+            Atleta a = comp.participantes().iesimo(j);
+            if (!ats.pertenece(a)){
+                ats.agregarAtras(a);
+            }
+            j++;
+        }
+        i++;
+    }
+    return ats;
+}
+
+Lista<Atleta> JJOO::atletasParticipantes () const{
+    Lista<Atleta> ats = Lista<Atleta>();
+    Lista<Competencia> comps = competencias();
+    int i=0;
+    while (i<comps.longitud()){
+        Competencia comp = comps.iesimo(i);
+        ats.concatenar(comp.participantes());
+        i++;
+    }
+    return ats;
+}
+
+Lista<Atleta> JJOO::ultraParticipan (Lista<Atleta> ats) const {
+
+    int maxParticipacion = maximoEnteros(participacion(ats));
+    Lista<Atleta> ultraParticipantes = Lista<Atleta>();
+    int i = 0;
+    while(i<ats.longitud()){
+        Atleta a = ats.iesimo(i);
+        if (atletasParticipantes().cantidadDeApariciones(a)==maxParticipacion){
+            ultraParticipantes.agregarAtras(a);
+        }
+        i++;
+    }
+    return ultraParticipantes;
+}
+
+
+Lista<int> JJOO::participacion (Lista<Atleta> ats) const {
+    Lista<int> apariciones = Lista<int>();
+
+    int i = 0;
+    while (i<ats.longitud()){
+        Atleta a = ats.iesimo(i);
+        int ap = atletasParticipantes().cantidadDeApariciones(a);
+        apariciones.agregarAtras(ap);
+        i++;
+    }
+    return apariciones;
+}
+
+Lista<Atleta> JJOO::medallistasDelJuego() const{
+    Lista <Atleta> ats = Lista<Atleta>();
+    int i = 0;
+    while (i<competencias().longitud()){
+        Competencia comp = competencias().iesimo(i);
+
+        if (comp.finalizada()&&comp.ranking().longitud()>=1){
+            ats.agregarAtras(comp.ranking().iesimo(0));
+
+            if (comp.ranking().longitud()>=2){
+                ats.agregarAtras(comp.ranking().iesimo(1));
+
+                if (comp.ranking().longitud()>=3){
+                    ats.agregarAtras(comp.ranking().iesimo(2));
+                }
+            }
+        }
+        i++;
+    }
+    return ats;
+}
+
+Lista<Atleta> JJOO::noGanaronMedallas(Lista<Atleta> ats) const{
+    Lista<Atleta> atsRes = Lista<Atleta>();
+    int i=0;
+    while (i<ats.longitud()){
+        Atleta a = ats.iesimo(i);
+        if (!medallistasDelJuego().pertenece(a)){
+            atsRes.agregarAtras(a);
+        }
+        i++;
+    }
+    return atsRes;
+}
+
+

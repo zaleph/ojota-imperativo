@@ -343,3 +343,41 @@ void Competencia::printControl(std::ostream& os) const {
 }
 
 
+bool Competencia::mismasAtletas(Lista<Atleta> l1, Lista<Atleta> l2) const {
+    bool iguales = (l1.longitud() == l2.longitud()) ;
+    int i=0;
+    while(i < l1.longitud() && iguales ){
+        if( !l2.pertenece( l1.iesimo(i) ) || !l1.pertenece( l2.iesimo(i) ) )
+            iguales = false;
+        i++;
+    }
+    return iguales;
+}
+
+
+
+Atleta Competencia::findAtletaByCiaNumber(int ciaNumber) const {
+    Atleta atleta;
+    int atletaIndex = 0;
+    bool encontrado = false;
+    while(atletaIndex < participantes().longitud() && !encontrado ){
+        if( participantes().iesimo(atletaIndex).ciaNumber() == ciaNumber  ){
+            atleta = participantes().iesimo(atletaIndex);
+            encontrado = true;
+        }
+        atletaIndex++;
+    }
+    return atleta;
+}
+
+
+
+Lista<Atleta> Competencia::findAtletasByCia(Lista<int> cias) const {
+    int i = 0;
+    Lista<Atleta> atletas = Lista<Atleta>();
+    while( i < cias.longitud()){
+        atletas.agregarAtras(findAtletaByCiaNumber(cias.iesimo(i)));
+        i++;
+    }
+    return atletas;
+}
