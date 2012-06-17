@@ -250,25 +250,82 @@ void JJOO::mostrar(std::ostream& os) const {
 
 
 void JJOO::guardar(std::ostream& os) const {
-    os << (char) ENCABEZADO_ARCHIVO << " " << anio() << " " << jornadaActual() << " ";
-    os << "[";
 
-    int i=0; while(i < competencias().longitud()){
-        Competencia c = competencias().iesimo(i);
+    os << (char) ENCABEZADO_ARCHIVO << " " << anio() << " " << jornadaActual() << " ";
+
+    os << "[";
+    int i=0; while(i < atletas().longitud()){
+        Atleta a = atletas().iesimo(i);
         os << "(";
-        c.guardar(os);
+        a.guardar(os);
         os << ")";
         i++;
 
-        if( i != competencias().longitud())
+        if( i != atletas().longitud())
+            os << ", ";
+    }
+    os << "] ";
+
+    os <<endl;
+
+    os << "[";
+    i=1;
+    while(i <= cantDias()){
+        os << "[";
+        Lista<Competencia> comps = cronograma(i);
+        int j=0; while( j <comps.longitud()){
+            Competencia c = comps.iesimo(j);
+            os << "(";
+            c.guardar(os);
+            os << ")";
+            j++;
+            if( j != comps.longitud())
+                os << ", ";
+        }
+        os << "]";
+        i++;
+        if(i <= cantDias())
             os << ", ";
     }
     os << "]";
+
+    /**/
 };
 
 
 void JJOO::cargar (std::istream& is) {
+/*    char dummy;
+    //buscamos el J
+    is >> dummy;
 
+    is >> _anio;
+    is >> _jornadaActual;
+
+    //buscamos el "["
+    is >> dummy;
+
+    if(is.peek() != ']'){
+        //inicializamos con basura
+        dummy = is.peek();
+        Competencia comp;
+        while( dummy != ']'){
+
+            //buscamos el "("
+            is >> dummy;
+            comp = Competencia();
+            comp.cargar(is);
+            //buscamos el ")"
+            is >> dummy;
+            _
+
+        }
+
+
+
+
+
+    }
+    */
 };
 
 

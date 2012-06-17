@@ -139,7 +139,7 @@ void Competencia::mostrar(std::ostream& os) const{
 
 
 void Competencia::guardar(std::ostream& os) const{
-    os << "C (|" << categoria().first << "|, |" << ((categoria().second == Masculino)? "Masculino" : "Femenino") << "|) |"
+    os << (char) ENCABEZADO_ARCHIVO << " (|" << categoria().first << "|, |" << ((categoria().second == Masculino)? "Masculino" : "Femenino") << "|) |"
     << ( finalizada()? "True" : "False") << "| ";
 
     os << "[" ;

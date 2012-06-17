@@ -115,7 +115,7 @@ void Atleta::mostrar(std::ostream& os) const{
 
 
 void Atleta::guardar(std::ostream& o) const{
-    o << "A |" << nombre() << "| |" << ( sexo() == Masculino ? "Masculino" : "Femenino")  << "| "
+    o << (char) ENCABEZADO_ARCHIVO << " |" << nombre() << "| |" << ( sexo() == Masculino ? "Masculino" : "Femenino")  << "| "
     << anioNacimiento() << " |" << nacionalidad() << "| " << ciaNumber() <<  " " << "[";
 
     /*
