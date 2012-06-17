@@ -132,7 +132,7 @@ Lista<Lista<Competencia> > mockCronograDiaERRONEODIA2(){
 //JUEGO CON NIGUNA COMPETENCIA FINALIZADA
 JJOO mockJJOODia0(){
     JJOO jjoo =JJOO(2012 , mockAtletasFull() , mockCronograDia0() );
-    jjoo._jornadaActual = 1;
+    //jjoo. = 1;
     return jjoo;
 }
 
@@ -146,34 +146,34 @@ JJOO mockJJOODia1(){
 //JUEGO CON LAS COMPETENCIAS DEL DIA 2 FINALIZADAS
 JJOO mockJJOODia2(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia2() );
-    jjoo._jornadaActual = 2;
+   // jjoo._jornadaActual = 2;
     return jjoo;
 }
 //JUEGO CON LAS COMPETENCIAS DEL DIA 3 FINALIZADAS
 JJOO mockJJOODia3(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia3() );
-    jjoo._jornadaActual = 3;
+    //jjoo._jornadaActual = 3;
     return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 4 que en realidad esta vacio
 JJOO mockJJOODia4(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia3() );
-    jjoo._jornadaActual = 4;
+   // jjoo._jornadaActual = 4;
     return jjoo;
 }
 
 //JUEGO CON LAS COMPETENCIAS DEL DIA 5 FINALIZADAS
 JJOO mockJJOODia5(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia5() );
-    jjoo._jornadaActual = 5;
+   // jjoo._jornadaActual = 5;
     return jjoo;
 }
 
 //JUEGO ERRONEO CON COMPETENCIAS SIN FINALIZAR EN EL DIA 2
 JJOO mockJJOODiaERRONEODIA2(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDiaERRONEODIA2() );
-    jjoo._jornadaActual = 2;
+    //jjoo._jornadaActual = 2;
     return jjoo;
 }
 
@@ -346,5 +346,16 @@ void testTranscurrirDia(){
 void testDePaseo(){
     JJOO jjoo0 = mockJJOODia0();
     cout << "ATLETAS QUE PASEAN" << endl;
-    cout << jjoo0.dePaseo() << endl;
+    jjoo0.mostrar(cout);
 }
+
+
+
+
+void testJJOO_guardar(){
+    ofstream salida ("/home/gonzalo/salida.txt");
+    JJOO j = mockJJOODia1();
+    j.guardar(salida);
+    salida.close();
+}
+
