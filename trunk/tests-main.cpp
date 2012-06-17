@@ -50,7 +50,8 @@ int main(){
     //testAtleta_guardaryCargar();
     //testCompetencia_guardarYCargar();
     //testJJOO_guardarYCargar();
-    testJJOO_stevenBradbury();
+    //testJJOO_stevenBradbury();
+    testJJOO_uyOrdenadoSiHayPatron();
 
 
     return EXIT_SUCCESS;

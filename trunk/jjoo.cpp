@@ -166,8 +166,100 @@ Atleta JJOO::stevenBradbury() const{
 };
 
 
+
+Pais obtegerElMejorPais(Lista<Pais> paises ){
+
+    int i=0;
+    int cant= 0;
+    Pais pais;
+    while(i<paises.longitud()){
+
+        if( paises.cantidadDeApariciones(paises.iesimo(i)) > cant){
+            cant = paises.cantidadDeApariciones(paises.iesimo(i));
+            pais = paises.iesimo(i);
+        }else if( paises.cantidadDeApariciones(paises.iesimo(i)) >= cant){
+            if( paises.iesimo(i) < pais )
+                pais = paises.iesimo(i);
+        }
+
+        i++;
+    }
+
+    return pais;
+}
+
+Pais mejorPaisDeCompetencias(Lista<Competencia> comps){
+
+    Lista<Pais> paises = Lista<Pais>();
+    int i=0;
+    while(i < comps.longitud()){
+
+        Competencia comp = comps.iesimo(i);
+        Pais pais;
+        if(comp.finalizada() && comp.ranking().longitud() >= 1){
+            pais = comp.ranking().iesimo(0).nacionalidad();
+            paises.agregarAtras(pais);
+        }
+
+        i++;
+    }
+
+    //cout << paises << endl;
+    return obtegerElMejorPais(paises);
+}
+
 bool JJOO::uyOrdenadoAsiHayUnPatron() const{
-    return false;
+
+    int dia = 1;
+    Lista<Competencia> comps ;
+
+    Lista<Pais> paises = Lista<Pais>();
+    while(dia <= jornadaActual()){
+
+        comps = cronograma(dia);
+
+        if( comps.longitud() != 0){
+
+            Pais p = mejorPaisDeCompetencias(comps);
+            paises.agregarAtras(p);
+        }
+
+        dia++;
+    }
+
+    Lista<Pais> patron = Lista<Pais>();
+    int i=0;
+    bool patronFinalizado = false;
+    while(i<paises.longitud() && !patronFinalizado){
+
+        if(!patron.pertenece(paises.iesimo(i))){
+            patron.agregarAtras(paises.iesimo(i));
+        }else {
+            patronFinalizado = true;
+        }
+
+        i++;
+    }
+
+    cout << "paises: " << paises << endl;
+    cout << "patron: " << patron << endl;
+
+    i=0;
+    int patronIndex = 0;
+    bool comparacionOk = true;
+    while(i<paises.longitud() && comparacionOk){
+
+        comparacionOk = comparacionOk && (paises.iesimo(i) == patron.iesimo(patronIndex));
+
+        i++;
+        patronIndex++;
+
+        if(patronIndex == patron.longitud())
+            patronIndex = 0;
+    }
+
+
+    return comparacionOk;
 };
 
 
