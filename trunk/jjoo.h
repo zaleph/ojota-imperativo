@@ -167,17 +167,6 @@ class JJOO{
             return max;
         }
 
-        Lista<Competencia> finalizadasYConRanking (Lista<Competencia> comps){
-            Lista<Competencia> cs = Lista<Competencia>();
-            int i = 0;
-            while (i<comps.longitud()){
-                if (comps.iesimo(i).finalizada() && comps.iesimo(i).ranking().longitud()>=1){
-                    cs.agregarAtras(comps.iesimo(i));
-                    i++;
-                }
-            }
-            return cs;
-        }
 
         Lista<Atleta> medallistas(int posicion) const{
             Lista<Atleta> capos = Lista<Atleta>();
