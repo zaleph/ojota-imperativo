@@ -80,7 +80,7 @@ Lista<Atleta> JJOO::dePaseo() const{
     int i = 0;
     while (i<atletas().longitud()){
         Atleta at = atletas().iesimo(i);
-        if (!atletasParticipantes().pertenece(at)){
+        if (!atletasParticipantesUnicos().pertenece(at)){
             paseadores.agregarAtras(at);
         }
         i++;
@@ -126,17 +126,194 @@ Lista<pair<Pais,Lista<int> > > JJOO::medallero() const{
 
 
 int JJOO::boicotPorDisciplina(const Categoria cat, const Pais p){
-    return 0;
+
+    int sacados = 0;
+    Lista<Atleta> atletasSacados = Lista<Atleta> ();
+
+    Lista<Lista<Competencia> > nuevoCronograma = Lista<Lista<Competencia> > ();
+
+    int dia = 1;
+    while (dia<=cantDias()){
+        Lista<Competencia> compsDelDiaOld = cronograma(dia);
+        Lista<Competencia> compsDelDiaNew = Lista<Competencia>();
+
+        int j = 0;
+
+        while (j<compsDelDiaOld.longitud()){
+            Competencia comp = compsDelDiaOld.iesimo(j);
+
+            if (comp.categoria()==cat && paisesUnicosDeAtletas(comp.participantes()).pertenece(p)){
+                Deporte d = comp.categoria().first;
+                Sexo s = comp.categoria().second;
+                Lista<Atleta> participantesNew = Lista<Atleta>();
+
+                int f = 0;
+                while (f<comp.participantes().longitud()){
+                    Atleta a = comp.participantes().iesimo(f);
+                    if (a.nacionalidad()!= p){
+                        participantesNew.agregarAtras(a);
+                    } else {
+                        atletasSacados.agregarAtras(a);
+                    }
+                    f++;
+                }
+
+                Competencia newComp = Competencia(d,s,participantesNew);
+
+                if(comp.finalizada()){
+                    Lista<int> rankingNew = Lista <int>();
+                    Lista<pair<int,bool> > controlAntidoping = Lista<pair<int,bool> >();
+
+                    int n = 0;
+
+                    while (n<comp.ranking().longitud()){
+                        Atleta at = comp.ranking().iesimo(n);
+                        if (!atletasSacados.pertenece(at)){
+                            rankingNew.agregarAtras(at.ciaNumber());
+                        }
+                        n++;
+                    }
+
+                    int m = 0;
+
+                    while (m<comp.lesTocoControlAntidoping().longitud()){
+                        Atleta at2 = comp.lesTocoControlAntidoping().iesimo(m);
+                        if (!atletasSacados.pertenece(at2)){
+                            bool control = comp.leDioPositivo(at2);
+                            pair<int,bool> par = pair<int,bool>(at2.ciaNumber(),control);
+                            controlAntidoping.agregarAtras(par);
+                        }
+                        m++;
+                    }
+                    newComp.finalizar(rankingNew,controlAntidoping);
+                }
+
+                compsDelDiaNew.agregarAtras(newComp);
+            } else {
+                compsDelDiaNew.agregarAtras(comp);
+            }
+            j++;
+        }
+
+        nuevoCronograma.agregarAtras(compsDelDiaNew);
+        dia++;
+    }
+
+    _competenciasPorDia = nuevoCronograma;
+
+    sacados = atletasSacados.longitud();
+
+    return sacados;
 };
 
 
 Lista<Atleta> JJOO::losMasFracasados(const Pais p) const{
-    return Lista<Atleta>();
-};
+
+    Lista<Atleta> noGanaronMedallasYUltraParticipan = Lista<Atleta>();
+
+
+    if (paisesUnicosDeAtletas(atletas()).pertenece(p)){
+        Lista<Atleta> atletasDelPais = filtrarAtletasPorPais(atletas(),p);
+        Lista<Atleta> losMasParticipantes = ultraParticipan(atletasDelPais);
+
+        noGanaronMedallasYUltraParticipan = noGanaronMedallas(losMasParticipantes);
+    }
+    return noGanaronMedallasYUltraParticipan;
+}
+
+
 
 
 void JJOO::liuSong(const Atleta& a, const Pais p){
+    Atleta newAtleta = Atleta (a.nombre(),a.sexo(), a.anioNacimiento() , p , a.ciaNumber() );
 
+    Lista<Deporte> deportesLiu = a.deportes();
+
+    int k = 0;
+
+    while (k<deportesLiu.longitud()){
+        Deporte d = deportesLiu.iesimo(k);
+        int c = a.capacidad(d);
+        newAtleta.entrenarNuevoDeporte(d,c);
+        k++;
+    }
+
+    Lista<Atleta> atletasOld = atletas();
+    Lista<Atleta> atletasNew = Lista<Atleta>();
+
+    int i = 0;
+    while (i<atletasOld.longitud()){
+        if (a == atletasOld.iesimo(i)){
+            atletasNew.agregarAtras(newAtleta);
+            i++;
+        } else{
+            atletasNew.agregarAtras(atletasOld.iesimo(i));
+            i++;
+        }
+    }
+
+    _atletas = atletasNew;
+
+
+    Lista<Lista<Competencia> > nuevoCronograma = Lista<Lista<Competencia> > ();
+
+    int dia = 1;
+    while (dia<=cantDias()){
+        Lista<Competencia> compsDelDiaOld = cronograma(dia);
+        Lista<Competencia> compsDelDiaNew = Lista<Competencia>();
+
+        int j = 0;
+
+        while (j<compsDelDiaOld.longitud()){
+
+            Competencia comp = compsDelDiaOld.iesimo(j);
+
+            if (comp.participantes().pertenece(a)){
+                Deporte d = comp.categoria().first;
+                Sexo s = comp.categoria().second;
+                Lista<Atleta> participantesNew = comp.participantes();
+                participantesNew.sacar(a);
+                participantesNew.agregarAtras(newAtleta);
+
+                Competencia newComp = Competencia(d,s,participantesNew);
+
+                if(comp.finalizada()){
+                    Lista<int> rankingNew = Lista <int>();
+                    Lista<pair<int,bool> > controlAntidoping = Lista<pair<int,bool> >();
+
+                    int n = 0;
+
+                    while (n<comp.ranking().longitud()){
+                        Atleta at = comp.ranking().iesimo(n);
+                        rankingNew.agregarAtras(at.ciaNumber());
+                        n++;
+                    }
+
+                    int m = 0;
+
+                    while (m<comp.lesTocoControlAntidoping().longitud()){
+                        Atleta at2 = comp.lesTocoControlAntidoping().iesimo(m);
+                        bool control = comp.leDioPositivo(at2);
+                        pair<int,bool> par = pair<int,bool>(at2.ciaNumber(),control);
+                        controlAntidoping.agregarAtras(par);
+                        m++;
+                    }
+                    newComp.finalizar(rankingNew,controlAntidoping);
+                }
+
+                compsDelDiaNew.agregarAtras(newComp);
+
+            } else {
+                compsDelDiaNew.agregarAtras(comp);
+            }
+            j++;
+        }
+
+        nuevoCronograma.agregarAtras(compsDelDiaNew);
+        dia++;
+    }
+
+    _competenciasPorDia = nuevoCronograma;
 };
 
 
@@ -203,8 +380,6 @@ Pais mejorPaisDeCompetencias(Lista<Competencia> comps){
 
         i++;
     }
-
-    //cout << paises << endl;
     return obtegerElMejorPais(paises);
 }
 
@@ -240,9 +415,6 @@ bool JJOO::uyOrdenadoAsiHayUnPatron() const{
 
         i++;
     }
-
-    cout << "paises: " << paises << endl;
-    cout << "patron: " << patron << endl;
 
     i=0;
     int patronIndex = 0;

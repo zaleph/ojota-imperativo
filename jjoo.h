@@ -141,7 +141,7 @@ class JJOO{
             int max = 0;
             int i=0;
             while (i<enteros.longitud()){
-                if (enteros.iesimo(i)>max){
+                if (enteros.iesimo(i)>=max){
                     max = enteros.iesimo(i);
                     i++;
                 } else {
@@ -233,6 +233,26 @@ class JJOO{
             return eval;
         }
 
+        Lista<Atleta> atletasParticipantesUnicos () const{
+            Lista<Atleta> ats = Lista<Atleta>();
+            Lista<Competencia> comps = competencias();
+            int i=0;
+            while (i<comps.longitud()){
+                Competencia comp = comps.iesimo(i);
+
+                int j=0;
+                while (j<comp.participantes().longitud()){
+                    Atleta a = comp.participantes().iesimo(j);
+                    if (!ats.pertenece(a)){
+                        ats.agregarAtras(a);
+                    }
+                    j++;
+                }
+                i++;
+            }
+            return ats;
+        }
+
         Lista<Atleta> atletasParticipantes () const{
             Lista<Atleta> ats = Lista<Atleta>();
             Lista<Competencia> comps = competencias();
@@ -245,6 +265,68 @@ class JJOO{
             return ats;
         }
 
+        Lista<Atleta> ultraParticipan (Lista<Atleta> ats) const {
+
+            int maxParticipacion = maximoEnteros(participacion(ats));
+            Lista<Atleta> ultraParticipantes = Lista<Atleta>();
+            int i = 0;
+            while(i<ats.longitud()){
+                Atleta a = ats.iesimo(i);
+                if (atletasParticipantes().cantidadDeApariciones(a)==maxParticipacion){
+                    ultraParticipantes.agregarAtras(a);
+                }
+                i++;
+            }
+            return ultraParticipantes;
+        }
+
+        Lista<int> participacion (Lista<Atleta> ats) const {
+            Lista<int> apariciones = Lista<int>();
+
+            int i = 0;
+            while (i<ats.longitud()){
+                Atleta a = ats.iesimo(i);
+                int ap = atletasParticipantes().cantidadDeApariciones(a);
+                apariciones.agregarAtras(ap);
+                i++;
+            }
+            return apariciones;
+        }
+
+        Lista<Atleta> medallistasDelJuego() const{
+            Lista <Atleta> ats = Lista<Atleta>();
+            int i = 0;
+            while (i<competencias().longitud()){
+                Competencia comp = competencias().iesimo(i);
+
+                if (comp.finalizada()&&comp.ranking().longitud()>=1){
+                    ats.agregarAtras(comp.ranking().iesimo(0));
+
+                    if (comp.ranking().longitud()>=2){
+                        ats.agregarAtras(comp.ranking().iesimo(1));
+
+                        if (comp.ranking().longitud()>=3){
+                            ats.agregarAtras(comp.ranking().iesimo(2));
+                        }
+                    }
+                }
+                i++;
+            }
+            return ats;
+        }
+
+        Lista<Atleta> noGanaronMedallas(Lista<Atleta> ats) const{
+            Lista<Atleta> atsRes = Lista<Atleta>();
+            int i=0;
+            while (i<ats.longitud()){
+                Atleta a = ats.iesimo(i);
+                if (!medallistasDelJuego().pertenece(a)){
+                    atsRes.agregarAtras(a);
+                }
+                i++;
+            }
+            return atsRes;
+        }
 
 
 };
