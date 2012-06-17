@@ -265,7 +265,7 @@ void testLazyAtleta(){
     cout << a.deportes() << endl;
 }
 
-void testAtleta_guardar(){
+void testAtleta_guardar_conDeportes(){
     ofstream salida ("/home/gonzalo/salida.txt");
 
     Atleta a = newAtleta();
@@ -281,11 +281,31 @@ void testAtleta_guardar(){
 }
 
 
+
+void testAtleta_guardar_sinDeportes(){
+    ofstream salida ("/home/gonzalo/salida.txt");
+    Atleta a = newAtleta();
+    a.guardar(salida);
+    salida.close();
+}
+
 void testAtleta_cargar(){
     ifstream archivo ("/home/gonzalo/salida.txt");
     Atleta a = Atleta();
     a.cargar(archivo);
     archivo.close();
-    cout << a << endl;
-    //a.mostrar(cout);
+    a.mostrar(cout);
+}
+
+
+
+void testAtleta_guardaryCargar(){
+
+    cout << "Atleta sin deportes" << endl;
+    testAtleta_guardar_sinDeportes();
+    testAtleta_cargar();
+    cout << endl << endl;
+    cout << "Atleta con deportes" << endl;
+    testAtleta_guardar_conDeportes();
+    testAtleta_cargar();
 }

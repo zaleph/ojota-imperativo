@@ -128,32 +128,75 @@ void Competencia::mostrar(std::ostream& os) const{
         os << endl << "Categoria: (" << categoria().first << " , "
         << (categoria().second == Masculino? "Masculino":"Femenino" ) << " )" << endl
         << "Finalizada: True" << endl << "Participantes: " << participantes()
-        << endl <<"Ranking: " << ranking() ;
+        << endl <<"Ranking: " << _ranking << " Control Antidoping: ";
+        printControl(os);
     } else {
         os << endl << "Categoria: (" << categoria().first << " , "
          << (categoria().second == Masculino? "Masculino":"Femenino") << " )" << endl
-        << "Finalizada: True" << endl << "Participantes: " << participantes() ;
+        << "Finalizada: False" << endl << "Participantes: " << participantes();
     }
 };
 
 
 void Competencia::guardar(std::ostream& os) const{
     os << "C (|" << categoria().first << "|, |" << ((categoria().second == Masculino)? "Masculino" : "Femenino") << "|) |"
-    << ( finalizada()? "True" : "False") << "| "<< endl;
+    << ( finalizada()? "True" : "False") << "| ";
+
     os << "[" ;
 
-    int i=0;
-    while(i<participantes().longitud()){
-        os << "(";
-        participantes().iesimo(i).guardar(os);
-        i++;
+    int i;
+    if( participantes().longitud() != 0 ){
+        i=0;
+        while(i<participantes().longitud()){
+            os << "(";
 
-        if(i == participantes().longitud()){
-            os << ")]";
-        }else{
-            os << "), " << endl;
+            participantes().iesimo(i).guardar(os);
+            i++;
+
+            if(i == participantes().longitud()){
+                os << ")] ";
+            }else{
+                os << "), ";
+            }
         }
+
+    }else{
+        os << "]";
     }
+
+    if( finalizada() ){
+        os << "[" ;
+        i=0;
+        while( i< _ranking.longitud()){
+            os << _ranking.iesimo(i);
+            i++;
+
+            if(i != _ranking.longitud()){
+                os << ", ";
+            }
+        }
+        os << "] ";
+
+        os << "[" ;
+        i=0;
+        while( i<_controlAntidoping.longitud()){
+
+            os << "(" << _controlAntidoping.iesimo(i).first << ", "
+            << ((_controlAntidoping.iesimo(i).second )? "|True|" : "|False|") << ")";
+
+            i++;
+
+            if(i != _controlAntidoping.longitud()){
+                os << ", ";
+            }
+
+        }
+        os << "] ";
+
+    }else {
+        os << "[] []";
+    }
+
 };
 
 
@@ -187,20 +230,95 @@ void Competencia::cargar (std::istream& is){
 
     Atleta atleta;
 
-    while( dummy != ']'){
+    // si tiene atletas los cargamos
+    if( is.peek() != ']' ){
 
         //busco el "("
         is >> dummy;
 
-        atleta = Atleta();
-        atleta.cargar(is);
-        _participantes.agregarAtras(atleta);
+        while( dummy != ']'){
 
-        //busco el ")"
-        is >> dummy;
-        //busco el "," o el "]"
-        is >> dummy;
+            atleta = Atleta();
+            atleta.cargar(is);
+            _participantes.agregarAtras(atleta);
+
+            //busco el ")"
+            is >> dummy;
+
+            //busco el "," o el "]"
+            is >> dummy;
+
+            if(dummy == ','){
+                //busco el "(" que viene
+                is >> dummy;
+            }
+        }
+    }else{
+        getline(is , temp, ']');
     }
+
+
+    //leo hasta el "[" que indica el comienzo de la lista de ranking y lo descarto
+    getline(is , temp , '[');
+
+    if( is.peek() != ']' ){
+
+        //inicializamos el dummy con basura
+        dummy = is.peek();
+        int ciaNumber;
+        Lista<int> cias = Lista<int>();
+
+        while(dummy != ']'){
+            is >> ciaNumber;
+            cias.agregarAtras(ciaNumber);
+
+            //leemos el ","
+            is >> dummy;
+        }
+
+        _ranking = cias;
+
+
+    }else{
+        getline(is , temp, ']');
+    }
+
+
+    //leo hasta el "[" que indica el comienzo de la lista de ranking y lo descarto
+    getline(is , temp , '[');
+
+    if( is.peek() != ']' ){
+
+        //inicializamos el dummy con basura
+        dummy = is.peek();
+        int ciaNumber;
+        Lista<pair<int,bool> > control = Lista<pair<int,bool> >();
+
+        while(dummy != ']'){
+            //buscamos el "("
+            is >> dummy;
+            //buscamos el cia
+            is >> ciaNumber;
+            //buscamos la ","
+            is >> dummy;
+            //buscamos la "|"
+            is >> dummy;
+            getline(is , temp , '|');
+            control.agregarAtras(pair<int,bool>(ciaNumber , (temp == "True" ? true : false)));
+
+            //leemos el ")"
+            is >> dummy;
+            //leemos el "," o "]"
+            is >> dummy;
+        }
+
+        _controlAntidoping = control;
+
+    }else{
+        getline(is , temp, ']');
+    }
+
+
 };
 
 
@@ -208,4 +326,20 @@ std::ostream & operator<<(std::ostream & os,const Competencia & c){
     c.mostrar(os);
     return os;
 };
+
+
+void Competencia::printControl(std::ostream& os) const {
+    int i=0;
+    os << "[";
+    while(i<_controlAntidoping.longitud()){
+        os << "("<< _controlAntidoping.iesimo(i).first
+        << ", |" << (_controlAntidoping.iesimo(i).second?"True":"False") << "|)";
+        i++;
+
+        if(i != _controlAntidoping.longitud())
+            os << ", ";
+    }
+    os << "]";
+}
+
 

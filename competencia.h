@@ -79,7 +79,7 @@ class Competencia{
             return atletas;
         }
 
-
+        void printControl(std::ostream& os) const ;
 
 };
 
