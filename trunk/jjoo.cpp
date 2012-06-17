@@ -242,12 +242,28 @@ bool JJOO::operator==(const JJOO& j) const{
 
 
 void JJOO::mostrar(std::ostream& os) const {
-
+    os << "Año: " << anio() << endl
+    << "Atletas: " << atletas() << endl
+    << "Cantidad de días: " << cantDias() << endl
+    << "Jornada actual: " << jornadaActual();
 };
 
 
 void JJOO::guardar(std::ostream& os) const {
+    os << (char) ENCABEZADO_ARCHIVO << " " << anio() << " " << jornadaActual() << " ";
+    os << "[";
 
+    int i=0; while(i < competencias().longitud()){
+        Competencia c = competencias().iesimo(i);
+        os << "(";
+        c.guardar(os);
+        os << ")";
+        i++;
+
+        if( i != competencias().longitud())
+            os << ", ";
+    }
+    os << "]";
 };
 
 
@@ -257,12 +273,6 @@ void JJOO::cargar (std::istream& is) {
 
 
 std::ostream & operator<<(std::ostream & os,const JJOO & j){
-    os << "Año: " << j.anio() << endl
-    << "Atletas: " << j.atletas() << endl
-    << "Cantidad de días: " << j.cantDias() << endl
-    << "Jornada actual: " << j.jornadaActual();
+    j.mostrar(os);
     return os;
 };
-
-
-

@@ -46,8 +46,12 @@ int main(){
     //testCompetencia_mostrar();
 
 
-    testCompetencia_guardarYCargar();
+    //testCompetencia_guardarYCargar();
     //testAtleta_guardaryCargar();
+
+    testJJOO_guardar();
+
+
 
     return EXIT_SUCCESS;
 }

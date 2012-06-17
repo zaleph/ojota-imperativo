@@ -8,11 +8,12 @@ typedef pair<int, pair<int, int> > infoM;
 class JJOO{
     public:
 
+        int _jornadaActual;
+
         JJOO();
         // |cronograma|==cantDias. Si un día no hay competencias,q esté la lista vacía.
         JJOO(const int anio, const Lista<Atleta>& atletas, const Lista<Lista<Competencia> >& competenciasPorDia);
 
-        int _jornadaActual;
         int anio() const;
         Lista<Atleta> atletas() const;
         int cantDias() const;
