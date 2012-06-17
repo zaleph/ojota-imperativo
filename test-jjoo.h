@@ -351,11 +351,38 @@ void testDePaseo(){
 
 
 
+void testJJOO_cargar(){
+    ifstream salida ("/home/gonzalo/salida.txt");
+    JJOO j = JJOO();
+    j.cargar(salida);
+    salida.close();
+}
+
 
 void testJJOO_guardar(){
     ofstream salida ("/home/gonzalo/salida.txt");
     JJOO j = mockJJOODia1();
     j.guardar(salida);
     salida.close();
+}
+
+
+void testJJOO_guardarYCargar(){
+    cout << "guardando juego olimpico : " << endl;
+    ofstream salida1 ("/home/gonzalo/salida.txt");
+    JJOO j1 = mockJJOODia1();
+    j1.guardar(salida1);
+    salida1.close();
+
+    cout << endl << endl;
+    cout << "cargano juego olimpico : " << endl;
+    ifstream salida2 ("/home/gonzalo/salida.txt");
+    JJOO j2 = JJOO();
+    j2.cargar(salida2);
+    salida2.close();
+    cout << endl << endl;
+
+    cout << "son iguales? " << ((j1 == j2) ? "True" : "False") << endl;
+
 }
 

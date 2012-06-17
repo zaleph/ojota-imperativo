@@ -48,8 +48,8 @@ int main(){
 
     //testCompetencia_guardarYCargar();
     //testAtleta_guardaryCargar();
-
-    testJJOO_guardar();
+    //testCompetencia_guardarYCargar();
+    testJJOO_guardarYCargar();
 
 
     return EXIT_SUCCESS;
