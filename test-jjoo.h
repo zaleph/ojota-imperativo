@@ -159,7 +159,7 @@ JJOO mockJJOODia3(){
 //JUEGO CON LAS COMPETENCIAS DEL DIA 4 que en realidad esta vacio
 JJOO mockJJOODia4(){
     JJOO jjoo = JJOO(2012 , mockAtletasFull() , mockCronograDia3() );
-   // jjoo._jornadaActual = 4;
+    jjoo._jornadaActual = 4;
     return jjoo;
 }
 
@@ -220,11 +220,6 @@ void testJJOO_operadorIgual(){
     JJOO jjoo2 = mockJJOO2();
 
     cout << "Son iguales? " << ( jjoo1 == jjoo2) << endl;
-}
-
-void testJJOO_stevenBradbury(){
-    JJOO jjoo = mockJJOODia1();
-    cout<< "steven: " << jjoo.stevenBradbury() << endl;
 }
 
 void testSequiaOlimpica(){
@@ -385,4 +380,13 @@ void testJJOO_guardarYCargar(){
     cout << "son iguales? " << ((j1 == j2) ? "True" : "False") << endl;
 
 }
+
+
+
+void testJJOO_stevenBradbury(){
+    JJOO jjoo = mockJJOODia5();
+
+    cout<< "steven: " << jjoo.stevenBradbury() << endl;
+}
+
 

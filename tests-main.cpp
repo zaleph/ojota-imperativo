@@ -49,7 +49,8 @@ int main(){
     //testCompetencia_guardarYCargar();
     //testAtleta_guardaryCargar();
     //testCompetencia_guardarYCargar();
-    testJJOO_guardarYCargar();
+    //testJJOO_guardarYCargar();
+    testJJOO_stevenBradbury();
 
 
     return EXIT_SUCCESS;
