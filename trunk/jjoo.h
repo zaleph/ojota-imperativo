@@ -6,8 +6,8 @@
 typedef pair<int, pair<int, int> > infoM;
 
 class JJOO{
-    public:
 
+    public:
         JJOO();
         // |cronograma|==cantDias. Si un día no hay competencias,q esté la lista vacía.
         JJOO(const int anio, const Lista<Atleta>& atletas, const Lista<Lista<Competencia> >& competenciasPorDia);
@@ -17,24 +17,18 @@ class JJOO{
         int cantDias() const;
         int jornadaActual() const;
         Lista<Competencia> cronograma(const int dia) const;
-
         Lista<Competencia> competencias() const;
         Lista<Competencia> competenciasFinalizadasConOroEnPodio() const;
-
         Lista<Atleta> dePaseo() const;
         Lista<pair<Pais,Lista<int> > > medallero() const;
         int boicotPorDisciplina(const Categoria cat, const Pais p);
         Lista<Atleta> losMasFracasados(const Pais p) const;
         void liuSong(const Atleta& a, const Pais p);
         Atleta stevenBradbury() const;
-
         bool uyOrdenadoAsiHayUnPatron() const;
-
         Lista<Pais> sequiaOlimpica() const;
         void transcurrirDia();
-
-		bool operator==(const JJOO& j) const;
-
+	bool operator==(const JJOO& j) const;
         void mostrar(std::ostream& os) const;
 		void guardar(std::ostream& os) const;
 		void cargar (std::istream& is);
@@ -45,7 +39,6 @@ class JJOO{
         Lista<Lista<Competencia> > _competenciasPorDia;         // En la i-ésima posición de la lista, las competencias del día i+1.
         int _jornadaActual;
         enum {ENCABEZADO_ARCHIVO = 'J'};
-
         bool mismasCompetencias(Lista<Competencia> l1, Lista<Competencia> l2) const ;
         bool mismasAtletas(Lista<Atleta> l1, Lista<Atleta> l2) const ;
         Lista<Atleta> ganadoresDeCompetencias(Lista<Competencia> comps , int posicion) const;
