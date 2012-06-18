@@ -1,9 +1,8 @@
 #include <iostream>
 #include "atleta.h"
 
-
 Atleta::Atleta(){
-};
+}
 
 
 Atleta::Atleta(const string nombre,const Sexo sexo, const int anio, const Pais pais, const int ciaNumber){
@@ -13,32 +12,32 @@ Atleta::Atleta(const string nombre,const Sexo sexo, const int anio, const Pais p
     _nacionalidad = pais;
     _ciaNumber = ciaNumber;
     _deportes = Lista<pair<Deporte , int> >();
-};
+}
 
 
 string Atleta::nombre() const{
     return _nombre;
-};
+}
 
 
 Sexo Atleta::sexo() const{
     return _sexo;
-};
+}
 
 
 int Atleta::anioNacimiento() const{
     return _anioNacimiento;
-};
+}
 
 
 Pais Atleta::nacionalidad() const{
     return _nacionalidad;
-};
+}
 
 
 int Atleta::ciaNumber() const{
     return _ciaNumber;
-};
+}
 
 
 Lista<Deporte> Atleta::deportes() const{
@@ -50,7 +49,7 @@ Lista<Deporte> Atleta::deportes() const{
         i++;
     }
     return deportesList;
-};
+}
 
 
 int Atleta::capacidad(const Deporte d) const{
@@ -59,7 +58,7 @@ int Atleta::capacidad(const Deporte d) const{
         i++;
     }
     return _deportes.iesimo(i).second;
-};
+}
 
 
 void Atleta::entrenarNuevoDeporte(const Deporte deporte, const int capacidad){
@@ -71,15 +70,9 @@ void Atleta::entrenarNuevoDeporte(const Deporte deporte, const int capacidad){
         _deportes.agregar(par);
     } else{
         if(!deportes().pertenece(deporte)){
-            //string d1 = _deportes.cabeza().first;
-            //string d2 = deporte;
-            //while (_deportes.longitud() != 0 && d1<d2){
             while (_deportes.longitud() != 0 && _deportes.cabeza().first<deporte){
                 nuevaLista.agregarAtras(_deportes.cabeza());
                 _deportes.eliminarPosicion(0);
-               // if (_deportes.longitud() != 0){
-               //     d1 = _deportes.cabeza().first;
-               // }
             }
             nuevaLista.agregarAtras(par);
             nuevaLista.concatenar(_deportes);
@@ -111,7 +104,7 @@ void Atleta::mostrar(std::ostream& os) const{
     << "Nacionalidad: " << nacionalidad() << endl
     << "Año Nacimiento: " << anioNacimiento() << endl
     << "Deportes: " << deportes();
-};
+}
 
 
 void Atleta::guardar(std::ostream& o) const{
@@ -132,7 +125,7 @@ void Atleta::guardar(std::ostream& o) const{
         }
     }
     o << "]";
-};
+}
 
 
 void Atleta::cargar (std::istream& is){
@@ -203,11 +196,10 @@ void Atleta::cargar (std::istream& is){
         getline(is , temp , ']');
     }
 
-};
+}
 
 
 std::ostream & operator<<(std::ostream & os,const Atleta & a){
     a.mostrar(os);
     return os;
-};
-
+}

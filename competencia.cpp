@@ -6,24 +6,24 @@ Competencia::Competencia(){
     _finalizada = false;
     _categoria = pair<Deporte, Sexo>();
     _participantes = Lista<Atleta>();
-};
+}
 
 
 Competencia::Competencia(const Deporte d, const Sexo s, const Lista<Atleta>& participantes){
     _finalizada = false;
     _categoria = pair<Deporte, Sexo>(d,s);
     _participantes = participantes;
-};
+}
 
 
 Categoria Competencia::categoria() const{
     return _categoria;
-};
+}
 
 
 Lista<Atleta> Competencia::participantes() const{
     return _participantes;
-};
+}
 
 
 bool Competencia::finalizada() const{
@@ -33,7 +33,7 @@ bool Competencia::finalizada() const{
 
 Lista<Atleta> Competencia::ranking() const{
     return findAtletasByCia(_ranking);
-};
+}
 
 
 Lista<Atleta> Competencia::lesTocoControlAntidoping() const{
@@ -45,7 +45,7 @@ Lista<Atleta> Competencia::lesTocoControlAntidoping() const{
         i++;
     }
     return atletas;
-};
+}
 
 
 bool Competencia::leDioPositivo(const Atleta& a) const{
@@ -54,20 +54,20 @@ bool Competencia::leDioPositivo(const Atleta& a) const{
         i++;
 
     return _controlAntidoping.iesimo(i).second;
-};
+}
 
 
 void Competencia::finalizar(const Lista<int>& posiciones, const Lista<pair<int, bool> >& control){
     _ranking = posiciones;
     _controlAntidoping = control;
     _finalizada = true;
-};
+}
 
 
 void Competencia::linfordChristie(const int ciaNum){
     Atleta linford = findAtletaByCiaNumber(ciaNum);
     _participantes.sacar(linford);
-};
+}
 
 
 bool Competencia::gananLosMasCapaces() const{
@@ -90,7 +90,7 @@ bool Competencia::gananLosMasCapaces() const{
         }
     }
     return res;
-};
+}
 
 
 void Competencia::sancionarTramposos(){
@@ -102,7 +102,7 @@ void Competencia::sancionarTramposos(){
         }
         atletaIndex++;
     }
-};
+}
 
 
 bool Competencia::operator==(const Competencia& c) const{
@@ -120,7 +120,7 @@ bool Competencia::operator==(const Competencia& c) const{
         }
     }
     return result;
-};
+}
 
 
 void Competencia::mostrar(std::ostream& os) const{
@@ -135,7 +135,7 @@ void Competencia::mostrar(std::ostream& os) const{
          << (categoria().second == Masculino? "Masculino":"Femenino") << " )" << endl
         << "Finalizada: False" << endl << "Participantes: " << participantes();
     }
-};
+}
 
 
 void Competencia::guardar(std::ostream& os) const{
@@ -196,8 +196,7 @@ void Competencia::guardar(std::ostream& os) const{
     }else {
         os << "[] []";
     }
-
-};
+}
 
 
 void Competencia::cargar (std::istream& is){
@@ -277,18 +276,13 @@ void Competencia::cargar (std::istream& is){
         }
 
         _ranking = cias;
-
-
     }else{
         getline(is , temp, ']');
     }
-
-
     //leo hasta el "[" que indica el comienzo de la lista de ranking y lo descarto
     getline(is , temp , '[');
 
     if( is.peek() != ']' ){
-
         //inicializamos el dummy con basura
         dummy = is.peek();
         int ciaNumber;
@@ -311,21 +305,17 @@ void Competencia::cargar (std::istream& is){
             //leemos el "," o "]"
             is >> dummy;
         }
-
         _controlAntidoping = control;
-
     }else{
         getline(is , temp, ']');
     }
-
-
-};
+}
 
 
 std::ostream & operator<<(std::ostream & os,const Competencia & c){
     c.mostrar(os);
     return os;
-};
+}
 
 
 void Competencia::printControl(std::ostream& os) const {
@@ -355,7 +345,6 @@ bool Competencia::mismasAtletas(Lista<Atleta> l1, Lista<Atleta> l2) const {
 }
 
 
-
 Atleta Competencia::findAtletaByCiaNumber(int ciaNumber) const {
     Atleta atleta;
     int atletaIndex = 0;
@@ -369,7 +358,6 @@ Atleta Competencia::findAtletaByCiaNumber(int ciaNumber) const {
     }
     return atleta;
 }
-
 
 
 Lista<Atleta> Competencia::findAtletasByCia(Lista<int> cias) const {

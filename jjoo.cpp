@@ -5,7 +5,7 @@
 JJOO::JJOO(){
     _atletas = Lista<Atleta>();
     _competenciasPorDia = Lista<Lista<Competencia> >();
-};
+}
 
 
 JJOO::JJOO(const int anio, const Lista<Atleta>& atletas, const Lista<Lista<Competencia> >& competenciasPorDia){
@@ -13,33 +13,33 @@ JJOO::JJOO(const int anio, const Lista<Atleta>& atletas, const Lista<Lista<Compe
     _atletas = atletas;
     _competenciasPorDia = competenciasPorDia;
     _jornadaActual = 1;
-};
+}
 
 
 int JJOO::anio() const{
     return _anio;
-};
+}
 
 
 Lista<Atleta> JJOO::atletas() const{
     return _atletas;
-};
+}
 
 
 int JJOO::cantDias() const{
     return _competenciasPorDia.longitud();
-};
+}
 
 
 int JJOO::jornadaActual() const{
     return _jornadaActual;
-};
+}
 
 
 Lista<Competencia> JJOO::cronograma(const int dia) const{
     int indexDia = dia-1;
     return _competenciasPorDia.iesimo(indexDia);
-};
+}
 
 
 Lista<Competencia> JJOO::competencias() const{
@@ -50,7 +50,7 @@ Lista<Competencia> JJOO::competencias() const{
         i++;
     }
     return comps;
-};
+}
 
 
 Lista<Competencia> JJOO::competenciasFinalizadasConOroEnPodio() const{
@@ -72,7 +72,7 @@ Lista<Competencia> JJOO::competenciasFinalizadasConOroEnPodio() const{
         }
     }
     return compsConOro;
-};
+}
 
 
 Lista<Atleta> JJOO::dePaseo() const{
@@ -86,7 +86,7 @@ Lista<Atleta> JJOO::dePaseo() const{
         i++;
     }
     return paseadores;
-};
+}
 
 
 Lista<pair<Pais,Lista<int> > > JJOO::medallero() const{
@@ -122,7 +122,7 @@ Lista<pair<Pais,Lista<int> > > JJOO::medallero() const{
         i++;
     }
     return medallasDePaises;
-};
+}
 
 
 int JJOO::boicotPorDisciplina(const Categoria cat, const Pais p){
@@ -204,7 +204,7 @@ int JJOO::boicotPorDisciplina(const Categoria cat, const Pais p){
     sacados = atletasSacados.longitud();
 
     return sacados;
-};
+}
 
 
 Lista<Atleta> JJOO::losMasFracasados(const Pais p) const{
@@ -220,8 +220,6 @@ Lista<Atleta> JJOO::losMasFracasados(const Pais p) const{
     }
     return noGanaronMedallasYUltraParticipan;
 }
-
-
 
 
 void JJOO::liuSong(const Atleta& a, const Pais p){
@@ -314,7 +312,7 @@ void JJOO::liuSong(const Atleta& a, const Pais p){
     }
 
     _competenciasPorDia = nuevoCronograma;
-};
+}
 
 
 Atleta JJOO::stevenBradbury() const{
@@ -340,8 +338,7 @@ Atleta JJOO::stevenBradbury() const{
     }
 
     return steven;
-};
-
+}
 
 
 Pais obtegerElMejorPais(Lista<Pais> paises ){
@@ -365,6 +362,7 @@ Pais obtegerElMejorPais(Lista<Pais> paises ){
     return pais;
 }
 
+
 Pais mejorPaisDeCompetencias(Lista<Competencia> comps){
 
     Lista<Pais> paises = Lista<Pais>();
@@ -382,6 +380,7 @@ Pais mejorPaisDeCompetencias(Lista<Competencia> comps){
     }
     return obtegerElMejorPais(paises);
 }
+
 
 bool JJOO::uyOrdenadoAsiHayUnPatron() const{
 
@@ -432,7 +431,7 @@ bool JJOO::uyOrdenadoAsiHayUnPatron() const{
 
 
     return comparacionOk;
-};
+}
 
 
 Lista<Pais> JJOO::sequiaOlimpica() const{
@@ -456,7 +455,7 @@ Lista<Pais> JJOO::sequiaOlimpica() const{
         }
     }
     return secosOlimpicos;
-};
+}
 
 
 void JJOO::transcurrirDia(){
@@ -505,7 +504,7 @@ bool JJOO::operator==(const JJOO& j) const{
     }
 
     return result;
-};
+}
 
 
 void JJOO::mostrar(std::ostream& os) const {
@@ -513,7 +512,7 @@ void JJOO::mostrar(std::ostream& os) const {
     << "Atletas: " << atletas() << endl
     << "Cantidad de días: " << cantDias() << endl
     << "Jornada actual: " << jornadaActual();
-};
+}
 
 
 void JJOO::guardar(std::ostream& os) const {
@@ -555,7 +554,7 @@ void JJOO::guardar(std::ostream& os) const {
     os << "]";
 
     /**/
-};
+}
 
 
 void JJOO::cargar (std::istream& is) {
@@ -643,15 +642,13 @@ void JJOO::cargar (std::istream& is) {
     }
 
 
-};
+}
 
 
 std::ostream & operator<<(std::ostream & os,const JJOO & j){
     j.mostrar(os);
     return os;
-};
-
-
+}
 
 
 bool JJOO::mismasCompetencias(Lista<Competencia> l1, Lista<Competencia> l2) const {
@@ -664,6 +661,7 @@ bool JJOO::mismasCompetencias(Lista<Competencia> l1, Lista<Competencia> l2) cons
     }
     return iguales;
 }
+
 
 bool JJOO::mismasAtletas(Lista<Atleta> l1, Lista<Atleta> l2) const {
     bool iguales = (l1.longitud() == l2.longitud()) ;
@@ -694,6 +692,7 @@ Lista<Atleta> JJOO::ganadoresDeCompetencias(Lista<Competencia> comps , int posic
     return atletas;
 }
 
+
 Lista<Pais> JJOO::paisesUnicosDeAtletas(Lista<Atleta> atletas) const{
     Lista<Pais> nacionalidades = Lista<Pais>();
     int i = 0;
@@ -708,7 +707,6 @@ Lista<Pais> JJOO::paisesUnicosDeAtletas(Lista<Atleta> atletas) const{
     }
     return nacionalidades;
 }
-
 
 
 Lista<int> JJOO::diasConMedalla(Pais p) const{
@@ -731,7 +729,6 @@ Lista<int> JJOO::diasConMedalla(Pais p) const{
     diasQueGanoMedalla.agregarAtras(jornadaActual());
     return diasQueGanoMedalla;
 }
-
 
 
 Lista<int> JJOO::diferenciaEntreConsecutivos(Lista<int> enteros) const{
@@ -763,7 +760,6 @@ int JJOO::maximoEnteros(Lista<int> enteros) const {
 }
 
 
-
 int JJOO::maxDiasSinMedalla() const{
     Lista<int> maxSequiaPorPais = Lista<int>();
     Lista<Pais> paises = paisesUnicosDeAtletas(atletas());
@@ -779,8 +775,6 @@ int JJOO::maxDiasSinMedalla() const{
     max = maximoEnteros(maxSequiaPorPais);
     return max;
 }
-
-
 
 
 Lista<Atleta> JJOO::medallistas(int posicion) const{
@@ -813,7 +807,6 @@ Lista<Atleta> JJOO::filtrarAtletasPorPais(Lista<Atleta> atls, Pais p) const{
 }
 
 
-
 Lista<pair<Pais,Lista<int> > > JJOO::agregarOrdenado(Lista<pair<Pais,Lista<int> > > l , pair<Pais,Lista<int> > par) const{
     Lista<pair<Pais,Lista<int> > > listadoOrdenado = Lista<pair<Pais,Lista<int> > >();
 
@@ -829,7 +822,6 @@ Lista<pair<Pais,Lista<int> > > JJOO::agregarOrdenado(Lista<pair<Pais,Lista<int> 
     }
     return listadoOrdenado;
 }
-
 
 
 Lista<int> JJOO::capacidades (Lista<Atleta> atlets , Deporte sport) const{
@@ -875,6 +867,7 @@ Lista<Atleta> JJOO::atletasParticipantesUnicos () const{
     return ats;
 }
 
+
 Lista<Atleta> JJOO::atletasParticipantes () const{
     Lista<Atleta> ats = Lista<Atleta>();
     Lista<Competencia> comps = competencias();
@@ -886,6 +879,7 @@ Lista<Atleta> JJOO::atletasParticipantes () const{
     }
     return ats;
 }
+
 
 Lista<Atleta> JJOO::ultraParticipan (Lista<Atleta> ats) const {
 
@@ -916,6 +910,7 @@ Lista<int> JJOO::participacion (Lista<Atleta> ats) const {
     return apariciones;
 }
 
+
 Lista<Atleta> JJOO::medallistasDelJuego() const{
     Lista <Atleta> ats = Lista<Atleta>();
     int i = 0;
@@ -938,6 +933,7 @@ Lista<Atleta> JJOO::medallistasDelJuego() const{
     return ats;
 }
 
+
 Lista<Atleta> JJOO::noGanaronMedallas(Lista<Atleta> ats) const{
     Lista<Atleta> atsRes = Lista<Atleta>();
     int i=0;
@@ -950,5 +946,3 @@ Lista<Atleta> JJOO::noGanaronMedallas(Lista<Atleta> ats) const{
     }
     return atsRes;
 }
-
-
