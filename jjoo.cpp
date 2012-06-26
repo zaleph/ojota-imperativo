@@ -341,7 +341,7 @@ Atleta JJOO::stevenBradbury() const{
 }
 
 
-Pais obtegerElMejorPais(Lista<Pais> paises ){
+Pais JJOO::obtegerElMejorPais(Lista<Pais> paises ) const{
 
     int i=0;
     int cant= 0;
@@ -363,7 +363,7 @@ Pais obtegerElMejorPais(Lista<Pais> paises ){
 }
 
 
-Pais mejorPaisDeCompetencias(Lista<Competencia> comps){
+Pais JJOO::mejorPaisDeCompetencias(Lista<Competencia> comps) const{
 
     Lista<Pais> paises = Lista<Pais>();
     int i=0;
@@ -460,33 +460,44 @@ Lista<Pais> JJOO::sequiaOlimpica() const{
 
 void JJOO::transcurrirDia(){
     Lista<Competencia> comps = cronograma(jornadaActual());
-    bool eval = true;
     int i = 0;
-    while (i<comps.longitud() && eval){
+    while (i<comps.longitud()){
+
         Competencia comp = comps.iesimo(i);
-        Categoria cat =comp.categoria();
-        Deporte d = cat.first;
-        if (comp.finalizada() && mismasAtletas(comp.ranking(),comp.participantes())){
-            Lista <Atleta> posiciones = comp.ranking();
-            posiciones.darVuelta();
-            if (ordenado(capacidades(posiciones,d))){
-                if (comp.ranking().longitud()>=1){
-                    eval = comp.lesTocoControlAntidoping().longitud()==1;
-                } else {
-                    eval = true;
-                }
-            } else {
-                eval = false;
+
+        if (!comp.finalizada()){
+
+            Categoria cat = comp.categoria();
+
+            Deporte d = cat.first;
+
+            Lista <Atleta> posiciones = Lista<Atleta>();
+            Lista <int> posicionesPorCia = Lista <int>();
+            Lista<pair<int,bool> > controlAntidoping = Lista<pair<int,bool> >();
+            pair<int, bool> par = pair<int, bool>();
+
+            int j = 0;
+            while (i<comp.participantes().longitud()){
+                //ordeno de mayor capacidad a menor capacidad
+                posiciones = agregarOrdenadoPorCapacidad(comp.participantes(),comp.participantes().iesimo(j),d) ;
+                j++;
             }
-        } else {
-            eval = false;
+
+            int k = 0;
+            while (k<posiciones.longitud()){
+                posicionesPorCia.agregarAtras(posiciones.iesimo(k).ciaNumber());
+            }
+
+            if (posicionesPorCia.longitud()>=1){
+                par = make_pair(posicionesPorCia.cabeza() , false);
+                controlAntidoping.agregarAtras(par);
+            }
+
+            comp.finalizar(posicionesPorCia , controlAntidoping);
         }
         i++;
     }
-
-    if (eval) {
-        _jornadaActual = _jornadaActual+1;
-    }
+    _jornadaActual = _jornadaActual+1;
 }
 
 
@@ -810,7 +821,7 @@ Lista<Atleta> JJOO::filtrarAtletasPorPais(Lista<Atleta> atls, Pais p) const{
 Lista<pair<Pais,Lista<int> > > JJOO::agregarOrdenado(Lista<pair<Pais,Lista<int> > > l , pair<Pais,Lista<int> > par) const{
     Lista<pair<Pais,Lista<int> > > listadoOrdenado = Lista<pair<Pais,Lista<int> > >();
 
-    if (l.longitud()==0){
+    if (listadoOrdenado.longitud()==0){
         listadoOrdenado.agregarAtras(par);
     } else {
         while( (l.longitud()!=0) && ( (l.cabeza().second.iesimo(0)>par.second.iesimo(0) ) || (l.cabeza().second.iesimo(0)==par.second.iesimo(0) && l.cabeza().second.iesimo(1)>par.second.iesimo(1) ) || (l.cabeza().second.iesimo(0)==par.second.iesimo(0) && l.cabeza().second.iesimo(1)==par.second.iesimo(1) && l.cabeza().second.iesimo(2)>=par.second.iesimo(2) ))){
@@ -824,6 +835,25 @@ Lista<pair<Pais,Lista<int> > > JJOO::agregarOrdenado(Lista<pair<Pais,Lista<int> 
 }
 
 
+
+Lista<Atleta> JJOO::agregarOrdenadoPorCapacidad(Lista<Atleta> l , Atleta a , Deporte d) const{
+    Lista<Atleta> listadoOrdenado = Lista<Atleta>();
+
+    if (listadoOrdenado.longitud()==0){
+        listadoOrdenado.agregarAtras(a);
+    } else {
+        while( l.longitud() != 0 && l.cabeza().capacidad(d) > a.capacidad(d)){
+            listadoOrdenado.agregarAtras(l.cabeza());
+            l.eliminarPosicion(0);
+        }
+        listadoOrdenado.agregarAtras(a);
+        listadoOrdenado.concatenar(l);
+    }
+    return listadoOrdenado;
+}
+
+
+/*
 Lista<int> JJOO::capacidades (Lista<Atleta> atlets , Deporte sport) const{
     Lista<int> cap = Lista<int>();
     int i = 0;
@@ -834,8 +864,9 @@ Lista<int> JJOO::capacidades (Lista<Atleta> atlets , Deporte sport) const{
     }
     return cap;
 }
+*/
 
-
+/*
  bool JJOO::ordenado (Lista<int> lista1 ) const{
     int i = 0;
     bool eval = true;
@@ -845,6 +876,7 @@ Lista<int> JJOO::capacidades (Lista<Atleta> atlets , Deporte sport) const{
     }
     return eval;
 }
+*/
 
 
 Lista<Atleta> JJOO::atletasParticipantesUnicos () const{
@@ -945,4 +977,34 @@ Lista<Atleta> JJOO::noGanaronMedallas(Lista<Atleta> ats) const{
         i++;
     }
     return atsRes;
+}
+
+Lista<Deporte> JJOO::deportesNoOlimpicos() const{
+
+    Lista<Deporte> deportesQuePractican = Lista<Deporte>();
+    int i = 0;
+    while (i<atletas().longitud()){
+        Atleta a = atletas().iesimo(i);
+        int j = 0;
+        while (j<a.deportes().longitud()){
+            if (!deportesQuePractican.pertenece(a.deportes().iesimo(j))){
+                deportesQuePractican.agregarAtras(a.deportes().iesimo(j));
+            }
+            j++;
+        }
+        i++;
+    }
+
+    int k=0;
+    while (k<competencias().longitud()){
+        Competencia comp = competencias().iesimo(k);
+        Categoria cat = comp.categoria();
+
+        if (deportesQuePractican.pertenece(cat.first)){
+            deportesQuePractican.sacar(cat.first);
+        }
+        k++;
+    }
+
+    return deportesQuePractican;
 }

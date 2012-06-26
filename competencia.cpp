@@ -369,3 +369,12 @@ Lista<Atleta> Competencia::findAtletasByCia(Lista<int> cias) const {
     }
     return atletas;
 }
+
+
+void Competencia::clasificoTarde(const Atleta& a){
+    Deporte d = categoria().first;
+    Sexo s = categoria().second;
+    if (a.deportes().pertenece(d) && a.sexo() == s){
+        _participantes.agregarAtras(a);
+    }
+}
