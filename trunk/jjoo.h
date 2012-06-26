@@ -28,7 +28,10 @@ class JJOO{
         bool uyOrdenadoAsiHayUnPatron() const;
         Lista<Pais> sequiaOlimpica() const;
         void transcurrirDia();
-	bool operator==(const JJOO& j) const;
+        Lista<Deporte> deportesNoOlimpicos() const;
+
+        bool operator==(const JJOO& j) const;
+
         void mostrar(std::ostream& os) const;
 		void guardar(std::ostream& os) const;
 		void cargar (std::istream& is);
@@ -50,14 +53,20 @@ class JJOO{
         Lista<Atleta> medallistas(int posicion) const;
         Lista<Atleta> filtrarAtletasPorPais(Lista<Atleta> atls, Pais p) const;
         Lista<pair<Pais,Lista<int> > > agregarOrdenado(Lista<pair<Pais,Lista<int> > > l , pair<Pais,Lista<int> > par) const;
-        Lista<int> capacidades (Lista<Atleta> atlets , Deporte sport) const;
-        bool ordenado (Lista<int> lista1 ) const;
+        Lista<Atleta> agregarOrdenadoPorCapacidad(Lista<Atleta> l , Atleta a , Deporte d) const;
+        //Lista<int> capacidades (Lista<Atleta> atlets , Deporte sport) const;
+        //bool ordenado (Lista<int> lista1 ) const;
         Lista<Atleta> atletasParticipantesUnicos () const;
         Lista<Atleta> atletasParticipantes () const;
         Lista<Atleta> ultraParticipan (Lista<Atleta> ats) const;
         Lista<int> participacion (Lista<Atleta> ats) const;
         Lista<Atleta> medallistasDelJuego() const;
         Lista<Atleta> noGanaronMedallas(Lista<Atleta> ats) const;
+        Pais obtegerElMejorPais(Lista<Pais> paises) const;
+        Pais mejorPaisDeCompetencias(Lista<Competencia> comps) const;
+
+
+
 };
 
 std::ostream & operator<<(std::ostream & os,const JJOO & j);
