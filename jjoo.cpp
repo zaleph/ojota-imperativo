@@ -614,7 +614,7 @@ void JJOO::cargar (std::istream& is) {
         //buscamos el "["
         is >> dummy;
 
-        cout << "leyendo lista de competencias" << endl;
+        //cout << "leyendo lista de competencias" << endl;
 
         //si la lista de competencias no esta vacia
         if(is.peek() != ']'){
@@ -628,7 +628,7 @@ void JJOO::cargar (std::istream& is) {
                 comp.cargar(is);
                 comps.agregarAtras(comp);
 
-                cout << "agregando competencia" << endl;
+                //cout << "agregando competencia" << endl;
 
                 //buscamos el ")"
                 is >> dummy;
@@ -643,7 +643,7 @@ void JJOO::cargar (std::istream& is) {
 
         _competenciasPorDia.agregarAtras(comps);
 
-        cout << "agregando lista de competencias " << endl;
+        //cout << "agregando lista de competencias " << endl;
 
         //buscamos el "]"
         is >> dummy;
