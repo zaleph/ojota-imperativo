@@ -65,6 +65,7 @@ class JJOO{
         Pais obtegerElMejorPais(Lista<Pais> paises) const;
         Pais mejorPaisDeCompetencias(Lista<Competencia> comps) const;
 
+        Lista<Deporte> deportesQuePractican() const;
 
 
 };

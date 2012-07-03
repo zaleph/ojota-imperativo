@@ -979,32 +979,38 @@ Lista<Atleta> JJOO::noGanaronMedallas(Lista<Atleta> ats) const{
     return atsRes;
 }
 
-Lista<Deporte> JJOO::deportesNoOlimpicos() const{
 
-    Lista<Deporte> deportesQuePractican = Lista<Deporte>();
+Lista<Deporte> JJOO::deportesQuePractican() const {
+    Lista<Deporte> deps = Lista<Deporte>();
     int i = 0;
     while (i<atletas().longitud()){
         Atleta a = atletas().iesimo(i);
         int j = 0;
         while (j<a.deportes().longitud()){
-            if (!deportesQuePractican.pertenece(a.deportes().iesimo(j))){
-                deportesQuePractican.agregarAtras(a.deportes().iesimo(j));
+            if (!deps.pertenece(a.deportes().iesimo(j))){
+                deps.agregarAtras(a.deportes().iesimo(j));
             }
             j++;
         }
         i++;
     }
+    return deps;
+}
+
+Lista<Deporte> JJOO::deportesNoOlimpicos() const{
+
+    Lista<Deporte> deps = deportesQuePractican();
 
     int k=0;
     while (k<competencias().longitud()){
         Competencia comp = competencias().iesimo(k);
         Categoria cat = comp.categoria();
 
-        if (deportesQuePractican.pertenece(cat.first)){
-            deportesQuePractican.sacar(cat.first);
+        if (deps.pertenece(cat.first)){
+            deps.sacar(cat.first);
         }
         k++;
     }
 
-    return deportesQuePractican;
+    return deps;
 }
