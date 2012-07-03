@@ -477,7 +477,7 @@ void JJOO::transcurrirDia(){
             pair<int, bool> par = pair<int, bool>();
 
             int j = 0;
-            while (i<comp.participantes().longitud()){
+            while (j<comp.participantes().longitud()){
                 //ordeno de mayor capacidad a menor capacidad
                 posiciones = agregarOrdenadoPorCapacidad(comp.participantes(),comp.participantes().iesimo(j),d) ;
                 j++;
