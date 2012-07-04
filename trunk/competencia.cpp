@@ -107,14 +107,17 @@ void Competencia::sancionarTramposos(){
 
 bool Competencia::operator==(const Competencia& c) const{
 
-    bool result = mismasAtletas(c.participantes() , participantes()) && c.categoria() == categoria() && c.finalizada() == finalizada();
+    bool result = mismasAtletas(c.participantes() , participantes())
+    	&& c.categoria() == categoria() && c.finalizada() == finalizada();
 
     if(result && finalizada()){
-        result = c.ranking() == ranking() && mismasAtletas(c.lesTocoControlAntidoping(),lesTocoControlAntidoping());
+        result = c.ranking() == ranking()
+        	&& mismasAtletas(c.lesTocoControlAntidoping(),lesTocoControlAntidoping());
         if(result){
             int i = 0;
             while( i < c.lesTocoControlAntidoping().longitud() && result){
-                result = result && c.leDioPositivo(c.lesTocoControlAntidoping().iesimo(i))==leDioPositivo(c.lesTocoControlAntidoping().iesimo(i));
+                result = result && c.leDioPositivo(c.lesTocoControlAntidoping().iesimo(i))
+                		== leDioPositivo(c.lesTocoControlAntidoping().iesimo(i));
                 i++;
             }
         }
@@ -139,7 +142,8 @@ void Competencia::mostrar(std::ostream& os) const{
 
 
 void Competencia::guardar(std::ostream& os) const{
-    os << (char) ENCABEZADO_ARCHIVO << " (|" << categoria().first << "|, |" << ((categoria().second == Masculino)? "Masculino" : "Femenino") << "|) |"
+    os << (char) ENCABEZADO_ARCHIVO << " (|" << categoria().first << "|, |"
+    << ((categoria().second == Masculino)? "Masculino" : "Femenino") << "|) |"
     << ( finalizada()? "True" : "False") << "| ";
 
     os << "[" ;

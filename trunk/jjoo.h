@@ -9,8 +9,9 @@ class JJOO{
 
     public:
         JJOO();
-        // |cronograma|==cantDias. Si un día no hay competencias,q esté la lista vacía.
-        JJOO(const int anio, const Lista<Atleta>& atletas, const Lista<Lista<Competencia> >& competenciasPorDia);
+        
+        JJOO(const int anio, const Lista<Atleta>& atletas, 
+        	const Lista<Lista<Competencia> >& competenciasPorDia);
 
         int anio() const;
         Lista<Atleta> atletas() const;
@@ -39,7 +40,7 @@ class JJOO{
     private:
         int _anio;
         Lista<Atleta> _atletas;
-        Lista<Lista<Competencia> > _competenciasPorDia;         // En la i-ésima posición de la lista, las competencias del día i+1.
+        Lista<Lista<Competencia> > _competenciasPorDia;         
         int _jornadaActual;
         enum {ENCABEZADO_ARCHIVO = 'J'};
         bool mismasCompetencias(Lista<Competencia> l1, Lista<Competencia> l2) const ;
@@ -52,7 +53,8 @@ class JJOO{
         int maxDiasSinMedalla() const;
         Lista<Atleta> medallistas(int posicion) const;
         Lista<Atleta> filtrarAtletasPorPais(Lista<Atleta> atls, Pais p) const;
-        Lista<pair<Pais,Lista<int> > > agregarOrdenado(Lista<pair<Pais,Lista<int> > > l , pair<Pais,Lista<int> > par) const;
+        Lista<pair<Pais,Lista<int> > > agregarOrdenado(Lista<pair<Pais,Lista<int> > > l , 
+        	pair<Pais,Lista<int> > par) const;
         Lista<Atleta> agregarOrdenadoPorCapacidad(Lista<Atleta> l , Atleta a , Deporte d) const;
         Lista<Atleta> atletasParticipantesUnicos () const;
         Lista<Atleta> atletasParticipantes () const;
