@@ -10,7 +10,7 @@ Atleta atletaProdigio(const JJOO & j) {
     Atleta a = j.competenciasFinalizadasConOroEnPodio().cabeza().ranking().iesimo(0);
     int i= 1;
 
-    // Vale Pc: |competenciasConOroEnPodio(j)| > 0 && i == 1 && a == cab ([cab(ranking(c)) | c <- competenciasConOroEnPodio(j)]);
+    // Vale Pc: |competenciasConOroEnPodio(j)| > 0 && i == 1 && |competenciasConOroEnPodio(j)| >0 && a == cab ([campeon(c)| c <- competenciasConOroEnPodio(j)]);
 	// Implica  1 <= i <= |competenciasConOroEnPodio|;
 	// Implica  (∀c ∈ competenciasConOroEnPodio(j)[0..1)) añoNacimiento(a) >= añoNacimiento(campeon(c));
 	// Implica  1 <= i <= |competenciasConOroEnPodio| && esCampeon(a,j) && (∀c ∈ competenciasConOroEnPodio(j)[0..i)) añoNacimiento(a) >= añoNacimiento(campeon(c));
@@ -72,17 +72,32 @@ Atleta atletaProdigio(const JJOO & j) {
 		// Luego, I && (V <= C) -> ¬B.
     }
 
-
-
+    // Vale Qc: i == |competenciasConOroEnPodio(j)| && esCampeon(a,j) && (∀c ∈ competenciasConOroEnPodio(j)) añoNacimiento(a) >= añoNacimiento(campeon(c));
+	// Vale     I && ¬B
+	// Implica  1 <= i <= |competenciasConOroEnPodio(j)| && esCampeon(a,j) && ((∀c ∈ competenciasConOroEnPodio(j)[0..i)) añoNacimiento(a) >= añoNacimiento(campeon(c))) &&
+	//          ¬(i < |competenciasConOroEnPodio(j)|)
+	// Implica  i >= |competenciasConOroEnPodio(j)|
+	// Implica  i == |competenciasConOroEnPodio(j)|
+	// Implica  (∀c ∈ competenciasConOroEnPodio(j)[0..|competenciasConOroEnPodio(j)|)) añoNacimiento(a) >= añoNacimiento(campeon(c))
+	// Implica  (∀c ∈ competenciasConOroEnPodio(j)) añoNacimiento(a) >= añoNacimiento(campeon(c))
+	// Implica  i == |competenciasConOroEnPodio(j)| && esCampeon(a,j) && (∀c ∈ competenciasConOroEnPodio(j)) añoNacimiento(a) >= añoNacimiento(campeon(c))
+	//
+	// Luego, (I && ¬B) -> Qc.
 
     return a;
 
+	// Vale      result == a
+	// Implica   esCampeon(result,j) && (∀c ∈ competenciasConOroEnPodio(j)) añoNacimiento(result) >= añoNacimiento(campeon(c))
 
+//PARA MI TODO ESTO NO VA
+	// Implica   result ∈ [cab(ranking(c)) | c <- competencias(j), finalizada(c) && |ranking(c)| > 0] &&
+	//          (∀c ∈ [cab(ranking(c)) | c <- competencias(j), finalizada(c) && |ranking(c)| > 0])
+	//               añoNacimiento(result) >= añoNacimiento(c)
 
-
-
-
-
+	// Implica ((∃c ∈ [cab(ranking(c)) | c <- competencias(j), finalizada(c) && |ranking(c)| > 0])
+	//               result == cab(ranking(c))) &&
+	//         ((∀c ∈ [cab(ranking(c)) | c <- competencias(j), finalizada(c) && |ranking(c)| > 0])
+	//               añoNacimiento(result) >= añoNacimiento(c))
 
 
 }
