@@ -19,7 +19,7 @@ Atleta atletaProdigio(const JJOO & j) {
     while (i<j.competenciasFinalizadasConOroEnPodio().longitud()){
         // Guarda B: i < |competenciasConOroEnPodio(j)|
         // Invariante I: 1 <= i <= |competenciasConOroEnPodio(j)| && esCampeon(a,j) && (∀c ∈ competenciasConOroEnPodio(j)[0..i)) añoNacimiento(a) >= añoNacimiento(campeon(c));
-		// Variante V: |compentenciasConOroEnPodio(j)| - i;
+		// Variante V: |competenciasConOroEnPodio(j)| - i;
 		// Cota C: 0;
 
 		// Estado E1;
@@ -88,18 +88,6 @@ Atleta atletaProdigio(const JJOO & j) {
 
 	// Vale      result == a
 	// Implica   esCampeon(result,j) && (∀c ∈ competenciasConOroEnPodio(j)) añoNacimiento(result) >= añoNacimiento(campeon(c))
-
-//PARA MI TODO ESTO NO VA
-	// Implica   result ∈ [cab(ranking(c)) | c <- competencias(j), finalizada(c) && |ranking(c)| > 0] &&
-	//          (∀c ∈ [cab(ranking(c)) | c <- competencias(j), finalizada(c) && |ranking(c)| > 0])
-	//               añoNacimiento(result) >= añoNacimiento(c)
-
-	// Implica ((∃c ∈ [cab(ranking(c)) | c <- competencias(j), finalizada(c) && |ranking(c)| > 0])
-	//               result == cab(ranking(c))) &&
-	//         ((∀c ∈ [cab(ranking(c)) | c <- competencias(j), finalizada(c) && |ranking(c)| > 0])
-	//               añoNacimiento(result) >= añoNacimiento(c))
-
-
 }
 
 int main()
