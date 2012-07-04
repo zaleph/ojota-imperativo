@@ -54,8 +54,6 @@ class JJOO{
         Lista<Atleta> filtrarAtletasPorPais(Lista<Atleta> atls, Pais p) const;
         Lista<pair<Pais,Lista<int> > > agregarOrdenado(Lista<pair<Pais,Lista<int> > > l , pair<Pais,Lista<int> > par) const;
         Lista<Atleta> agregarOrdenadoPorCapacidad(Lista<Atleta> l , Atleta a , Deporte d) const;
-        //Lista<int> capacidades (Lista<Atleta> atlets , Deporte sport) const;
-        //bool ordenado (Lista<int> lista1 ) const;
         Lista<Atleta> atletasParticipantesUnicos () const;
         Lista<Atleta> atletasParticipantes () const;
         Lista<Atleta> ultraParticipan (Lista<Atleta> ats) const;
@@ -64,7 +62,6 @@ class JJOO{
         Lista<Atleta> noGanaronMedallas(Lista<Atleta> ats) const;
         Pais obtegerElMejorPais(Lista<Pais> paises) const;
         Pais mejorPaisDeCompetencias(Lista<Competencia> comps) const;
-
         Lista<Deporte> deportesQuePractican() const;
         bool algunaCompetenciaTieneGanador(Lista<Competencia> comps) const ;
 
