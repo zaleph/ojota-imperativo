@@ -50,32 +50,41 @@ Atleta atletaProdigio(const JJOO & j) {
 		// Implica 1 <= i <= |competenciasConOroEnPodio(j)|
 		// Implica i@E2 == i - 1
 		// Implica (∀c ∈ competenciasConOroEnPodio(j)[0..i - 1]) añoNacimiento(a) >= añoNacimiento(campeon(c));
-		// Implica (∀c ∈ campeones[0..i)) añoNacimiento(prodigio) >= añoNacimiento(c)
-		// Implica 1 <= i <= |campeones| && prodigio ∈ campeones &&
-		//         (∀c ∈ campeones[0..i)) añoNacimiento(prodigio) >= añoNacimiento(c)
+		// Implica 1 <= i <= |competenciasConOroEnPodio(j)| && esCampeon(a) && (∀c ∈ competenciasConOroEnPodio[0..i)) añoNacimiento(a) >= añoNacimiento(campeon(c));
 		//
 		// Luego, E3 -> I.
 		//
-		// Vale    V = |campeones| - i@E3
-		// Implica V = |campeones| - (i@E1 + 1)
-		// Implica V = |campeones| - i@E1 - 1 < |campeones| - i@E1 == V@E1
+		// Vale    V = |competenciasConOroEnPodio(j)| - i@E3
+		// Implica V = |competenciasConOroEnPodio(j)| - (i@E1 + 1)
+		// Implica V = |competenciasConOroEnPodio(j)| - i@E1 - 1 < |competenciasConOroEnPodio(j)| - i@E1 == V@E1
 		//
 		// Luego, V@E3 < V@E1.
 		//
 		// Supongo V <= C.
 		// Vale    I && (V <= C)
-		// Implica 1 <= i <= |campeones| && prodigio ∈ campeones &&
-		//         ((∀c ∈ campeones[0..i)) añoNacimiento(prodigio) >= añoNacimiento(c)) &&
-		//         (|campeones| - i <= 0)
-		// Implica |campeones| <= i
-		// Implica i == |campeones|
-		// Implica ¬(i < |campeones|)
+		// Implica 1 <= i <= |competenciasConOroEnPodio(j)| && esCampeon(a,j) &&
+		//         ((∀c ∈ competenciasConOroEnPodio(j)[0..i)) añoNacimiento(a) >= añoNacimiento(campeon(c))) &&
+		//         (|competenciasConOroEnPodio(j)| - i <= 0)
+		// Implica |competenciasConOroEnPodio(j)| <= i
+		// Implica i == |competenciasConOroEnPodio(j)|
+		// Implica ¬(i < |competenciasConOroEnPodio(j)|)
 		//
 		// Luego, I && (V <= C) -> ¬B.
-
-
     }
+
+
+
+
     return a;
+
+
+
+
+
+
+
+
+
 }
 
 int main()
