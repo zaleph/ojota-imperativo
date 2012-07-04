@@ -382,6 +382,18 @@ Pais JJOO::mejorPaisDeCompetencias(Lista<Competencia> comps) const{
 }
 
 
+bool JJOO::julianis(Lista<Competencia> comps) const {
+    bool hayGanadores = false;
+    int i=0; while(i<comps.longitud() && !hayGanadores){
+        Competencia c = comps.iesimo(i);
+        if(c.ranking().longitud() >= 1)
+            hayGanadores = true;
+        i++;
+    }
+    return hayGanadores;
+}
+
+
 bool JJOO::uyOrdenadoAsiHayUnPatron() const{
 
     int dia = 1;
@@ -394,8 +406,10 @@ bool JJOO::uyOrdenadoAsiHayUnPatron() const{
 
         if( comps.longitud() != 0){
 
-            Pais p = mejorPaisDeCompetencias(comps);
-            paises.agregarAtras(p);
+            if(julianis(comps)){
+                Pais p = mejorPaisDeCompetencias(comps);
+                paises.agregarAtras(p);
+            }
         }
 
         dia++;

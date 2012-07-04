@@ -66,6 +66,7 @@ class JJOO{
         Pais mejorPaisDeCompetencias(Lista<Competencia> comps) const;
 
         Lista<Deporte> deportesQuePractican() const;
+        bool julianis(Lista<Competencia> comps) const ;
 
 
 };
