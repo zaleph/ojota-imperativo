@@ -3,6 +3,7 @@
 
 
 JJOO::JJOO(){
+	_jornadaActual = 1;
     _atletas = Lista<Atleta>();
     _competenciasPorDia = Lista<Lista<Competencia> >();
 }

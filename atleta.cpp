@@ -7,6 +7,7 @@ Atleta::Atleta(){
 
 Atleta::Atleta(const string nombre,const Sexo sexo, const int anio, 
 		const Pais pais, const int ciaNumber){
+		
     _nombre = nombre;
     _sexo = sexo;
     _anioNacimiento = anio;
