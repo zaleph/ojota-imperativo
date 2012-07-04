@@ -100,10 +100,13 @@ Lista<int> mockRankingFutbolMasc(){
 
 Lista<int> mockRankingHockeyMasc(){
     Lista<int> lista = Lista<int>();
+
+  /*
     lista.agregarAtras(5000); //primero
     lista.agregarAtras(1000); //segundo
     lista.agregarAtras(4000); //tercero
     lista.agregarAtras(3000); //cuarto
+  */
     return lista;
 }
 
