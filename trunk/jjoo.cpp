@@ -486,6 +486,7 @@ void JJOO::transcurrirDia(){
             int k = 0;
             while (k<posiciones.longitud()){
                 posicionesPorCia.agregarAtras(posiciones.iesimo(k).ciaNumber());
+                k++;
             }
 
             if (posicionesPorCia.longitud()>=1){
@@ -821,7 +822,7 @@ Lista<Atleta> JJOO::filtrarAtletasPorPais(Lista<Atleta> atls, Pais p) const{
 Lista<pair<Pais,Lista<int> > > JJOO::agregarOrdenado(Lista<pair<Pais,Lista<int> > > l , pair<Pais,Lista<int> > par) const{
     Lista<pair<Pais,Lista<int> > > listadoOrdenado = Lista<pair<Pais,Lista<int> > >();
 
-    if (listadoOrdenado.longitud()==0){
+    if (l.longitud()==0){
         listadoOrdenado.agregarAtras(par);
     } else {
         while( (l.longitud()!=0) && ( (l.cabeza().second.iesimo(0)>par.second.iesimo(0) ) || (l.cabeza().second.iesimo(0)==par.second.iesimo(0) && l.cabeza().second.iesimo(1)>par.second.iesimo(1) ) || (l.cabeza().second.iesimo(0)==par.second.iesimo(0) && l.cabeza().second.iesimo(1)==par.second.iesimo(1) && l.cabeza().second.iesimo(2)>=par.second.iesimo(2) ))){
@@ -839,7 +840,7 @@ Lista<pair<Pais,Lista<int> > > JJOO::agregarOrdenado(Lista<pair<Pais,Lista<int> 
 Lista<Atleta> JJOO::agregarOrdenadoPorCapacidad(Lista<Atleta> l , Atleta a , Deporte d) const{
     Lista<Atleta> listadoOrdenado = Lista<Atleta>();
 
-    if (listadoOrdenado.longitud()==0){
+    if (l.longitud()==0){
         listadoOrdenado.agregarAtras(a);
     } else {
         while( l.longitud() != 0 && l.cabeza().capacidad(d) > a.capacidad(d)){
