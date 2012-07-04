@@ -460,6 +460,10 @@ Lista<Pais> JJOO::sequiaOlimpica() const{
 
 void JJOO::transcurrirDia(){
     Lista<Competencia> comps = cronograma(jornadaActual());
+    Lista<Lista<Competencia> > nuevoCronograma = Lista<Lista<Competencia> > ();
+    Lista<Competencia> nuevoDiaActual = Lista<Competencia>();
+
+
     int i = 0;
     while (i<comps.longitud()){
 
@@ -479,7 +483,7 @@ void JJOO::transcurrirDia(){
             int j = 0;
             while (j<comp.participantes().longitud()){
                 //ordeno de mayor capacidad a menor capacidad
-                posiciones = agregarOrdenadoPorCapacidad(comp.participantes(),comp.participantes().iesimo(j),d) ;
+                posiciones = agregarOrdenadoPorCapacidad(posiciones,comp.participantes().iesimo(j),d) ;
                 j++;
             }
 
@@ -495,9 +499,24 @@ void JJOO::transcurrirDia(){
             }
 
             comp.finalizar(posicionesPorCia , controlAntidoping);
+            nuevoDiaActual.agregarAtras(comp);
+        } else {
+            nuevoDiaActual.agregarAtras(comp);
         }
         i++;
     }
+
+    int dia = 1;
+
+    while (dia<=cantDias()){
+        if (dia!=jornadaActual()){
+            nuevoCronograma.agregarAtras(cronograma(dia));
+        } else {
+            nuevoCronograma.agregarAtras(nuevoDiaActual);
+        }
+        dia++;
+    }
+    _competenciasPorDia = nuevoCronograma;
     _jornadaActual = _jornadaActual+1;
 }
 
