@@ -489,5 +489,7 @@ void testJJOO_stevenBradbury(){
 void testJJOO_uyOrdenadoSiHayPatron(){
     JJOO jjoo = mockJJOODia5();
 
+    cout << jjoo.cantDias() << endl;
+
     cout<< "cumple patron: " << (jjoo.uyOrdenadoAsiHayUnPatron() ? "true" : "false" )<< endl;
 }
