@@ -5,7 +5,8 @@ Atleta::Atleta(){
 }
 
 
-Atleta::Atleta(const string nombre,const Sexo sexo, const int anio, const Pais pais, const int ciaNumber){
+Atleta::Atleta(const string nombre,const Sexo sexo, const int anio, 
+		const Pais pais, const int ciaNumber){
     _nombre = nombre;
     _sexo = sexo;
     _anioNacimiento = anio;
@@ -93,7 +94,8 @@ void Atleta::entrenarNuevoDeporte(const Deporte deporte, const int capacidad){
 
 bool Atleta::operator==(const Atleta& a) const{
     return (nombre() == a.nombre() && sexo() == a.sexo() && anioNacimiento() == a.anioNacimiento()
-        && nacionalidad() == a.nacionalidad() && ciaNumber() == a.ciaNumber() && _deportes == a._deportes);
+        && nacionalidad() == a.nacionalidad() 
+        && ciaNumber() == a.ciaNumber() && _deportes == a._deportes);
 }
 
 
@@ -108,8 +110,10 @@ void Atleta::mostrar(std::ostream& os) const{
 
 
 void Atleta::guardar(std::ostream& o) const{
-    o << (char) ENCABEZADO_ARCHIVO << " |" << nombre() << "| |" << ( sexo() == Masculino ? "Masculino" : "Femenino")
-    << "| " << anioNacimiento() << " |" << nacionalidad() << "| " << ciaNumber() <<  " " << "[";
+    o << (char) ENCABEZADO_ARCHIVO << " |" << nombre() << "| |" 
+    << ( sexo() == Masculino ? "Masculino" : "Femenino")
+    << "| " << anioNacimiento() << " |" << nacionalidad() << "| " 
+    << ciaNumber() <<  " " << "[";
 
     /*
      * Se imprimen los deportes de los atletas

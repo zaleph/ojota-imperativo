@@ -8,7 +8,8 @@ JJOO::JJOO(){
 }
 
 
-JJOO::JJOO(const int anio, const Lista<Atleta>& atletas, const Lista<Lista<Competencia> >& competenciasPorDia){
+JJOO::JJOO(const int anio, const Lista<Atleta>& atletas,
+		const Lista<Lista<Competencia> >& competenciasPorDia){
     _anio = anio;
     _atletas = atletas;
     _competenciasPorDia = competenciasPorDia;
@@ -538,7 +539,8 @@ void JJOO::transcurrirDia(){
 
 bool JJOO::operator==(const JJOO& j) const{
 
-    bool result = j.anio() == anio() && j.cantDias() == cantDias() && j.jornadaActual() == jornadaActual()
+    bool result = j.anio() == anio() && j.cantDias() == cantDias() 
+    	&& j.jornadaActual() == jornadaActual()
         && mismasAtletas(j.atletas() , atletas()) ;
 
     if(result){
@@ -727,7 +729,9 @@ Lista<Atleta> JJOO::ganadoresDeCompetencias(Lista<Competencia> comps , int posic
     while(i<comps.longitud()){
         Competencia compIesima = comps.iesimo(i);
         if ( compIesima.finalizada()){
-            if ( (compIesima.ranking().longitud() >= 1 && posicion<1) || (compIesima.ranking().longitud() >= 2 && posicion<2) || (compIesima.ranking().longitud() >= 3 && posicion<3) ){
+            if ( (compIesima.ranking().longitud() >= 1 && posicion<1)
+            	|| (compIesima.ranking().longitud() >= 2 && posicion<2)
+            	|| (compIesima.ranking().longitud() >= 3 && posicion<3) ){
                 atletas.agregarAtras((comps.iesimo(i)).ranking().iesimo(posicion));
             }
             i++;
@@ -853,13 +857,21 @@ Lista<Atleta> JJOO::filtrarAtletasPorPais(Lista<Atleta> atls, Pais p) const{
 }
 
 
-Lista<pair<Pais,Lista<int> > > JJOO::agregarOrdenado(Lista<pair<Pais,Lista<int> > > l , pair<Pais,Lista<int> > par) const{
+Lista<pair<Pais,Lista<int> > > JJOO::agregarOrdenado(Lista<pair<Pais,Lista<int> > > l ,
+		pair<Pais,Lista<int> > par) const{
+
     Lista<pair<Pais,Lista<int> > > listadoOrdenado = Lista<pair<Pais,Lista<int> > >();
 
     if (l.longitud()==0){
         listadoOrdenado.agregarAtras(par);
     } else {
-        while( (l.longitud()!=0) && ( (l.cabeza().second.iesimo(0)>par.second.iesimo(0) ) || (l.cabeza().second.iesimo(0)==par.second.iesimo(0) && l.cabeza().second.iesimo(1)>par.second.iesimo(1) ) || (l.cabeza().second.iesimo(0)==par.second.iesimo(0) && l.cabeza().second.iesimo(1)==par.second.iesimo(1) && l.cabeza().second.iesimo(2)>=par.second.iesimo(2) ))){
+        while( (l.longitud()!=0) && ( (l.cabeza().second.iesimo(0)>par.second.iesimo(0) )
+		    	|| (l.cabeza().second.iesimo(0)==par.second.iesimo(0)
+		    	&& l.cabeza().second.iesimo(1)>par.second.iesimo(1) )
+		    	|| (l.cabeza().second.iesimo(0)==par.second.iesimo(0)
+		    	&& l.cabeza().second.iesimo(1)==par.second.iesimo(1)
+		    	&& l.cabeza().second.iesimo(2)>=par.second.iesimo(2) ))){
+
             listadoOrdenado.agregarAtras(l.cabeza());
             l.eliminarPosicion(0);
         }
@@ -887,31 +899,6 @@ Lista<Atleta> JJOO::agregarOrdenadoPorCapacidad(Lista<Atleta> l , Atleta a , Dep
     return listadoOrdenado;
 }
 
-
-/*
-Lista<int> JJOO::capacidades (Lista<Atleta> atlets , Deporte sport) const{
-    Lista<int> cap = Lista<int>();
-    int i = 0;
-    while (i<atlets.longitud()){
-        Atleta a = atlets.iesimo(i);
-        cap.agregarAtras(a.capacidad(sport));
-        i++;
-    }
-    return cap;
-}
-*/
-
-/*
- bool JJOO::ordenado (Lista<int> lista1 ) const{
-    int i = 0;
-    bool eval = true;
-    while(i<lista1.longitud()-1 && eval){
-        eval = lista1.iesimo(i) <= lista1.iesimo(i+1);
-        i++;
-    }
-    return eval;
-}
-*/
 
 
 Lista<Atleta> JJOO::atletasParticipantesUnicos () const{
